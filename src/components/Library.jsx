@@ -5,19 +5,19 @@ import { CircleCheckBig } from 'lucide-react';
 
 const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
 
-function Library({movies,removeMovie,addToHistory}) {
+function Library({movies,moviesOfGenre,removeMovie,addToHistory}) {
 
     const [libraryMovies, setlibraryMovies] = useState([]);
 
     useEffect(() => {
-      setlibraryMovies(movies)
-    }, [movies])
+      setlibraryMovies(moviesOfGenre)
+    }, [moviesOfGenre])
 
   return (
 
       <div className="libraryContainer">
         <ul className='library'>
-            {movies.map((movie) => (
+            {moviesOfGenre.map((movie) => (
               <li className='moviesInLibrary' key={movie.id}>
                 <div className="libraryPoster">
                         {movie.poster_path ? (

@@ -4,7 +4,7 @@ import './Spinner.css'
 
 
 
-function Spinner({ movies, rotation, spinWheel, isSpinning }) {
+function Spinner({movies, moviesOfGenre, rotation, spinWheel, isSpinning }) {
   const canvasRef = useRef(null);
 
 
@@ -53,16 +53,35 @@ function Spinner({ movies, rotation, spinWheel, isSpinning }) {
     for (let slice = 0; slice < numberSlice; slice++) {
       ctx.beginPath();
       ctx.moveTo(center, center)
-      ctx.arc(center, center, 200, slice * arcAngle, (slice + 1) * arcAngle);
-      const hue = 250 + (slice * 90) / numberSlice;
-      ctx.fillStyle = `hsl(${hue}, 65%, 38%)`;
+      ctx.arc(center, center, 180, slice * arcAngle, (slice + 1) * arcAngle);
+      ctx.closePath();
+      const hue = 210 + (slice * 100) / numberSlice;
+      ctx.fillStyle = `hsl(${hue}, 55%, 30%)`;
+
+      ctx.shadowColor = "#7C5CFF";
+      ctx.shadowBlur = 30;
+      ctx.stroke();
+      ctx.strokeStyle = "#2415fe";
+      ctx.shadowBlur=20;
+      ctx.lineWidth = 5;
+
+      ctx.stroke();
+      ctx.strokeStyle = "#9f99fb";
+       ctx.shadowBlur=40;
+      ctx.lineWidth =3;
+
+      ctx.stroke();
+
+      ctx.shadowBlur = 0;
+
       ctx.fill();
+
       ctx.save();
       ctx.translate(center, center);
       ctx.rotate(slice * arcAngle + arcAngle / 2);
       ctx.textAlign = "center";
       ctx.fillStyle = "white"
-      ctx.font = "bold 12px sans-serif"
+      ctx.font = "bold 11px sans-serif"
 
       let currentMovie = movies[slice].title
       // let currentMovie=movies[slice]?.title || "";
@@ -73,7 +92,7 @@ function Spinner({ movies, rotation, spinWheel, isSpinning }) {
         }
         currentMovie = currentMovie + "..."
       }
-      ctx.fillText(currentMovie, 120, 5);
+      ctx.fillText(currentMovie, 110, 5);
       ctx.restore();
     }
 

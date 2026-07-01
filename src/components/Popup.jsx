@@ -52,8 +52,9 @@ function Popup({onClose,selectedMovie,addToHistory,spinWheel,movies}) {
                                 <div id='releaseYear'><h4>{movieDetails.release_date.slice(0,4)}</h4></div>
                                 <div id='IMDBrating'><h4>{(movieDetails.vote_average).toFixed(2)}</h4></div>
                     </div>
-                    <div className="cast">
-                        Casting:
+                    <div className="genre">
+                        <h6 >Genre:</h6>
+                        <h6>{movieDetails.genres.map(genre => genre.name).join(', ')}</h6>
                     </div>
                     <div className='desc'>
                        {movieDetails.overview}
