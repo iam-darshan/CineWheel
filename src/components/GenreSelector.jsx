@@ -23,8 +23,7 @@ function GenreSelector({ movies, changeGenre }) {
         "Science Fiction",
         "TV Movie",
         "Thriller",
-        "War",
-    "Western"
+        "War"
     ];
 
 

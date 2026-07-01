@@ -5,7 +5,7 @@ import { CircleCheckBig } from 'lucide-react';
 
 const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
 
-function Library({movies,moviesOfGenre,removeMovie,addToHistory}) {
+function Library({movies,moviesOfGenre,removeMovie,addToHistory,showPopupDetails}) {
 
     const [libraryMovies, setlibraryMovies] = useState([]);
 
@@ -18,7 +18,9 @@ function Library({movies,moviesOfGenre,removeMovie,addToHistory}) {
       <div className="libraryContainer">
         <ul className='library'>
             {movies.map((movie) => (
-              <li className='moviesInLibrary' key={movie.id}>
+              <li className='moviesInLibrary' key={movie.id} onClick={()=>{
+                showPopupDetails(movie.id);
+              }}>
                 <div className="libraryPoster">
                         {movie.poster_path ? (
                         <img className='libraryPosterImage' src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />

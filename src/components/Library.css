@@ -22,14 +22,18 @@
     position: relative;
     width: 100%;
     color: white;
+    cursor: pointer;
 
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content:flex-start ;
     gap: 30px;
+    transition: 0.1s;
 
-
+}
+.moviesInLibrary:hover{
+    background-color: rgb(28, 28, 53);
 }
 
 .libraryPosterImage{

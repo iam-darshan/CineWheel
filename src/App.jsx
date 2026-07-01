@@ -21,8 +21,8 @@ function App() {
   const watchedList = lastWatchedList ? JSON.parse(lastWatchedList): [];
   
   const movieList = lastList ? JSON.parse(lastList) : [
-    { id: 157336, title: "Interstellar", poster_path: "/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg", release_year: 2014, genres:["Action"] },
-    { id: 27205, title: "Inception", poster_path: "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg", release_year: 2010, genres:["Action"] }
+    { id: 157336, title: "Interstellar", poster_path: "/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg", release_year: 2014, genres:["Adventure","Drama","Science Fiction"] },
+    { id: 27205, title: "Inception", poster_path: "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg", release_year: 2010, genres:["Action","Adventure","Drama"] }
   ];
 
 
@@ -152,6 +152,11 @@ const genreName = (movieIds)=>{
         selectedGenre === "Default"? movies :movies.filter(movie => 
           movie.genres?.includes(selectedGenre)
         )
+
+    const showPopupDetails =(id)=>{
+      setselectedMovie(id);
+      setshowPopup(true);
+    }
     
 
   const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
@@ -245,7 +250,7 @@ const genreName = (movieIds)=>{
               )}
             </div>
 
-            <Library movies={displayedMovies} removeMovie={removeMovie} addToHistory={addToHistory}/>
+            <Library movies={displayedMovies} removeMovie={removeMovie} addToHistory={addToHistory} showPopupDetails={showPopupDetails}/>
 
           </div>
 
