@@ -33,12 +33,14 @@ function Library({movies,moviesOfGenre,removeMovie,addToHistory,showPopupDetails
                 </div>
                 <div className='trashContainer'>
                   <div className='addtoLibraryIcon'>
-                  <CircleCheckBig onClick={()=>{
+                  <CircleCheckBig onClick={(e)=>{
+                    e.stopPropagation();
                     addToHistory(movie.id)
                   }}/>
                   </div>
                   <div className='trashIcon'>
-                  <Trash2 onClick={()=>{
+                  <Trash2 onClick={(e)=>{
+                    e.stopPropagation();
                   removeMovie(movie.id)
                 }}/>
                 </div>
