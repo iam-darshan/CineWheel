@@ -66,7 +66,23 @@
     font-family: 'Poppins','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.trashIcon{
+.trashContainer{
     position: absolute;
     right: 20px;
+    display: flex;
+    gap: 8px;
+}
+.addtoLibraryIcon{
+    color: rgb(194, 187, 176);
+    transition: 0.2s;
+}
+.addtoLibraryIcon:hover{
+    color: rgb(9, 222, 9);
+}
+.trashIcon{
+    color: rgb(194, 187, 176);
+    transition: 0.2s;
+}
+.trashIcon:hover{
+    color: red;
 }

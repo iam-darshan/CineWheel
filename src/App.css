@@ -2,10 +2,16 @@ body{
   background-color: rgb(7, 7, 35);
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #252729 #243648; 
+}
+
 .container{
   display: flex;
   flex-direction: column;
   gap: 5px;
+  align-items: center;
 }
 
 .SpinnerLibrarycontainer {

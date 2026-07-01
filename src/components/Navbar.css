@@ -1,8 +1,10 @@
 .navbar{
+    width: 100%;
     height: 9vh;
     color:white;
     display: flex;
     flex-direction: row;
+
 }
 
 .logoAndTitle{
@@ -11,10 +13,13 @@
     align-items: center;
     gap: 5px;
     margin-left: 20px;
+    font-family:'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-img{
-    
-    height:5vh;
-    width: 5vh;
+
+.logo{
+    height:10vh;
+    width: 10vh;
+    margin-left: 10px;
+
 }

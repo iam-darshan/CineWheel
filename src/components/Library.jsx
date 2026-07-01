@@ -1,10 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import './Library.css'
 import { Trash2 } from 'lucide-react';
+import { CircleCheckBig } from 'lucide-react';
 
 const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
 
-function Library({movies,removeMovie}) {
+function Library({movies,removeMovie,addToHistory}) {
 
     const [libraryMovies, setlibraryMovies] = useState([]);
 
@@ -28,9 +29,19 @@ function Library({movies,removeMovie}) {
                   <h3 id='movieTitle'>{movie.title}</h3>
                   <h5 id='movieYear'>{movie.release_year || "N/A"}</h5>
                 </div>
-                <div className='trashIcon'><Trash2 onClick={()=>{
+                <div className='trashContainer'>
+                  <div className='addtoLibraryIcon'>
+                  <CircleCheckBig onClick={()=>{
+                    addToHistory(movie.id)
+                  }}/>
+                  </div>
+                  <div className='trashIcon'>
+                  <Trash2 onClick={()=>{
                   removeMovie(movie.id)
-                }}/></div>
+                }}/>
+                </div>
+                </div>
+
                 
               </li>
             ))}
