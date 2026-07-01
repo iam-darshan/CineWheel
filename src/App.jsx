@@ -154,7 +154,6 @@ function App() {
                   ]
                   const filteredMovie = data.filter(
                     movie =>
-                      movie.original_language === "en" &&
                       movie.title.toLowerCase().startsWith(query.toLowerCase())
                   )
                   const sortedMovie = filteredMovie.sort((a, b) => {
