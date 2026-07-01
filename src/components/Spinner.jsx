@@ -4,7 +4,7 @@ import './Spinner.css'
 
 
 
-function Spinner({movies, moviesOfGenre, rotation, spinWheel, isSpinning }) {
+function Spinner({displayedMovies, rotation, spinWheel, isSpinning }) {
   const canvasRef = useRef(null);
 
 
@@ -19,7 +19,7 @@ function Spinner({movies, moviesOfGenre, rotation, spinWheel, isSpinning }) {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    const numberSlice = movies.length;
+    const numberSlice = displayedMovies.length;
 
     const arcAngle = Math.PI * 2 / numberSlice;
 
@@ -31,20 +31,39 @@ function Spinner({movies, moviesOfGenre, rotation, spinWheel, isSpinning }) {
     ctx.scale(dpi, dpi);
     ctx.clearRect(0, 0, 400, 400);
 
-    if (movies.length === 0) {
+    if (displayedMovies.length === 0) {
 
       ctx.beginPath();
       ctx.moveTo(center, center)
-      ctx.arc(center, center, 200, 0, Math.PI * 2);
-      ctx.fillStyle = `hsl(0, 70%, 55%)`;
+      ctx.arc(center, center, 180, 0, Math.PI * 2);
+      ctx.closePath();      
+      ctx.fillStyle = `hsl(250, 55%, 30%)`;
+
+      ctx.shadowColor = "#7C5CFF";
+      ctx.shadowBlur = 30;
+      ctx.stroke();
+      ctx.strokeStyle = "#2415fe";
+      ctx.shadowBlur=20;
+      ctx.lineWidth = 5;
+
+      ctx.stroke();
+      ctx.strokeStyle = "#9f99fb";
+       ctx.shadowBlur=40;
+      ctx.lineWidth =3;
+
+      ctx.stroke();
+
+      ctx.shadowBlur = 0;
+
       ctx.fill();
+
       ctx.save();
-      // ctx.translate("-200px","-800px");
+      ctx.translate(center, center);
       ctx.textAlign = "center";
       ctx.fillStyle = "white"
-      ctx.font = "bold 12px sans-serif"
-      ctx.fillText("Add a Movie First", center, 100);
+      ctx.font = "bold 11px sans-serif"
 
+      ctx.fillText("Add Movie or Change Genre", 0,100);
       ctx.restore();
       return
     }
@@ -83,8 +102,8 @@ function Spinner({movies, moviesOfGenre, rotation, spinWheel, isSpinning }) {
       ctx.fillStyle = "white"
       ctx.font = "bold 11px sans-serif"
 
-      let currentMovie = movies[slice].title
-      // let currentMovie=movies[slice]?.title || "";
+      let currentMovie = displayedMovies[slice].title
+
 
       if (ctx.measureText(currentMovie).width > 130) {
         while (ctx.measureText(currentMovie + "...").width > 130) {
@@ -99,7 +118,11 @@ function Spinner({movies, moviesOfGenre, rotation, spinWheel, isSpinning }) {
 
 
 
-  }, [movies])
+  }, [displayedMovies,rotation])
+
+  useEffect(() => {
+  console.log("Spinner movies:", displayedMovies);
+}, [displayedMovies]);
 
   return (
     <div className='spinnerBackground'>

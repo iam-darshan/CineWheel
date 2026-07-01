@@ -9,15 +9,15 @@ function Library({movies,moviesOfGenre,removeMovie,addToHistory}) {
 
     const [libraryMovies, setlibraryMovies] = useState([]);
 
-    useEffect(() => {
-      setlibraryMovies(moviesOfGenre)
-    }, [moviesOfGenre])
+    // useEffect(() => {
+    //   setlibraryMovies(moviesOfGenre)
+    // }, [moviesOfGenre])
 
   return (
 
       <div className="libraryContainer">
         <ul className='library'>
-            {moviesOfGenre.map((movie) => (
+            {movies.map((movie) => (
               <li className='moviesInLibrary' key={movie.id}>
                 <div className="libraryPoster">
                         {movie.poster_path ? (
