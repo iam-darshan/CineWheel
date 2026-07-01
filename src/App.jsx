@@ -7,6 +7,7 @@ import Spinner from './components/Spinner.jsx'
 import Navbar from './components/Navbar.jsx'
 import Library from './components/Library.jsx'
 import WatchHistory from './components/WatchHistory.jsx'
+import GenreSelector from './components/GenreSelector.jsx'
 import { AwardIcon } from 'lucide-react'
 
 
@@ -25,13 +26,40 @@ function App() {
 
 
   const movieList = lastList ? JSON.parse(lastList) : [
-    { id: 157336, title: "Interstellar", poster_path: "/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg", release_year: 2014 },
-    { id: 27205, title: "Inception", poster_path: "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg", release_year: 2010 }
+    { id: 157336, title: "Interstellar", poster_path: "/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg", release_year: 2014, genres:["Action"] },
+    { id: 27205, title: "Inception", poster_path: "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg", release_year: 2010, genres:["Action"] }
   ];
 
+  const genres = [
+  { id: 28, name: "Action" },
+  { id: 12, name: "Adventure" },
+  { id: 16, name: "Animation" },
+  { id: 35, name: "Comedy" },
+  { id: 80, name: "Crime" },
+  { id: 99, name: "Documentary" },
+  { id: 18, name: "Drama" },
+  { id: 10751, name: "Family" },
+  { id: 14, name: "Fantasy" },
+  { id: 36, name: "History" },
+  { id: 27, name: "Horror" },
+  { id: 10402, name: "Music" },
+  { id: 9648, name: "Mystery" },
+  { id: 10749, name: "Romance" },
+  { id: 878, name: "Science Fiction" },
+  { id: 10770, name: "TV Movie" },
+  { id: 53, name: "Thriller" },
+  { id: 10752, name: "War" },
+  { id: 37, name: "Western" }
+  ];
 
   const [movies, setmovies] = useState(movieList);
-  const [watchedMoviesList, setwatchedMoviesList] = useState(watchedList)
+  const [watchedMoviesList, setwatchedMoviesList] = useState(watchedList);
+  const [moviesOfGenre, setmoviesOfGenre] = useState(movieList);
+  
+  const genreName = (movieIds)=>{
+    return movieIds.map(id=>
+    genres.find(genres => genres.id===id)?.name);
+  }
 
 
 
@@ -65,7 +93,6 @@ function App() {
 
       setTimeout(() => {
         setisSpinning(false);
-        console.log(rotation);
         setshowPopup(true);
         setselectedMovie(movies[movieIndex].id)
       }, 4000);
@@ -109,6 +136,19 @@ function App() {
     let watchedMovies = localStorage.setItem("watchedMovies", JSON.stringify(newWatchedList));
   }
 
+    const changeGenre=(genre)=>{
+      if(genre=="Default"){
+              setmoviesOfGenre(movies);
+              return;
+            }
+        const newGenreList = 
+            movies.filter(
+                movie => movie.genres.includes(genre)
+            )
+            
+            setmoviesOfGenre(newGenreList);
+    }
+
   const [rotation, setrotation] = useState(0);
   const [isSpinning, setisSpinning] = useState(false);
   const [showPopup, setshowPopup] = useState(false);
@@ -122,10 +162,13 @@ function App() {
     <>
       <div className='container'>
         <Navbar />
+        <GenreSelector movies={movies} changeGenre={changeGenre}/>
+        
         <div className='SpinnerLibrarycontainer'>
           <div className='Spinner'>
-            <Spinner movies={movies} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} />
+            <Spinner movies={movies} moviesOfGenre={moviesOfGenre} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} />
           </div>
+
 
 
 
@@ -180,7 +223,8 @@ function App() {
                 <ul className='suggestion-dropdown'>
                   {suggestions.map((movie) => (
                     <li className='suggestions' key={movie.id} onClick={() => {
-                      const nextList = [...movies, { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4) }]
+                      {console.log()}
+                      const nextList = [...movies, { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4) , genres:genreName(movie.genre_ids) }]
                       setmovies(nextList);
                       setSuggestions([]);
                       inputRef.current.value = ""
@@ -195,6 +239,7 @@ function App() {
                         }
                       </div>
                       <div>
+                        {console.log(movie)}
                         {movie.title}
                       </div></li>
                   ))}
@@ -202,7 +247,7 @@ function App() {
               )}
             </div>
 
-            <Library movies={movies} removeMovie={removeMovie} addToHistory={addToHistory}/>
+            <Library movies={movies} moviesOfGenre={moviesOfGenre} removeMovie={removeMovie} addToHistory={addToHistory}/>
 
           </div>
 

@@ -24,6 +24,7 @@
     overflow-x: scroll;
     scrollbar-width: thin;
   scrollbar-color: #252729 #243648; 
+  transition: 1s;
 
     margin: 0;
     padding: 0;
@@ -52,6 +53,7 @@
 #watchedMoviePoster{
     height: 100%;
     width: 100%;
+    border-radius: 5px;
 }
 
 h3{
