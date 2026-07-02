@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react'
 import './SuggestedMovies.css'
 import { Plus } from 'lucide-react'
 
-function SuggestedMovies({API_KEY,addMovieFromSuggest}) {
+function SuggestedMovies({API_KEY,addMovieFromSuggest,alertFn}) {
 
     const [topMovies, settopMovies] = useState([])
     const [trendingMovies, settrendingMovies] = useState([])
@@ -63,7 +63,7 @@ function SuggestedMovies({API_KEY,addMovieFromSuggest}) {
                     <div className='Plus'>
                         <Plus onClick={()=>{
                             addMovieFromSuggest(movie.id);
-                            console.log(movie.id)
+                            console.log(movie.id);
                         }
                         }/>
                     </div>

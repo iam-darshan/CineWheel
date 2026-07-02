@@ -9,7 +9,9 @@ import Library from './components/Library.jsx'
 import WatchHistory from './components/WatchHistory.jsx'
 import GenreSelector from './components/GenreSelector.jsx'
 import SuggestedMovies from './components/SuggestedMovies.jsx'
+import Alert from './components/Alert.jsx'
 import { AwardIcon } from 'lucide-react'
+
 
 
 
@@ -35,6 +37,7 @@ function App() {
     const [selectedMovie, setselectedMovie] = useState(null);
     const [suggestions, setSuggestions] = useState([]);
     const [selectedGenre, setSelectedGenre] = useState("Default");
+    const [alertMsg, setalertMsg] = useState("");
     
   
   const inputRef = useRef();
@@ -85,9 +88,10 @@ const genreName = (movieIds)=>{
   }
   const addMovieFromSuggest =async (id) => {
     if(movies.some(movie => movie.id ==id)){
-      alert("Movie Already Exist in Library");
+      alertFn("Movie Already Exist in Library");
       return;
     }
+    alertFn("Movie Added To Library");
     const res= await  fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
     const result = await res.json();
       const movie = result;
@@ -136,6 +140,7 @@ const genreName = (movieIds)=>{
     setwatchedMoviesList([...watchedMoviesList,watchedMovie]);
     let watchedMovies = localStorage.setItem("watchedMovies", JSON.stringify(newWatchedList));
     let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(newMovieList));
+    alertFn("Added to Watched Movies");
 
   };
 
@@ -147,6 +152,7 @@ const genreName = (movieIds)=>{
       ;
     setmovies(newMovieList)
     let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(newMovieList))
+    alertFn("Movie Removed from Library");
   }
 
   const removeFromHistory =(movieToRemove)=>{
@@ -156,6 +162,7 @@ const genreName = (movieIds)=>{
     )
     setwatchedMoviesList(newWatchedList)
     let watchedMovies = localStorage.setItem("watchedMovies", JSON.stringify(newWatchedList));
+    alertFn("Movie Removed from Hisory");
   }
 
     const changeGenre=(genre)=>{
@@ -173,6 +180,16 @@ const genreName = (movieIds)=>{
       setselectedMovie(id);
       setshowPopup(true);
     }
+
+    const alertFn = (msg)=>{
+      setalertMsg(msg)
+      console.log(msg)
+      setTimeout(() => {
+        setalertMsg("")
+      }, 2000);
+    }
+
+
     
 
   const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
@@ -180,6 +197,7 @@ const genreName = (movieIds)=>{
   return (
     <>
       <div className='container'>
+        <Alert alertMsg={alertMsg} />
         <Navbar />
         <GenreSelector movies={movies} changeGenre={changeGenre}/>
         
@@ -243,7 +261,7 @@ const genreName = (movieIds)=>{
                   {suggestions.map((movie) => (
                     <li className='suggestions' key={movie.id} onClick={() => {
                       if(movies.some(m => m.id ==movie.id)){
-                      alert("Movie Already Exist in Library");
+                      alertFn("Movie Already Exist in Library");
                       return;
                     }
                       setSuggestions([]);
@@ -252,6 +270,7 @@ const genreName = (movieIds)=>{
                       
                       inputRef.current.value = ""
                       let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(nextList))
+                      
 
                     }}>
 
@@ -277,7 +296,7 @@ const genreName = (movieIds)=>{
 
 
         </div>
-        <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest}/>
+        <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn}/>
         <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory}/>
       </div>
 

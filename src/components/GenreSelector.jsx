@@ -1,9 +1,7 @@
 import React from 'react'
 import './GenreSelector.css'
 
-function GenreSelector({ movies, changeGenre }) {
-
-    console.log("GenreSelector rendered");
+function GenreSelector({ movies, changeGenre }) {   
 
     const genreList = [
         "Action",
@@ -47,9 +45,6 @@ function GenreSelector({ movies, changeGenre }) {
 
                 </ul>
             </div>
-            {/* <div>
-                Add New
-            </div> */}
         </div>
     )
 }

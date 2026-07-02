@@ -1,0 +1,22 @@
+.alertContainer{
+    position: fixed;
+    color: white;
+    background-color: rgb(156, 177, 185);
+    padding: 10px 15px;
+    font-family:'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    gap: 10px;
+    z-index: 100;
+
+    transition: 0.5s;
+}
+
+.red{
+    background-color: red;
+}
+.green{
+    background-color: green;
+}
