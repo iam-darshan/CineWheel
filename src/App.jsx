@@ -284,7 +284,6 @@ function App() {
                       setmovies(nextList);
 
                       inputRef.current.value = ""
-                      alert("clicked")
                       let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(nextList))
 
 
