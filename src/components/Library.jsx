@@ -5,20 +5,22 @@ import { CircleCheckBig } from 'lucide-react';
 
 const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
 
-function Library({movies,moviesOfGenre,removeMovie,addToHistory}) {
+function Library({movies,moviesOfGenre,removeMovie,addToHistory,showPopupDetails}) {
 
     const [libraryMovies, setlibraryMovies] = useState([]);
 
-    useEffect(() => {
-      setlibraryMovies(moviesOfGenre)
-    }, [moviesOfGenre])
+    // useEffect(() => {
+    //   setlibraryMovies(moviesOfGenre)
+    // }, [moviesOfGenre])
 
   return (
 
       <div className="libraryContainer">
         <ul className='library'>
-            {moviesOfGenre.map((movie) => (
-              <li className='moviesInLibrary' key={movie.id}>
+            {movies.map((movie) => (
+              <li className='moviesInLibrary' key={movie.id} onClick={()=>{
+                showPopupDetails(movie.id);
+              }}>
                 <div className="libraryPoster">
                         {movie.poster_path ? (
                         <img className='libraryPosterImage' src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
@@ -31,12 +33,14 @@ function Library({movies,moviesOfGenre,removeMovie,addToHistory}) {
                 </div>
                 <div className='trashContainer'>
                   <div className='addtoLibraryIcon'>
-                  <CircleCheckBig onClick={()=>{
+                  <CircleCheckBig onClick={(e)=>{
+                    e.stopPropagation();
                     addToHistory(movie.id)
                   }}/>
                   </div>
                   <div className='trashIcon'>
-                  <Trash2 onClick={()=>{
+                  <Trash2 onClick={(e)=>{
+                    e.stopPropagation();
                   removeMovie(movie.id)
                 }}/>
                 </div>

@@ -13,31 +13,41 @@ import { AwardIcon } from 'lucide-react'
 
 
 
+
 function App() {
-
-  const inputRef = useRef();
-  const btnRef = useRef();
-
   const lastList = localStorage.getItem("savedMovies");
-  const lastWatchedList =localStorage.getItem("watchedMovies");
-  const watchedList = lastWatchedList
-  ? JSON.parse(lastWatchedList)
-  : [];
+  const lastWatchedList = localStorage.getItem("watchedMovies");
 
-
+  const watchedList = lastWatchedList ? JSON.parse(lastWatchedList): [];
+  
   const movieList = lastList ? JSON.parse(lastList) : [
-    { id: 157336, title: "Interstellar", poster_path: "/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg", release_year: 2014, genres:["Action"] },
-    { id: 27205, title: "Inception", poster_path: "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg", release_year: 2010, genres:["Action"] }
+    { id: 157336, title: "Interstellar", poster_path: "/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg", release_year: 2014, genres:["Adventure","Drama","Science Fiction"] },
+    { id: 27205, title: "Inception", poster_path: "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg", release_year: 2010, genres:["Action","Adventure","Drama"] }
   ];
 
+
+  const [movies, setmovies] = useState(movieList);
+    const [watchedMoviesList, setwatchedMoviesList] = useState(watchedList);
+    const [rotation, setrotation] = useState(0);
+    const [isSpinning, setisSpinning] = useState(false);
+    const [showPopup, setshowPopup] = useState(false);
+    const [selectedMovie, setselectedMovie] = useState(null);
+    const [suggestions, setSuggestions] = useState([]);
+    const [selectedGenre, setSelectedGenre] = useState("Default");
+    
+  
+  const inputRef = useRef();
+  const btnRef = useRef();
+  
+
   const genres = [
-  { id: 28, name: "Action" },
-  { id: 12, name: "Adventure" },
-  { id: 16, name: "Animation" },
-  { id: 35, name: "Comedy" },
-  { id: 80, name: "Crime" },
-  { id: 99, name: "Documentary" },
-  { id: 18, name: "Drama" },
+    { id: 28, name: "Action" },
+    { id: 12, name: "Adventure" },
+    { id: 16, name: "Animation" },
+    { id: 35, name: "Comedy" },
+    { id: 80, name: "Crime" },
+    { id: 99, name: "Documentary" },
+    { id: 18, name: "Drama" },
   { id: 10751, name: "Family" },
   { id: 14, name: "Fantasy" },
   { id: 36, name: "History" },
@@ -50,22 +60,18 @@ function App() {
   { id: 53, name: "Thriller" },
   { id: 10752, name: "War" },
   { id: 37, name: "Western" }
-  ];
+];
 
-  const [movies, setmovies] = useState(movieList);
-  const [watchedMoviesList, setwatchedMoviesList] = useState(watchedList);
-  const [moviesOfGenre, setmoviesOfGenre] = useState(movieList);
-  
-  const genreName = (movieIds)=>{
-    return movieIds.map(id=>
+const genreName = (movieIds)=>{
+  return movieIds.map(id=>
     genres.find(genres => genres.id===id)?.name);
   }
-
-
-
+  
+  
+  
   const addMovie = () => {
     const inputValue = inputRef.current.value
-
+    
     if (inputValue.trim() == "") return;
 
     const newMovie = { id: Date.now(), title: inputValue.trim() };
@@ -78,7 +84,7 @@ function App() {
   }
 
   const spinWheel = () => {
-    if (movies.length != 0) {
+    if (displayedMovies.length != 0) {
       if (isSpinning) return
       const randomRotation = Math.floor((Math.random() * 3 + 3) * 360)
 
@@ -86,7 +92,7 @@ function App() {
       const constantRotation = rotation + randomRotation;
       setrotation(constantRotation)
 
-      const arcAngle = 360 / movies.length;
+      const arcAngle = 360 / displayedMovies.length;
       const movieDegree = (constantRotation % 360);
       const finalAngle = (360 - movieDegree + 270) % 360
       const movieIndex = Math.floor(finalAngle / arcAngle)
@@ -94,7 +100,7 @@ function App() {
       setTimeout(() => {
         setisSpinning(false);
         setshowPopup(true);
-        setselectedMovie(movies[movieIndex].id)
+        setselectedMovie(displayedMovies[movieIndex].id)
       }, 4000);
 
     }
@@ -137,24 +143,21 @@ function App() {
   }
 
     const changeGenre=(genre)=>{
-      if(genre=="Default"){
-              setmoviesOfGenre(movies);
-              return;
-            }
-        const newGenreList = 
-            movies.filter(
-                movie => movie.genres.includes(genre)
-            )
-            
-            setmoviesOfGenre(newGenreList);
+      setSelectedGenre(genre)
+      console.log("Clicked:", genre);
     }
 
-  const [rotation, setrotation] = useState(0);
-  const [isSpinning, setisSpinning] = useState(false);
-  const [showPopup, setshowPopup] = useState(false);
-  const [selectedMovie, setselectedMovie] = useState(null);
-  const [suggestions, setSuggestions] = useState([]);
-  
+
+    const displayedMovies = 
+        selectedGenre === "Default"? movies :movies.filter(movie => 
+          movie.genres?.includes(selectedGenre)
+        )
+
+    const showPopupDetails =(id)=>{
+      setselectedMovie(id);
+      setshowPopup(true);
+    }
+    
 
   const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
 
@@ -166,7 +169,7 @@ function App() {
         
         <div className='SpinnerLibrarycontainer'>
           <div className='Spinner'>
-            <Spinner movies={movies} moviesOfGenre={moviesOfGenre} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} />
+            <Spinner displayedMovies={displayedMovies} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} />
           </div>
 
 
@@ -223,10 +226,10 @@ function App() {
                 <ul className='suggestion-dropdown'>
                   {suggestions.map((movie) => (
                     <li className='suggestions' key={movie.id} onClick={() => {
-                      {console.log()}
+                      setSuggestions([]);
                       const nextList = [...movies, { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4) , genres:genreName(movie.genre_ids) }]
                       setmovies(nextList);
-                      setSuggestions([]);
+                      
                       inputRef.current.value = ""
                       let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(nextList))
 
@@ -247,7 +250,7 @@ function App() {
               )}
             </div>
 
-            <Library movies={movies} moviesOfGenre={moviesOfGenre} removeMovie={removeMovie} addToHistory={addToHistory}/>
+            <Library movies={displayedMovies} removeMovie={removeMovie} addToHistory={addToHistory} showPopupDetails={showPopupDetails}/>
 
           </div>
 
