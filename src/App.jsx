@@ -79,6 +79,7 @@ function App() {
   ];
 
   const genreName = (movieIds)=>{
+    console.log(movieIds)
   return movieIds.map(id=>
     genres.find(genres => genres.id===id)?.name);
   }
@@ -176,6 +177,7 @@ function App() {
     alertFn("Movie Removed from Hisory");
   }
 
+  
   const changeGenre = (genre) => {
     setSelectedGenre(genre)
     console.log("Clicked:", genre);
@@ -271,15 +273,18 @@ function App() {
                 <ul className='suggestion-dropdown'>
                   {suggestions.map((movie) => (
                     <li className='suggestions' key={movie.id} onClick={() => {
+                      
                       if (movies.some(m => m.id == movie.id)) {
                         alertFn("Movie Already Exist in Library");
                         return;
                       }
                       setSuggestions([]);
-                      const nextList = [...movies, { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4),  genres:movie.genres.map(genre=> genre.name) }]
+                      console.log(movie)
+                      const nextList = [...movies, { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4),  genres: genreName(movie.genre_ids) }]
                       setmovies(nextList);
 
                       inputRef.current.value = ""
+                      alert("clicked")
                       let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(nextList))
 
 
