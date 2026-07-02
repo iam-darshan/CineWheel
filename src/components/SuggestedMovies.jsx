@@ -6,6 +6,7 @@ function SuggestedMovies({API_KEY,addMovieFromSuggest}) {
 
     const [topMovies, settopMovies] = useState([])
     const [trendingMovies, settrendingMovies] = useState([])
+    const [selectedList, setselectedList] = useState("top")
 
     useEffect(() => {
         
@@ -34,13 +35,17 @@ function SuggestedMovies({API_KEY,addMovieFromSuggest}) {
     <div className='suggestedMoviesContainer'>
 
         <div className="toggleContainer">
-            <button>Top IMDB</button>
-            <button>Trending</button>
+            <div className={`lefttoggle ${selectedList==="top" ? "activetoggleBtn" : "inactivetoggledBtn"}`} onClick={()=>{
+                setselectedList("top");
+            }}>Top IMDB</div>
+            <div className={`righttoggle ${selectedList==="trending" ? "activetoggleBtn" : "inactivetoggledBtn"}`}  onClick={()=>{
+                setselectedList("trending");
+            }}>Trending</div>
         </div>
 
-    <div className='TopIMDBcontainer'>
+    <div className={`TopIMDBcontainer ${selectedList==="top" ? "show" : "hide"}`} >
         <h4>Top IMDB</h4>
-      <div className='GOATmovies'>
+      <div className='GOATmovies' >
             
             <ul className='topratedUL'>
                 {topMovies.map((movie)=>(
@@ -68,7 +73,7 @@ function SuggestedMovies({API_KEY,addMovieFromSuggest}) {
             </ul>
         </div>
       </div>
-      <div className='TopIMDBcontainer' >
+      <div className={`TopIMDBcontainer ${selectedList==="trending" ? "show" : "hide"}`} >
         <h4>Trending</h4>
       <div className='GOATmovies'>
             
