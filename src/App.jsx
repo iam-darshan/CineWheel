@@ -18,31 +18,40 @@ import { AwardIcon } from 'lucide-react'
 
 
 function App() {
+  //clear storage
+  useEffect(() => {
+    if (window.location.pathname === "/reset") {
+        localStorage.clear();
+        alert("localStorage Cleared")
+        window.location.href = "/";
+    }
+}, []);
+
   const lastList = localStorage.getItem("savedMovies");
   const lastWatchedList = localStorage.getItem("watchedMovies");
 
-  const watchedList = lastWatchedList ? JSON.parse(lastWatchedList): [];
-  
+  const watchedList = lastWatchedList ? JSON.parse(lastWatchedList) : [];
+
   const movieList = lastList ? JSON.parse(lastList) : [
-    { id: 157336, title: "Interstellar", poster_path: "/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg", release_year: 2014, genres:["Adventure","Drama","Science Fiction"] },
-    { id: 27205, title: "Inception", poster_path: "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg", release_year: 2010, genres:["Action","Adventure","Drama"] }
+    { id: 157336, title: "Interstellar", poster_path: "/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg", release_year: 2014, genres: ["Adventure", "Drama", "Science Fiction"] },
+    { id: 27205, title: "Inception", poster_path: "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg", release_year: 2010, genres: ["Action", "Adventure", "Drama"] }
   ];
 
 
   const [movies, setmovies] = useState(movieList);
-    const [watchedMoviesList, setwatchedMoviesList] = useState(watchedList);
-    const [rotation, setrotation] = useState(0);
-    const [isSpinning, setisSpinning] = useState(false);
-    const [showPopup, setshowPopup] = useState(false);
-    const [selectedMovie, setselectedMovie] = useState(null);
-    const [suggestions, setSuggestions] = useState([]);
-    const [selectedGenre, setSelectedGenre] = useState("Default");
-    const [alertMsg, setalertMsg] = useState("");
-    
-  
+  const [watchedMoviesList, setwatchedMoviesList] = useState(watchedList);
+  const [rotation, setrotation] = useState(0);
+  const [isSpinning, setisSpinning] = useState(false);
+  const [showPopup, setshowPopup] = useState(false);
+  const [selectedMovie, setselectedMovie] = useState(null);
+  const [suggestions, setSuggestions] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState("Default");
+  const [alertMsg, setalertMsg] = useState("");
+
+
   const inputRef = useRef();
   const btnRef = useRef();
-  
+
 
   const genres = [
     { id: 28, name: "Action" },
@@ -52,30 +61,30 @@ function App() {
     { id: 80, name: "Crime" },
     { id: 99, name: "Documentary" },
     { id: 18, name: "Drama" },
-  { id: 10751, name: "Family" },
-  { id: 14, name: "Fantasy" },
-  { id: 36, name: "History" },
-  { id: 27, name: "Horror" },
-  { id: 10402, name: "Music" },
-  { id: 9648, name: "Mystery" },
-  { id: 10749, name: "Romance" },
-  { id: 878, name: "Science Fiction" },
-  { id: 10770, name: "TV Movie" },
-  { id: 53, name: "Thriller" },
-  { id: 10752, name: "War" },
-  { id: 37, name: "Western" }
-];
+    { id: 10751, name: "Family" },
+    { id: 14, name: "Fantasy" },
+    { id: 36, name: "History" },
+    { id: 27, name: "Horror" },
+    { id: 10402, name: "Music" },
+    { id: 9648, name: "Mystery" },
+    { id: 10749, name: "Romance" },
+    { id: 878, name: "Science Fiction" },
+    { id: 10770, name: "TV Movie" },
+    { id: 53, name: "Thriller" },
+    { id: 10752, name: "War" },
+    { id: 37, name: "Western" }
+  ];
 
-const genreName = (movieIds)=>{
-  return movieIds.map(id=>
-    genres.find(genres => genres.id===id)?.name);
+  const genreName = (movieIds) => {
+    return movieIds.map(id =>
+      genres.find(genres => genres.id === id)?.name);
   }
-  
-  
-  
+
+
+
   const addMovie = () => {
     const inputValue = inputRef.current.value
-    
+
     if (inputValue.trim() == "") return;
 
     const newMovie = { id: Date.now(), title: inputValue.trim() };
@@ -86,20 +95,20 @@ const genreName = (movieIds)=>{
 
     let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(nextList))
   }
-  const addMovieFromSuggest =async (id) => {
-    if(movies.some(movie => movie.id ==id)){
+  const addMovieFromSuggest = async (id) => {
+    if (movies.some(movie => movie.id == id)) {
       alertFn("Movie Already Exist in Library");
       return;
     }
     alertFn("Movie Added To Library");
-    const res= await  fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
     const result = await res.json();
-      const movie = result;
-      console.log(movie)
-      const newMovie = { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4) , genres:genreName(movie.genres) };
-      const newList =[...movies,newMovie];
-      setmovies(newList)
-      let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(newList))
+    const movie = result;
+    console.log(movie)
+    const newMovie = { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4), genres: genreName(movie.genres) };
+    const newList = [...movies, newMovie];
+    setmovies(newList)
+    let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(newList))
   }
 
 
@@ -132,12 +141,12 @@ const genreName = (movieIds)=>{
         movie => movie.id !== movieToRemove
       )
       ;
-    const watchedMovie=
+    const watchedMovie =
       movies.find(
-        movie=> movie.id === movieToRemove);
-    const newWatchedList =[...watchedMoviesList,watchedMovie];
+        movie => movie.id === movieToRemove);
+    const newWatchedList = [...watchedMoviesList, watchedMovie];
     setmovies(newMovieList);
-    setwatchedMoviesList([...watchedMoviesList,watchedMovie]);
+    setwatchedMoviesList([...watchedMoviesList, watchedMovie]);
     let watchedMovies = localStorage.setItem("watchedMovies", JSON.stringify(newWatchedList));
     let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(newMovieList));
     alertFn("Added to Watched Movies");
@@ -155,42 +164,42 @@ const genreName = (movieIds)=>{
     alertFn("Movie Removed from Library");
   }
 
-  const removeFromHistory =(movieToRemove)=>{
+  const removeFromHistory = (movieToRemove) => {
     const newWatchedList =
-    watchedList.filter(
-      movie => movie.id !== movieToRemove
-    )
+      watchedList.filter(
+        movie => movie.id !== movieToRemove
+      )
     setwatchedMoviesList(newWatchedList)
     let watchedMovies = localStorage.setItem("watchedMovies", JSON.stringify(newWatchedList));
     alertFn("Movie Removed from Hisory");
   }
 
-    const changeGenre=(genre)=>{
-      setSelectedGenre(genre)
-      console.log("Clicked:", genre);
-    }
+  const changeGenre = (genre) => {
+    setSelectedGenre(genre)
+    console.log("Clicked:", genre);
+  }
 
 
-    const displayedMovies = 
-        selectedGenre === "Default"? movies :movies.filter(movie => 
-          movie.genres?.includes(selectedGenre)
-        )
+  const displayedMovies =
+    selectedGenre === "Default" ? movies : movies.filter(movie =>
+      movie.genres?.includes(selectedGenre)
+    )
 
-    const showPopupDetails =(id)=>{
-      setselectedMovie(id);
-      setshowPopup(true);
-    }
+  const showPopupDetails = (id) => {
+    setselectedMovie(id);
+    setshowPopup(true);
+  }
 
-    const alertFn = (msg)=>{
-      setalertMsg(msg)
-      console.log(msg)
-      setTimeout(() => {
-        setalertMsg("")
-      }, 2000);
-    }
+  const alertFn = (msg) => {
+    setalertMsg(msg)
+    console.log(msg)
+    setTimeout(() => {
+      setalertMsg("")
+    }, 2000);
+  }
 
 
-    
+
 
   const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
 
@@ -199,8 +208,8 @@ const genreName = (movieIds)=>{
       <div className='container'>
         <Alert alertMsg={alertMsg} />
         <Navbar />
-        <GenreSelector movies={movies} changeGenre={changeGenre}/>
-        
+        <GenreSelector movies={movies} changeGenre={changeGenre} />
+
         <div className='SpinnerLibrarycontainer'>
           <div className='Spinner'>
             <Spinner displayedMovies={displayedMovies} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} />
@@ -260,17 +269,17 @@ const genreName = (movieIds)=>{
                 <ul className='suggestion-dropdown'>
                   {suggestions.map((movie) => (
                     <li className='suggestions' key={movie.id} onClick={() => {
-                      if(movies.some(m => m.id ==movie.id)){
-                      alertFn("Movie Already Exist in Library");
-                      return;
-                    }
+                      if (movies.some(m => m.id == movie.id)) {
+                        alertFn("Movie Already Exist in Library");
+                        return;
+                      }
                       setSuggestions([]);
-                      const nextList = [...movies, { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4) , genres:genreName(movie.genre_ids) }]
+                      const nextList = [...movies, { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4), genres: genreName(movie.genre_ids) }]
                       setmovies(nextList);
-                      
+
                       inputRef.current.value = ""
                       let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(nextList))
-                      
+
 
                     }}>
 
@@ -289,15 +298,15 @@ const genreName = (movieIds)=>{
               )}
             </div>
 
-            <Library movies={displayedMovies} removeMovie={removeMovie} addToHistory={addToHistory} showPopupDetails={showPopupDetails}/>
+            <Library movies={displayedMovies} removeMovie={removeMovie} addToHistory={addToHistory} showPopupDetails={showPopupDetails} />
 
           </div>
 
 
 
         </div>
-        <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn}/>
-        <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory}/>
+        <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} />
+        <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} />
       </div>
 
       {showPopup && <Popup onClose={() => {
