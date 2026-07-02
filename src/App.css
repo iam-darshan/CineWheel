@@ -47,8 +47,8 @@ body{
   background-color:rgb(26 25 44);
   width: 100%;
 
-  position: sticky;
-  top: 0;
+  position: absolute;
+  top: 30px;
   justify-content: center;
 }
 
