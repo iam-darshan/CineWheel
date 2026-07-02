@@ -20,9 +20,10 @@ import { AwardIcon } from 'lucide-react'
 function App() {
   //clear storage
   useEffect(() => {
-    if (window.location.pathname === "/reset") {
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("reset") === "true") {
         localStorage.clear();
-        alert("localStorage Cleared")
         window.location.href = "/";
     }
 }, []);
