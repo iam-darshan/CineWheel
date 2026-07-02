@@ -106,7 +106,7 @@ h4{
     }
   .TopIMDBcontainer{
     width: 100%;
-    height: 100%;
+    height: 110%;
     align-items: center;
     justify-content: center;
 
@@ -151,6 +151,10 @@ h4{
     display: block;
   }
   .hide{
+    display: none;
+  }
+
+  h4{
     display: none;
   }
 }
