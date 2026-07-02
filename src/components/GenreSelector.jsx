@@ -29,13 +29,13 @@ function GenreSelector({ movies, changeGenre }) {
         <div className="genreSelection">
             <div>
                 <ul className='genreUL'>
-                    <li key={"default"} onClick={() => {
+                    <li onClick={() => {
                             changeGenre("Default");
                         }}>
                         <div className='genrePlate'>Default</div>
                     </li>
-                    {genreList.map((genre,index) => (
-                        <li key={index} onClick={() => {
+                    {genreList.map((genre) => (
+                        <li onClick={() => {
                             changeGenre(genre);
                         }}>
                             <div className='genrePlate'>{genre}</div>

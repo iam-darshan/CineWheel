@@ -38,6 +38,8 @@ function App() {
     { id: 27205, title: "Inception", poster_path: "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg", release_year: 2010, genres: ["Action", "Adventure", "Drama"] }
   ];
 
+  console.log(movieList)
+
 
   const [movies, setmovies] = useState(movieList);
   const [watchedMoviesList, setwatchedMoviesList] = useState(watchedList);
@@ -76,11 +78,10 @@ function App() {
     { id: 37, name: "Western" }
   ];
 
-  const genreName = (movieIds) => {
-    return movieIds.map(id =>
-      genres.find(genres => genres.id === id)?.name);
+  const genreName = (movieIds)=>{
+  return movieIds.map(id=>
+    genres.find(genres => genres.id===id)?.name);
   }
-
 
 
   const addMovie = () => {
@@ -106,7 +107,7 @@ function App() {
     const result = await res.json();
     const movie = result;
     console.log(movie)
-    const newMovie = { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4), genres: genreName(movie.genres) };
+    const newMovie = { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4), genres: movie.genres.map(genre => genre.name) };
     const newList = [...movies, newMovie];
     setmovies(newList)
     let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(newList))
@@ -275,7 +276,7 @@ function App() {
                         return;
                       }
                       setSuggestions([]);
-                      const nextList = [...movies, { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4), genres: genreName(movie.genre_ids) }]
+                      const nextList = [...movies, { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4),  genres:movie.genres.map(genre=> genre.name) }]
                       setmovies(nextList);
 
                       inputRef.current.value = ""

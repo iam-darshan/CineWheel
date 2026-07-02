@@ -63,7 +63,6 @@ function SuggestedMovies({API_KEY,addMovieFromSuggest,alertFn}) {
                     <div className='Plus'>
                         <Plus onClick={()=>{
                             addMovieFromSuggest(movie.id);
-                            console.log(movie.id);
                         }
                         }/>
                     </div>
