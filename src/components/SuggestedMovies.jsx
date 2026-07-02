@@ -44,7 +44,7 @@ function SuggestedMovies({API_KEY,addMovieFromSuggest,alertFn}) {
         </div>
 
     <div className={`TopIMDBcontainer ${selectedList==="top" ? "show" : "hide"}`} >
-        <h4>Top IMDB</h4>
+        <h4 className='titleName'>Top IMDB</h4>
       <div className='GOATmovies' >
             
             <ul className='topratedUL'>
@@ -74,7 +74,7 @@ function SuggestedMovies({API_KEY,addMovieFromSuggest,alertFn}) {
         </div>
       </div>
       <div className={`TopIMDBcontainer ${selectedList==="trending" ? "show" : "hide"}`} >
-        <h4>Trending</h4>
+        <h4 className='titleName'>Trending</h4>
       <div className='GOATmovies'>
             
             <ul className='topratedUL'>
