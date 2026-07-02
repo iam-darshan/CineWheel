@@ -7,8 +7,8 @@ function WatchHistory({watchedMoviesList,removeFromHistory}) {
     <div className='watchHistoryContainer'>
       <h2 id='heading'>Watched Movies</h2>
       <ul className='hisoryUL'>
-          {watchedMoviesList.map((watchedMovie) => (
-            <li> 
+          {watchedMoviesList.map((watchedMovie,index) => (
+            <li key={index}> 
               <div className='watchedMovieCard'>
                 <div className="watchedMoviePoster">
                   <img src={`https://image.tmdb.org/t/p/w300/${watchedMovie.poster_path}`} alt={watchedMovie.title} id='watchedMoviePoster'/>

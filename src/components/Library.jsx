@@ -7,19 +7,13 @@ const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
 
 function Library({movies,moviesOfGenre,removeMovie,addToHistory,showPopupDetails}) {
 
-    const [libraryMovies, setlibraryMovies] = useState([]);
-
-    // useEffect(() => {
-    //   setlibraryMovies(moviesOfGenre)
-    // }, [moviesOfGenre])
-
   return (
 
       <div className="libraryContainer">
         <ul className='library'>
             {movies.map((movie) => (
               <li className='moviesInLibrary' key={movie.id} onClick={()=>{
-                showPopupDetails(movie.id);
+                showPopupDetails(movie.id); 
               }}>
                 <div className="libraryPoster">
                         {movie.poster_path ? (

@@ -8,6 +8,7 @@ import Navbar from './components/Navbar.jsx'
 import Library from './components/Library.jsx'
 import WatchHistory from './components/WatchHistory.jsx'
 import GenreSelector from './components/GenreSelector.jsx'
+import SuggestedMovies from './components/SuggestedMovies.jsx'
 import { AwardIcon } from 'lucide-react'
 
 
@@ -82,6 +83,21 @@ const genreName = (movieIds)=>{
 
     let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(nextList))
   }
+  const addMovieFromSuggest =async (id) => {
+    if(movies.some(movie => movie.id ==id)){
+      alert("Movie Already Exist in Library");
+      return;
+    }
+    const res= await  fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
+    const result = await res.json();
+      const movie = result;
+      console.log(movie)
+      const newMovie = { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4) , genres:genreName(movie.genres) };
+      const newList =[...movies,newMovie];
+      setmovies(newList)
+      let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(newList))
+  }
+
 
   const spinWheel = () => {
     if (displayedMovies.length != 0) {
@@ -226,6 +242,10 @@ const genreName = (movieIds)=>{
                 <ul className='suggestion-dropdown'>
                   {suggestions.map((movie) => (
                     <li className='suggestions' key={movie.id} onClick={() => {
+                      if(movies.some(m => m.id ==movie.id)){
+                      alert("Movie Already Exist in Library");
+                      return;
+                    }
                       setSuggestions([]);
                       const nextList = [...movies, { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4) , genres:genreName(movie.genre_ids) }]
                       setmovies(nextList);
@@ -257,6 +277,7 @@ const genreName = (movieIds)=>{
 
 
         </div>
+        <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest}/>
         <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory}/>
       </div>
 
