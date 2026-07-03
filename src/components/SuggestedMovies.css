@@ -1,17 +1,18 @@
 .suggestedMoviesContainer{
-    height: 60vh;
+    height: fit-content;
     width: 95%;
     background-color: rgba(43, 41, 52, 0.534);
     margin: 20px 0 10px 0;
     border-radius: 5px;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
 }
 
 .TopIMDBcontainer{
-    width: 50vw;
+    width: 100%;
+    height: fit-content;
 }
 
 .GOATmovies{
@@ -20,13 +21,14 @@
     height: 80%;
     margin: 20px;
     border-radius:10px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    /* overflow-y: scroll; */
+    overflow-x: scroll;
+    scrollbar-width:none;
 }
 .topratedUL{
     color: white;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 5px;
     margin: 0;
     padding: 5px;
@@ -43,24 +45,26 @@
     font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif   ;
 }
 
+
 .moviesInSuggestion{
-    list-style: none;
-    background-color: rgb(7 7 35);
-    border-radius: 5px;
-    padding: 3px;
-    height: auto;
     position: relative;
-    width: 100%;
+
     color: white;
     cursor: pointer;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content:flex-start ;
-    gap: 30px;
     transition: 0.1s;
 
+    width: 100px;
+    height: 180px;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    margin: 0 8px;
+    flex-shrink: 0;
+    padding-bottom: 5px;
+
+
+   border-radius: 5px;
+    background-color: rgb(30, 30, 36);
+    box-shadow: 0 0 3px gray;
 }
 .moviesInSuggestion:hover{
     background-color: rgb(28, 28, 53);
@@ -68,33 +72,70 @@
 
 .suggestionPoster{
     
-    width: 72px;
+    width: 100%;
     height: auto;
 }
 
 .suggestionPosterImage{
-    height: 90px;
-    width: auto;
-    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px 5px 0 0;
     object-fit: contain;
 
 }
 #movieTitle{
-    font-size: 18px;
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 3px;
+    text-align: left;
+}
+#movieYear{
+  font-size: 9px;
+  padding-left: 5px;
+  color: rgb(174, 173, 169);
+  position: absolute;
+  left: 0;
+}
+#movieRating{
+  font-size: 9px;
+  padding-left: 3px;
+  color: rgb(198, 231, 90);
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3px;
+  right: 10px;
+  font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  margin: 0;
+}
+#movieRating::before{
+  content: "⭐";
+  color: #0066cc;
+}
+
+.yearAndrating{
+  position: relative;
 }
 
 .Plus{
     position: absolute;
-    right: 20px;
+    right: 0;
+}
+.plusIcon{
+    color: white;
+    filter: drop-shadow(0 0 8px #0e0f0f);
 }
 
 h4{
-    text-align: center;
+    text-align: left;
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
-    margin-top:15px;
-    margin-bottom: 5px;
+    margin: 25px 0 5px 25px;
 }
 .toggleContainer{
     display: none;
