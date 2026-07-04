@@ -15,7 +15,7 @@
     height: fit-content;
 }
 
-.GOATmovies{
+.movieULcontainer{
     background-color: rgb(7, 7, 35);
     min-width: 40%;
     height: 80%;
@@ -25,7 +25,7 @@
     overflow-x: scroll;
     scrollbar-width:none;
 }
-.topratedUL{
+.moviesUL{
     color: white;
     display: flex;
     flex-direction: row;
@@ -34,7 +34,7 @@
     padding: 5px;
 
 }
-.topratedUL li{
+.moviesUL li{
     list-style: none;
     
 }

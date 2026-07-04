@@ -45,9 +45,9 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn }) {
 
             <div className={`TopIMDBcontainer ${selectedList === "top" ? "show" : "hide"}`} >
                 <h4 className='titleName'>Top IMDB</h4>
-                <div className='GOATmovies' >
+                <div className='movieULcontainer' >
 
-                    <ul className='topratedUL'>
+                    <ul className='moviesUL'>
                         {topMovies.map((movie) => (
                             <li className='moviesInSuggestion' key={movie.id} >
                                 <div className='Plus'>
@@ -87,9 +87,9 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn }) {
             </div>
             <div className={`TopIMDBcontainer ${selectedList === "trending" ? "show" : "hide"}`} >
                 <h4 className='titleName'>Trending</h4>
-                <div className='GOATmovies'>
+                <div className='movieULcontainer'>
 
-                    <ul className='topratedUL'>
+                    <ul className='moviesUL'>
                         {trendingMovies.map((movie) => (
                             <li className='moviesInSuggestion' key={movie.id} >
                                 <div className='Plus'>

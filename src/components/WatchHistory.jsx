@@ -6,27 +6,46 @@ function WatchHistory({watchedMoviesList,removeFromHistory}) {
   return (
     <div className='watchHistoryContainer'>
       <h2 id='heading'>Watched Movies</h2>
-      <ul className='hisoryUL'>
-          {watchedMoviesList.map((watchedMovie,index) => (
-            <li key={index}> 
-              <div className='watchedMovieCard'>
-                <div className="watchedMoviePoster">
-                  <img src={`https://image.tmdb.org/t/p/w300/${watchedMovie.poster_path}`} alt={watchedMovie.title} id='watchedMoviePoster'/>
-                </div>
-                <div className='titleAndYear'>
-                <h3>{watchedMovie.title}</h3>
-                <h4>{watchedMovie.release_year}</h4>
-                </div>
-                <div className='trashIcon'>
-                  <Trash2 onClick={()=>{
-                    removeFromHistory(watchedMovie.id)
-                  }}/>
-                </div>
-              </div>
-            </li>
+                <div className='movieULcontainer' >
 
-          ))}
-      </ul>
+                    <ul className='moviesUL'>
+                        {watchedMoviesList.map((movie) => (
+                            <li className='moviesInSuggestion' key={movie.id} >
+                                <div className='Trash'>
+                                    <Trash2 className='trashIcon'
+                                        style={{
+                                            color: "white",
+                                            filter:
+                                                "drop-shadow(0 2px 2px rgba(0,0,0,1)) drop-shadow(0 0 4px rgba(0,0,0,0.9)) drop-shadow(0 0 8px #000000) drop-shadow(0 0 16px #000000)"
+                                        }}
+
+                                        onClick={() => {
+                                            removeFromHistory(movie.id);
+                                        }
+                                        } />
+                                </div>
+                                <div className="suggestionPoster">
+                                    {movie.poster_path ? (
+                                        <img className='suggestionPosterImage' src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
+                                    ) : (<div className="no-poster">No Image Available</div>)
+                                    }
+                                </div>
+                                <div className='titleAndYear'>
+                                    <h3 id='movieTitle'>{movie.title}</h3>
+                                    {console.log(movie)}
+                                    <div>
+                                        <div className='yearAndrating'>
+                                            <h5 id='movieYear'>{movie.release_year || "N/A"}</h5>
+                                            {/* <h5 id='movieRating'>{movie.vote_average.toFixed(2) || "N/A"}</h5> */}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </li>
+                        ))}
+                    </ul>
+    </div>
     </div>
   )
 }
