@@ -8,6 +8,7 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
 
     const [movieDetails, setmovieDetails] = useState(null);
     const [movieImagesDetails, setmovieImagesDetails] = useState();
+    const [movieProvidersDetails, setmovieProvidersDetails] = useState();
 
     useEffect(() => {
 
@@ -19,7 +20,7 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
             );
 
             const movieProvidesData = await movieProvidersRes.json();
-            const movieProvidersDetails = movieProvidesData.results.IN;
+            const movieProvidersDetails = movieProvidesData.results.IN.flatrate;
             const movieImagesRes = await fetch(
                 `https://api.themoviedb.org/3/movie/${selectedMovie}/images?api_key=${API_KEY}`
             );
@@ -29,7 +30,8 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
 
             // setmovieImagesDetails(movieImagesDetails)
 
-            console.log(movieImagesDetails);
+            console.log(movieProvidersDetails);
+            setmovieProvidersDetails(movieProvidersDetails)
             setmovieDetails(movieInfo)
             console.log(movieInfo)
         }
@@ -65,6 +67,7 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
                 </div>
 
                 <div className="body">
+
                     <div className="poster">
                         {movieDetails?.poster_path ? (
                             <img className='posterImage' src={`https://image.tmdb.org/t/p/w300${movieDetails.poster_path}`} alt={movieDetails.title} style={{ borderRadius: '20px' }} />
@@ -78,12 +81,33 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
                             <div id='IMDBrating'><h4 id='IMDBratingh4'>{(movieDetails.vote_average).toFixed(2)}</h4></div>
                         </div>
                         <div className="genre">
-                            <h6 >Genre:</h6>
-                            <h6>{movieDetails.genres.map(genre => genre.name).join(', ')}</h6>
+                            <h6>Genre</h6>
+                            <h5>{movieDetails.genres.map(genre => genre.name).join(', ')}</h5>
                         </div>
                         <div className='desc'>
-                            {movieDetails.overview}
+                            <h6>Overview</h6>
+                            <h5>
+                                {movieDetails.overview}
+                            </h5>
                         </div>
+                        {movieProvidersDetails &&
+                        <div className="watchProviders">
+                            <h3>Included with Subscription</h3>
+                            <div className="providersRow">
+                                {movieProvidersDetails.map((provider) => (
+                                    <div className="providerCard"
+                                     key={provider.provider_id}
+                                     >
+                                        
+                                        <img src={`https://image.tmdb.org/t/p/w92${provider.logo_path}`}
+                                            alt={provider.provider_name}
+                                            title={provider.provider_name} />
+                                          <span>{provider.provider_name}</span>  
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                                        }
                     </div>
                 </div>
 
