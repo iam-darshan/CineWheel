@@ -50,9 +50,9 @@
 .titleAndYear{
     display: flex;
     flex-direction: column;
-    height: 70px;
+    height: fit-content;
     position: absolute;
-    bottom: -40px;
+    bottom: 15px;
 }
 
 .libraryPosterImage{
@@ -97,8 +97,14 @@
     margin: 0;
     font-family: 'Poppins','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+.threeDotIcon{
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    transition: 0.1s;
+}
 
-.trashContainer{
+.threedotContainer{
     position: absolute;
     right: 20px;
     display: flex;
@@ -219,6 +225,40 @@
 .library{
   width: 90%;
 }
+
+.threeDotMenu{
+    width: 110px;
+    height: fit-content;
+    padding: 10px 5px;
+    background-color: rgb(51, 50, 50);
+    position: absolute;
+    top: 20px;
+    right: -10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.threeDotBtns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    height: 20px;
+    border-radius: 3px;
+    padding: 0 3px;
+    font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* background-color: bisque; */
+}
+.threeDotBtns h6{
+    padding: 0;
+    margin: 0;
+    font-size: 8px;
+}
+.threeDotBtns:hover{
+    background-color: rgb(63, 63, 63);
+}
+
 
 @media screen and (min-width: 1024px) {
 

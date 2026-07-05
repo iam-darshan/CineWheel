@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Spinner from './Spinner';
 import './Library.css'
-import { Trash2 } from 'lucide-react';
-import { CircleCheckBig } from 'lucide-react';
+import {Trash2,CircleCheckBig,EllipsisVertical } from 'lucide-react';
 
 
 const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
@@ -29,6 +28,8 @@ function Library({
   genreName,
   alertFn,
 }) {
+
+  const [menuOpen, setmenuOpen] = useState(null);
 
   return (
     <div className='libraryContainerMain'>
@@ -86,17 +87,25 @@ function Library({
 
             <ul className='moviesUL'>
               {movies.map((movie) => (
+                <div style={{position:"relative"}}>
                 <li className='moviesInSuggestion' key={movie.id} >
                   <div className='Trash'>
-                    <Trash2 className='trashIcon'
+                    <EllipsisVertical className='threeDotIcon'
                       style={{
                         color: "white",
                         filter:
                           "drop-shadow(0 2px 2px rgba(0,0,0,1)) drop-shadow(0 0 4px rgba(0,0,0,0.9)) drop-shadow(0 0 8px #000000) drop-shadow(0 0 16px #000000)"
                       }}
 
-                      onClick={() => {
-                        removeFromHistory(movie.id);
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if(menuOpen ===movie.id){
+                          setmenuOpen(null)
+                        }
+                        else{
+
+                          setmenuOpen(movie.id)
+                        }
                       }
                       } />
                   </div>
@@ -116,9 +125,35 @@ function Library({
                       </div>
                     </div>
                   </div>
+                  {menuOpen === movie.id && (
+                    <div className='threeDotMenu'>
+                    <div className="threeDotBtns" onClick={(e)=>{
+                    e.stopPropagation();
+                    addToHistory(movie.id)
+                  }}>
+                      <CircleCheckBig
+                      size={15}
+                       />
+                      <h6>Mark as Watched</h6>
+                      </div>
+                    <div className="threeDotBtns" onClick={(e) => {
+                        e.stopPropagation();
+                        removeMovie(movie.id)
+                      }
+                      }>
+                      <Trash2
+                      size={15} />
+                      <h6>Remove</h6>
+                    </div>
+
+                  </div>
+                  )}
+                  
+                  
 
 
                 </li>
+                  </div>
               ))}
             </ul>
           </div>
