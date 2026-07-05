@@ -226,7 +226,7 @@ function App() {
 
               <Spinner displayedMovies={displayedMovies} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} />
               <div className='mobileOnly'>
-              <GenreSelector movies={movies} changeGenre={changeGenre} genreList={genreList} />
+              <GenreSelector movies={movies} changeGenre={changeGenre} />
             </div>
             </div>
 

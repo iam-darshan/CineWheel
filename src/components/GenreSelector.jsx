@@ -3,7 +3,7 @@ import './GenreSelector.css'
 
 function GenreSelector({ movies, changeGenre }) {   
 
-    const genreList = [
+const genreList = [
     "Action",
     "Adventure",
     "Animation",
