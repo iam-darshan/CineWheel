@@ -130,6 +130,8 @@
 .SpinnerLibrarycontainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   margin: 0 0;
   box-sizing: border-box;
@@ -289,7 +291,7 @@
         width: 98vw;
     }
     .libraryContainerMain{
-        width: 95vw;
+        width: 95%;
         margin: 0;
     }
   
