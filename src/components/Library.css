@@ -1,20 +1,22 @@
-.libraryContainer{
+.libraryContainer {
     width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 60px;
 }
-.libraryContainerMain{
+
+.libraryContainerMain {
     height: fit-content;
     position: relative;
     width: 90%;
     margin-left: 40px;
 }
-.inputLibraryContainer{
+
+.inputLibraryContainer {
     height: 100%;
 }
 
-.library{
+.library {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,7 +25,7 @@
     padding: 0;
 }
 
-.moviesInLibrary{
+.moviesInLibrary {
     list-style: none;
     /* background-color: rgb(7 7 35); */
     background-color: black;
@@ -38,17 +40,18 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content:flex-start ;
+    justify-content: flex-start;
     gap: 30px;
     transition: 0.1s;
 
 }
-.moviesInLibrary:hover{
+
+.moviesInLibrary:hover {
     background-color: rgb(28, 28, 53);
 }
 
 
-.titleAndYear{
+.titleAndYear {
     display: flex;
     flex-direction: column;
     height: fit-content;
@@ -56,7 +59,7 @@
     bottom: 15px;
 }
 
-.libraryPosterImage{
+.libraryPosterImage {
     object-fit: contain;
     width: 100%;
     height: 100%;
@@ -64,12 +67,12 @@
 }
 
 
-.libraryPoster{
-    margin-left:5px ;
+.libraryPoster {
+    margin-left: 5px;
     height: 70px;
     aspect-ratio: 2/3;
-    
-    overflow: hidden;   
+
+    overflow: hidden;
     border-radius: 15px;
 
     display: flex;
@@ -77,159 +80,168 @@
     justify-content: center;
 
     border-radius: 3px;
-    margin-left:3px;
+    margin-left: 3px;
 }
 
-#LibrarymovieTitle{
+#LibrarymovieTitle {
     margin: 0;
     margin-left: 5px;
-    font-family: 'Poppins','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 13px;
 
 }
 
 
 
-#movieTitle{
+#movieTitle {
     margin: 0;
-    font-family: 'Poppins','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-#movieYear{
+
+#movieYear {
     margin: 0;
-    font-family: 'Poppins','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.threeDotIcon{
+
+.threeDotIcon {
     position: absolute;
     right: 3px;
     top: 3px;
     transition: 0.1s;
 }
 
-.threedotContainer{
+.threedotContainer {
     position: absolute;
     right: 20px;
     display: flex;
     gap: 8px;
 }
-.addtoLibraryIcon{
+
+.addtoLibraryIcon {
     color: rgb(194, 187, 176);
     transition: 0.2s;
 }
-.addtoLibraryIcon:hover{
+
+.addtoLibraryIcon:hover {
     color: rgb(9, 222, 9);
 }
-.trashIcon{
+
+.trashIcon {
     color: rgb(194, 187, 176);
     transition: 0.2s;
 }
-.trashIcon:hover{
+
+.trashIcon:hover {
     color: red;
 }
 
 
 .SpinnerLibrarycontainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin: 0 0;
-  box-sizing: border-box;
-  height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 0;
+    box-sizing: border-box;
+    height: fit-content;
 }
 
 
-.inputLibraryContainer{
-  background-color: rgba(43, 41, 52, 0.534);
-  height: 33vh;
-  padding: 30px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-  border-radius: 10px;
-  overflow-y: scroll;
-  position:relative;
-  
-}
-.inputAndSubmit{
-  padding-left: 20px;
-  height: 30px;
-  color: white;
-  width: 100%;
-
-  position: relative;
-
-  justify-content: center;
-}
-
-.inputAndSubmit input{
-  border: 2px solid rgb(255, 255, 255);
-  background-color: rgba(43, 41, 52, 0.534);
-  border-radius: 9px;
-  width: 400px;
-  height: 30px;
-  color: white;
-}
-.inputAndSubmit button{
-  height: 35px;
-  width: 80px;
-  background-color: rgb(147, 147, 214);
-  border-radius: 10px;
-  margin-left: 5px;
-}
-
-.suggestion-dropdown{
-  position: absolute;
-  top: 0;
-  color: white;
-  background-color: rgb(22, 35, 31);
-  height: 250px;
-  width:400px;
-  padding: 20px;
-  margin-top: 30px;
-  border-radius: 10px;
-
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  z-index: 1000;
-
-  overflow-y: auto;
-}
-
-
-.suggestions{
-  text-align: center;
-  list-style: none;
-  background-color: rgb(53, 48, 48);
-  margin: 5px 0;
-  border-radius: 5px;
-  height: fit-content;
-  width: 100%;
-  font-family:'Poppins', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  z-index: 100;
-  position: relative;
+.inputLibraryContainer {
+    background-color: rgba(43, 41, 52, 0.534);
+    height: 33vh;
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    border-radius: 10px;
+    overflow-y: scroll;
+    position: relative;
 
 }
 
-.suggestionDiv{
-  position: absolute;
-  top: 80px;
-  left: 50px;
-  margin-top: 15px;
-  z-index: 100;
+.inputAndSubmit {
+    padding-left: 20px;
+    height: 30px;
+    color: white;
+    width: 100%;
+
+    position: relative;
+
+    justify-content: center;
 }
 
-.library{
-  width: 90%;
+.inputAndSubmit input {
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgba(43, 41, 52, 0.534);
+    border-radius: 9px;
+    width: 400px;
+    height: 30px;
+    color: white;
 }
 
-.threeDotMenu{
+.inputAndSubmit button {
+    height: 35px;
+    width: 80px;
+    background-color: rgb(147, 147, 214);
+    border-radius: 10px;
+    margin-left: 5px;
+}
+
+.suggestion-dropdown {
+    position: absolute;
+    top: 0;
+    left: -50px;
+    color: white;
+    background-color: rgb(22, 35, 31);
+    height: 250px;
+    width: 350px;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+
+    overflow-y: auto;
+}
+
+
+.suggestions {
+    text-align: center;
+    list-style: none;
+    background-color: rgb(53, 48, 48);
+    margin: 5px 0;
+    border-radius: 5px;
+    height: fit-content;
+    width: 100%;
+    font-family: 'Poppins', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 100;
+    position: relative;
+
+}
+
+.suggestionDiv {
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    margin-top: 15px;
+    z-index: 100;
+}
+
+.library {
+    width: 90%;
+}
+
+.threeDotMenu {
     width: 110px;
     height: fit-content;
     padding: 10px 5px;
@@ -242,7 +254,8 @@
     flex-direction: column;
     gap: 5px;
 }
-.threeDotBtns{
+
+.threeDotBtns {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -250,49 +263,52 @@
     height: 20px;
     border-radius: 3px;
     padding: 0 3px;
-    font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     /* background-color: bisque; */
 }
-.threeDotBtns h6{
+
+.threeDotBtns h6 {
     padding: 0;
     margin: 0;
     font-size: 8px;
 }
-.threeDotBtns:hover{
+
+.threeDotBtns:hover {
     background-color: rgb(63, 63, 63);
 }
 
 
 @media screen and (min-width: 1024px) {
 
-  .SpinnerLibrarycontainer {
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start ;
-    height: fit-content;
-  }
-  
-  .inputLibraryContainer{
-    width: 100%;
-    height: 90%;
-    position: relative;
-    overflow-y: scroll;
-  }
+    .SpinnerLibrarycontainer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        height: fit-content;
+    }
+
+    .inputLibraryContainer {
+        width: 100%;
+        height: 90%;
+        position: relative;
+        overflow-y: scroll;
+    }
 
 
 }
 
 @media screen and (max-width: 767px) {
-    .inputAndSubmit input{
+    .inputAndSubmit input {
         width: 250px;
     }
 
-    .SpinnerLibrarycontainer{
+    .SpinnerLibrarycontainer {
         width: 98vw;
     }
-    .libraryContainerMain{
+
+    .libraryContainerMain {
         width: 95%;
         margin: 0;
     }
-  
+
 }
