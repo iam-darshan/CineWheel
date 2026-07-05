@@ -126,6 +126,12 @@ function Spinner({displayedMovies, rotation, spinWheel, isSpinning }) {
 
   return (
     <div className='spinnerBackground'>
+      <div className="spinnerDetails">
+        <h3 className='detailsHeading'>Spin.Discover.Watch</h3>
+        <h6 className=''>Add your movies to the library<br></br>
+          and let the CineWheel decide.
+        </h6>
+      </div>
       <div className='spinnerContainer'>
         <div className="spinBtnCenter" onClick={spinWheel}>
           SPIN
@@ -139,7 +145,7 @@ function Spinner({displayedMovies, rotation, spinWheel, isSpinning }) {
         }></canvas>
       </div>
 
-      <button type="button" className='spinBtn' onClick={spinWheel} disabled={isSpinning}>{isSpinning ? " Spinning..." : "Spin"}</button>
+      {/* <button type="button" className='spinBtn' onClick={spinWheel} disabled={isSpinning}>{isSpinning ? " Spinning..." : "Spin"}</button> */}
     </div>
   )
 }

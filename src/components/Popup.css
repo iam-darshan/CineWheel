@@ -136,11 +136,29 @@
 
 #releaseYear{
     background-color: blue;
-    /* filter: drop-shadow(0 0 2px #00ffc0) drop-shadow(0 0 10px #00ffc0); */
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#releaseYearh4{
+    font-size: 15px;
+    font-family:'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
 }
 #IMDBrating{
     background-color: gold;
+}
+#IMDBratingh4{
+    font-size: 15px;
+    font-family:'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+}
+
+#addToHistoryh4,#spinAgainh4{
+    font-size: 15px;
+    font-family:'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    text-align: center;
 }
 
 
@@ -170,10 +188,6 @@
     margin: 10px,5px;
     color: white;
 
-}
-.spinAgain h4{
-    font-size: 18px;
-    line-height: 20px;
 }
 
 .addToHistory{

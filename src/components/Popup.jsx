@@ -49,8 +49,8 @@ function Popup({onClose,selectedMovie,addToHistory,spinWheel,movies}) {
                     <div className="details">
                     <h2>{movieDetails.title}</h2>
                     <div className="yearAndRating">
-                                <div id='releaseYear'><h4>{movieDetails.release_date.slice(0,4)}</h4></div>
-                                <div id='IMDBrating'><h4>{(movieDetails.vote_average).toFixed(2)}</h4></div>
+                                <div id='releaseYear'><h4 id='releaseYearh4'>{movieDetails.release_date.slice(0,4)}</h4></div>
+                                <div id='IMDBrating'><h4 id='IMDBratingh4'>{(movieDetails.vote_average).toFixed(2)}</h4></div>
                     </div>
                     <div className="genre">
                         <h6 >Genre:</h6>
@@ -68,13 +68,13 @@ function Popup({onClose,selectedMovie,addToHistory,spinWheel,movies}) {
                         onClose();
                     }}>
                         <RotateCcw  size={40}/>
-                        <h4>Spin Again</h4>
+                        <h4 id='spinAgainh4'>Spin Again</h4>
                     </div>
                     <div className="addToHistory" onClick={()=>{
                         addToHistory(selectedMovie);
                         onClose();
                     }}>
-                        <h4>Watched <br />Add to History</h4>
+                        <h4 id='addToHistoryh4'>Watched <br />Add to History</h4>
                     </div>
                 </div>
             </div>

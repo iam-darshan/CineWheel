@@ -49,7 +49,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn }) {
 
                     <ul className='moviesUL'>
                         {topMovies.map((movie) => (
-                            <li className='moviesInSuggestion' key={movie.id} >
+                            <li className='moviesLI' key={movie.id} >
                                 <div className='Plus'>
                                     <Plus
                                         style={{
@@ -111,7 +111,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn }) {
                                     ) : (<div className="no-poster">No Image Available</div>)
                                     }
                                 </div>
-                                <div className='titleAndYear'>
+                                <div className='titleAndYear yearAndTitle' >
                                     <h3 id='movieTitle'>{movie.title}</h3>
                                     <div>
                                         <div className='yearAndrating'>

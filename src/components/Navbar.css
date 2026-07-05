@@ -1,25 +1,48 @@
-.navbar{
-    width: 100%;
+.navbar {
+    width: 90%;
     height: 9vh;
-    color:white;
+    color: white;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 
 }
 
-.logoAndTitle{
+.logoAndTitle {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 5px;
     margin-left: 20px;
-    font-family:'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 
-.logo{
-    height:10vh;
+.logo {
+    height: 10vh;
     width: 10vh;
     margin-left: 10px;
 
+}
+
+.userDetails {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-right: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+    .logo {
+        height: 5vh;
+        width: 5vh;
+    }
+
+    .logoAndTitle {
+        font-size: 0.5em;
+        margin: 0;
+    }
 }

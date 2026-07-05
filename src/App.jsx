@@ -212,104 +212,44 @@ function App() {
       <div className='container'>
         <Alert alertMsg={alertMsg} />
         <Navbar />
+        <div className="genrePlusLibrary">
         <GenreSelector movies={movies} changeGenre={changeGenre} />
 
         <div className='SpinnerLibrarycontainer'>
           <div className='Spinner'>
+            
             <Spinner displayedMovies={displayedMovies} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} />
           </div>
+          <Library
+    // Spinner
+    displayedMovies={displayedMovies}
+    rotation={rotation}
+    spinWheel={spinWheel}
+    isSpinning={isSpinning}
+
+    // Search
+    inputRef={inputRef}
+    btnRef={btnRef}
+    suggestions={suggestions}
+    setSuggestions={setSuggestions}
+
+    // Movies
+    movies={movies}
+    setmovies={setmovies}
+    addMovie={addMovie}
+    removeMovie={removeMovie}
+    addToHistory={addToHistory}
+    showPopupDetails={showPopupDetails}
+
+    // Helpers
+    API_KEY={API_KEY}
+    genreName={genreName}
+    alertFn={alertFn}
+/>
 
 
 
-
-          <div className='inputLibraryContainer'>
-            <div className='inputAndSubmit'>
-              <input type='text' ref={inputRef} placeholder='Search Movies'
-                onChange={async (e) => {
-                  if (!e.target.value) return setSuggestions([]);
-
-                  const query = e.target.value;
-
-                  const res1 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=1`);
-                  const page1 = await res1.json();
-                  const res2 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=2`);
-                  const page2 = await res2.json();
-                  const res3 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=3`);
-                  const page3 = await res3.json();
-                  const res4 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=4`);
-                  const page4 = await res4.json();
-
-                  const data = [
-                    ...(page1.results || []),
-                    ...(page2.results || []),
-                    ...(page3.results || []),
-                    ...(page4.results || [])
-                  ]
-                  const filteredMovie = data.filter(
-                    movie =>
-                      movie.title.toLowerCase().startsWith(query.toLowerCase())
-                  )
-                  const sortedMovie = filteredMovie.sort((a, b) => {
-                    return b.popularity - a.popularity
-                  })
-                  const top5search = sortedMovie.slice(0, 5);
-                  setSuggestions(top5search)
-
-
-
-                }}
-              ></input>
-
-
-              <button ref={btnRef} onClick={addMovie} >Submit</button>
-
-
-
-            </div>
-
-            <div className='suggestionDiv'>
-              {suggestions.length > 0 && (
-
-                <ul className='suggestion-dropdown'>
-                  {suggestions.map((movie) => (
-                    <li className='suggestions' key={movie.id} onClick={() => {
-                      
-                      if (movies.some(m => m.id == movie.id)) {
-                        alertFn("Movie Already Exist in Library");
-                        return;
-                      }
-                      setSuggestions([]);
-                      console.log(movie)
-                      const nextList = [...movies, { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4),  genres: genreName(movie.genre_ids) }]
-                      setmovies(nextList);
-
-                      inputRef.current.value = ""
-                      let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(nextList))
-
-
-                    }}>
-
-                      <div className="poster">
-                        {movie.poster_path ? (
-                          <img className='posterImage' src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} style={{ borderRadius: '20px' }} />
-                        ) : (<div className="no-poster">No Image Available</div>)
-                        }
-                      </div>
-                      <div>
-                        {console.log(movie)}
-                        {movie.title}
-                      </div></li>
-                  ))}
-                </ul>
-              )}
-            </div>
-
-            <Library movies={displayedMovies} removeMovie={removeMovie} addToHistory={addToHistory} showPopupDetails={showPopupDetails} />
-
-          </div>
-
-
-
+        </div>
         </div>
         <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} />
         <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} />
