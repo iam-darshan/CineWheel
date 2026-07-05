@@ -77,10 +77,20 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
                         <div className="yearAndRating">
                             <div id='releaseYear'><h4 id='releaseYearh4'>{movieDetails.release_date.slice(0, 4)}</h4></div>
                             <div id='IMDBrating'><h4 id='IMDBratingh4'>{(movieDetails.vote_average).toFixed(2)}</h4></div>
+                            <div className='runTime'><span>{movieDetails.runtime}</span><span>min</span></div>
                         </div>
                         <div className="genre">
+                            
                             <h6>Genre</h6>
-                            <h5>{movieDetails.genres.map(genre => genre.name).join(', ')}</h5>
+                            <div className="genreRow">
+
+                           {movieDetails.genres.map((genre)=>(
+                               <div className='genreDiv'>
+                                <h5>{genre.name}</h5>
+                                </div>
+                           ))}
+                           </div>
+                            
                         </div>
                         <div className='desc'>
                             <h6>Overview</h6>

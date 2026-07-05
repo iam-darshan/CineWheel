@@ -186,7 +186,6 @@
 .yearAndRating div{
     width: 60px;
     height: 30px;
-    background-color: rgb(77, 62, 42);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -194,6 +193,9 @@
     color: white;
     filter: drop-shadow(0 0 .5px #00ffc0) drop-shadow(0 0 1px #00ffc0);
     overflow: hidden;
+    border: 1px solid black;
+    padding: 0 3px;
+    font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
 .yearAndRating h4{
@@ -212,12 +214,36 @@
     margin: 0;
 }
 #IMDBrating{
-    background-color: gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#IMDBrating::before{
+    content: "⭐ ";
+    color: #0066cc;
 }
 #IMDBratingh4{
-    font-size: 15px;
+    font-size: 13px;
     font-family:'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
+}
+.genreDiv{
+     width: fit-content;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: white;
+    /* filter: drop-shadow(0 0 .5px #00ffc0) drop-shadow(0 0 1px #00ffc0); */
+    overflow: hidden;
+    border: 1px solid rgb(243, 239, 239);
+    padding: 0 3px;
+    font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 0 5px;
+
 }
 
 
@@ -339,7 +365,12 @@
     padding: 5px 15px;
     margin: 10px,5px;
     color: white;
+    transition: 0.4s;
 
+}
+.spinAgain:hover{
+    background-color: rgb(31, 30, 30);
+    transform: translateY(-5px)
 }
 
 .addToHistory{
@@ -357,12 +388,11 @@
     padding: 5px 0;
     text-align: center;
 
-    transition: 0.5s;
+    transition: 0.s;
 }
 .addToHistory:hover{
     background-color: rgb(21, 21, 247);
-    height: 75%;
-    width: 45%;
+    transform: translateY(-5px)
 }
 
 .desc{
@@ -389,6 +419,11 @@
     margin: 0;
     padding:0;
     
+}
+.genreRow{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
 }
 .desc h6{
     margin: 0;
