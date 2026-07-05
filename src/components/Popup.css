@@ -300,6 +300,9 @@
     flex-direction: row;
     width: 100%;
     gap: 15px;
+    overflow-x: scroll;
+    scrollbar-width: none;
+
 }
 .castCard{
     display: flex;

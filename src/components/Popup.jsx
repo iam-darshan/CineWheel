@@ -79,6 +79,13 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
                             <div id='IMDBrating'><h4 id='IMDBratingh4'>{(movieDetails.vote_average).toFixed(2)}</h4></div>
                             <div className='runTime'><span>{movieDetails.runtime}</span><span>min</span></div>
                         </div>
+                        <div>
+                            <span>Directed by </span>
+                            <span>{movieCreditDetails?.crew?.find(
+                                person => person.job ==="Director"
+                            )?.name}</span>
+                        
+                        </div>
                         <div className="genre">
                             
                             <h6>Genre</h6>
