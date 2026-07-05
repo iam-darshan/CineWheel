@@ -49,7 +49,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn }) {
 
                     <ul className='moviesUL'>
                         {topMovies.map((movie) => (
-                            <li className='moviesLI' key={movie.id} >
+                            <li className='moviesInSuggestion' key={movie.id} >
                                 <div className='Plus'>
                                     <Plus
                                         style={{
