@@ -4,9 +4,8 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    width: 10%;
+    width: 100%;
     padding-left: 80px;
-    
     overflow-y: scroll;
     scrollbar-width: none;
     
@@ -27,19 +26,29 @@
 .genrePlate{
     background-color: rgb(36, 39, 44);
     padding: 5px 5px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Jost','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border-radius: 5px;
-    width:100px;
+    width:110px;
     transition: 0.2s;
 }
 .genrePlate:hover{
-    background-color: rgb(14, 28, 51);
+    background-color: rgb(19, 20, 20);
     cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
   .genreSelection{
-    display: none;
+    display: block;
+    width: 100%;
+    overflow-x: scroll;
+    padding: 0;
+  }
+  .genreUL{
+    flex-direction: row;
+  }
+  .genrePlate{
+    text-align: center;
+    
   }
 }
 

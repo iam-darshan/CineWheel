@@ -21,11 +21,42 @@ body{
   justify-content: space-around;
 }
 
+.mobileOnly{
+  display: none;
+}
+.laptopOnly{
+  display: block;
+}
 
 
 @media screen and (max-width: 767px) {
   .yearAndTitle{
     position: relative;
 }
+.genrePlusLibrary{
+  flex-direction: column;
+  color: white;
+  position: relative;
+}
+.genreMobile{
+  display: block;
+  position: absolute;
+  color: white;
+  bottom: 30px;
+  left: 20px;
+  z-index: 100;
+}
+.SpinnerLibrarycontainer{
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.mobileOnly{
+  display: block;
+}
+.laptopOnly{
+  display: none;
+}
+
 
 }

@@ -23,10 +23,10 @@ function App() {
     const params = new URLSearchParams(window.location.search);
 
     if (params.get("reset") === "true") {
-        localStorage.clear();
-        window.location.href = "/";
+      localStorage.clear();
+      window.location.href = "/";
     }
-}, []);
+  }, []);
 
   const lastList = localStorage.getItem("savedMovies");
   const lastWatchedList = localStorage.getItem("watchedMovies");
@@ -78,10 +78,10 @@ function App() {
     { id: 37, name: "Western" }
   ];
 
-  const genreName = (movieIds)=>{
+  const genreName = (movieIds) => {
     console.log(movieIds)
-  return movieIds.map(id=>
-    genres.find(genres => genres.id===id)?.name);
+    return movieIds.map(id =>
+      genres.find(genres => genres.id === id)?.name);
   }
 
 
@@ -177,7 +177,7 @@ function App() {
     alertFn("Movie Removed from Hisory");
   }
 
-  
+
   const changeGenre = (genre) => {
     setSelectedGenre(genre)
     console.log("Clicked:", genre);
@@ -205,6 +205,7 @@ function App() {
 
 
 
+
   const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
 
   return (
@@ -213,44 +214,52 @@ function App() {
         <Alert alertMsg={alertMsg} />
         <Navbar />
         <div className="genrePlusLibrary">
-        <GenreSelector movies={movies} changeGenre={changeGenre} />
 
-        <div className='SpinnerLibrarycontainer'>
-          <div className='Spinner'>
+           <div className='laptopOnly'>
+              <GenreSelector movies={movies} changeGenre={changeGenre} />
+            </div>
+    
+
+          <div className='SpinnerLibrarycontainer'>
+
+            <div className='Spinner'>
+
+              <Spinner displayedMovies={displayedMovies} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} />
+              <div className='mobileOnly'>
+              <GenreSelector movies={movies} changeGenre={changeGenre} genreList={genreList} />
+            </div>
+            </div>
+
+            <Library
+
+              displayedMovies={displayedMovies}
+              rotation={rotation}
+              spinWheel={spinWheel}
+              isSpinning={isSpinning}
+              setshowPopup={setshowPopup}
+              setselectedMovie={setselectedMovie}
+
+
+              inputRef={inputRef}
+              btnRef={btnRef}
+              suggestions={suggestions}
+              setSuggestions={setSuggestions}
+
+              movies={movies}
+              setmovies={setmovies}
+              addMovie={addMovie}
+              removeMovie={removeMovie}
+              addToHistory={addToHistory}
+              showPopupDetails={showPopupDetails}
+
+
+              API_KEY={API_KEY}
+              genreName={genreName}
+              alertFn={alertFn}
+            />
+
             
-            <Spinner displayedMovies={displayedMovies} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} />
           </div>
-          <Library
-
-    displayedMovies={displayedMovies}
-    rotation={rotation}
-    spinWheel={spinWheel}
-    isSpinning={isSpinning}
-    setshowPopup={setshowPopup}
-    setselectedMovie={setselectedMovie}
-
-
-    inputRef={inputRef}
-    btnRef={btnRef}
-    suggestions={suggestions}
-    setSuggestions={setSuggestions}
-
-    movies={movies}
-    setmovies={setmovies}
-    addMovie={addMovie}
-    removeMovie={removeMovie}
-    addToHistory={addToHistory}
-    showPopupDetails={showPopupDetails}
-
-
-    API_KEY={API_KEY}
-    genreName={genreName}
-    alertFn={alertFn}
-/>
-
-
-
-        </div>
         </div>
         <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} />
         <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} />
