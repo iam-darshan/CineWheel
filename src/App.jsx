@@ -90,7 +90,7 @@ function App() {
 
     if (inputValue.trim() == "") return;
 
-    const newMovie = { id: Date.now(), title: inputValue.trim() };
+    const newMovie = { id: "userMovie", title: inputValue.trim() };
     const nextList = [...movies, newMovie];
 
     setmovies(nextList)

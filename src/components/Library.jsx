@@ -122,7 +122,7 @@ function Library({
                   </div>
                   <div className='titleAndYear'>
                     <h3 id='movieTitle'>{movie.title}</h3>
-                    {console.log(movie)}
+                    {/* {console.log(movie)} */}
                     <div>
                       <div className='yearAndrating'>
                         <h5 id='movieYear'>{movie.release_year || "N/A"}</h5>

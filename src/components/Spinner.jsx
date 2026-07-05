@@ -121,7 +121,7 @@ function Spinner({displayedMovies, rotation, spinWheel, isSpinning }) {
   }, [displayedMovies,rotation])
 
   useEffect(() => {
-  console.log("Spinner movies:", displayedMovies);
+  // console.log("Spinner movies:", displayedMovies);
 }, [displayedMovies]);
 
   return (

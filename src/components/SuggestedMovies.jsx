@@ -20,7 +20,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn }) {
             const res2 = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
             const result2 = await res2.json();
             const data2 = result2.results;
-            console.log(data2)
+            // console.log(data2)
             settrendingMovies(data2);
 
 

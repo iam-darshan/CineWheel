@@ -12,29 +12,38 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
 
     useEffect(() => {
 
-        const fetchDetails = async () => {
-            const movieRes = await fetch(`https://api.themoviedb.org/3/movie/${selectedMovie}?api_key=${API_KEY}`)
-            const movieInfo = await movieRes.json();
-            const movieProvidersRes = await fetch(
+        console.log(selectedMovie)
+
+        if(selectedMovie !=="userMovie"){
+            
+        }
+        else{
+
+            
+            const fetchDetails = async () => {
+                const movieRes = await fetch(`https://api.themoviedb.org/3/movie/${selectedMovie}?api_key=${API_KEY}`)
+                const movieInfo = await movieRes.json();
+                const movieProvidersRes = await fetch(
                 `https://api.themoviedb.org/3/movie/${selectedMovie}/watch/providers?api_key=${API_KEY}`
             );
 
             const movieProvidesData = await movieProvidersRes.json();
-            const movieProvidersDetails = movieProvidesData.results.IN.flatrate;
+            const movieProvidersDetails = movieProvidesData.results?.IN?.flatrate  || [];
             const movieCreditsRes = await fetch(
                 `https://api.themoviedb.org/3/movie/${selectedMovie}/credits?api_key=${API_KEY}`
             );
 
             const movieCreditsData = await movieCreditsRes.json();
-
-            console.log(movieCreditsData);
+            
+            // console.log(movieCreditsData);
             setmovieDetails(movieInfo)
             setmovieProvidersDetails(movieProvidersDetails)
             setmovieCreditDetails(movieCreditsData)
-            console.log(movieInfo)
+            // console.log(movieInfo)
+            fetchDetails();
         }
+    }
 
-        fetchDetails();
     }, [selectedMovie])
 
     if (!movieDetails) {
@@ -75,8 +84,8 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
                     <div className="details">
                         <h2>{movieDetails.title}</h2>
                         <div className="yearAndRating">
-                            <div id='releaseYear'><h4 id='releaseYearh4'>{movieDetails.release_date.slice(0, 4)}</h4></div>
-                            <div id='IMDBrating'><h4 id='IMDBratingh4'>{(movieDetails.vote_average).toFixed(2)}</h4></div>
+                            <div id='releaseYear'><h4 id='releaseYearh4'>{movieDetails.release_date? movieDetails.release_date.slice(0, 4) : "N/A"}</h4></div>
+                            <div id='IMDBrating'><h4 id='IMDBratingh4'>{movieDetails.vote_average?(movieDetails.vote_average).toFixed(2) : "N/A"}</h4></div>
                             <div className='runTime'><span>{movieDetails.runtime}</span><span>min</span></div>
                         </div>
                         <div>
