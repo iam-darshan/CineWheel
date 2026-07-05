@@ -7,7 +7,7 @@ const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
 function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
 
     const [movieDetails, setmovieDetails] = useState(null);
-    const [movieImagesDetails, setmovieImagesDetails] = useState();
+    const [movieCreditDetails, setmovieCreditDetails] = useState();
     const [movieProvidersDetails, setmovieProvidersDetails] = useState();
 
     useEffect(() => {
@@ -21,18 +21,16 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
 
             const movieProvidesData = await movieProvidersRes.json();
             const movieProvidersDetails = movieProvidesData.results.IN.flatrate;
-            const movieImagesRes = await fetch(
-                `https://api.themoviedb.org/3/movie/${selectedMovie}/images?api_key=${API_KEY}`
+            const movieCreditsRes = await fetch(
+                `https://api.themoviedb.org/3/movie/${selectedMovie}/credits?api_key=${API_KEY}`
             );
 
-            const movieImagesData = await movieImagesRes.json();
-            const movieImagesDetails = movieImagesData.backdrops;
+            const movieCreditsData = await movieCreditsRes.json();
 
-            // setmovieImagesDetails(movieImagesDetails)
-
-            console.log(movieProvidersDetails);
-            setmovieProvidersDetails(movieProvidersDetails)
+            console.log(movieCreditsData);
             setmovieDetails(movieInfo)
+            setmovieProvidersDetails(movieProvidersDetails)
+            setmovieCreditDetails(movieCreditsData)
             console.log(movieInfo)
         }
 
@@ -107,7 +105,28 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
                                 ))}
                             </div>
                         </div>
-                                        }
+                        }
+                        <div className="cast">
+                            <h3>Cast</h3>
+                            <div className="castRow">
+                                {
+                                    movieCreditDetails.cast.slice(0,4).map((actor)=>(
+                                        <div className="castCard" key={actor.id}>
+                                            <div className='castImg'>
+
+                                            <img  src={`https://image.tmdb.org/t/p/w92${actor.profile_path}`}
+                                            // alt={provider.provider_name}
+                                            title={actor.name} 
+                                            />
+                                            </div>
+                                        <h6 className='actorName'>{actor.name}</h6>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
 

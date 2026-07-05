@@ -11,6 +11,8 @@ function Library({
   rotation,
   spinWheel,
   isSpinning,
+  setselectedMovie,
+  setshowPopup,
 
   inputRef,
   btnRef,
@@ -88,7 +90,10 @@ function Library({
             <ul className='moviesUL'>
               {movies.map((movie) => (
                 <div style={{position:"relative"}}>
-                <li className='moviesInSuggestion' key={movie.id} >
+                <li className='moviesInSuggestion' key={movie.id}  onClick={()=>{
+                  setshowPopup(true);
+                  setselectedMovie(movie.id)
+                }}>
                   <div className='Trash'>
                     <EllipsisVertical className='threeDotIcon'
                       style={{

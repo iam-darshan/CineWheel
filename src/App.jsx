@@ -221,19 +221,20 @@ function App() {
             <Spinner displayedMovies={displayedMovies} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} />
           </div>
           <Library
-    // Spinner
+
     displayedMovies={displayedMovies}
     rotation={rotation}
     spinWheel={spinWheel}
     isSpinning={isSpinning}
+    setshowPopup={setshowPopup}
+    setselectedMovie={setselectedMovie}
 
-    // Search
+
     inputRef={inputRef}
     btnRef={btnRef}
     suggestions={suggestions}
     setSuggestions={setSuggestions}
 
-    // Movies
     movies={movies}
     setmovies={setmovies}
     addMovie={addMovie}
@@ -241,7 +242,7 @@ function App() {
     addToHistory={addToHistory}
     showPopupDetails={showPopupDetails}
 
-    // Helpers
+
     API_KEY={API_KEY}
     genreName={genreName}
     alertFn={alertFn}
