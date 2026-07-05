@@ -12,39 +12,39 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
 
     useEffect(() => {
 
-        console.log(selectedMovie)
+    if (selectedMovie === "userMovie") return;
 
-        if(selectedMovie !=="userMovie"){
-            
-        }
-        else{
+    const fetchDetails = async () => {
 
-            
-            const fetchDetails = async () => {
-                const movieRes = await fetch(`https://api.themoviedb.org/3/movie/${selectedMovie}?api_key=${API_KEY}`)
-                const movieInfo = await movieRes.json();
-                const movieProvidersRes = await fetch(
-                `https://api.themoviedb.org/3/movie/${selectedMovie}/watch/providers?api_key=${API_KEY}`
+        try {
+
+            const [movieRes, providersRes, creditsRes] = await Promise.all([
+                fetch(`https://api.themoviedb.org/3/movie/${selectedMovie}?api_key=${API_KEY}`),
+                fetch(`https://api.themoviedb.org/3/movie/${selectedMovie}/watch/providers?api_key=${API_KEY}`),
+                fetch(`https://api.themoviedb.org/3/movie/${selectedMovie}/credits?api_key=${API_KEY}`)
+            ]);
+
+            const movieInfo = await movieRes.json();
+            const providersData = await providersRes.json();
+            const creditsData = await creditsRes.json();
+
+            setmovieDetails(movieInfo);
+
+            setmovieProvidersDetails(
+                providersData.results?.IN?.flatrate || []
             );
 
-            const movieProvidesData = await movieProvidersRes.json();
-            const movieProvidersDetails = movieProvidesData.results?.IN?.flatrate  || [];
-            const movieCreditsRes = await fetch(
-                `https://api.themoviedb.org/3/movie/${selectedMovie}/credits?api_key=${API_KEY}`
-            );
+            setmovieCreditDetails(creditsData);
 
-            const movieCreditsData = await movieCreditsRes.json();
-            
-            // console.log(movieCreditsData);
-            setmovieDetails(movieInfo)
-            setmovieProvidersDetails(movieProvidersDetails)
-            setmovieCreditDetails(movieCreditsData)
-            // console.log(movieInfo)
-            fetchDetails();
+        } catch (error) {
+            console.error("Failed to fetch movie details:", error);
         }
-    }
 
-    }, [selectedMovie])
+    };
+
+    fetchDetails();
+
+}, [selectedMovie]);
 
     if (!movieDetails) {
         return <div className="loading">Loading movie data...</div>;

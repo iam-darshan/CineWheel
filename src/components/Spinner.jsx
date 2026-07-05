@@ -70,50 +70,117 @@ function Spinner({displayedMovies, rotation, spinWheel, isSpinning }) {
 
 
     for (let slice = 0; slice < numberSlice; slice++) {
-      ctx.beginPath();
-      ctx.moveTo(center, center)
-      ctx.arc(center, center, 180, slice * arcAngle, (slice + 1) * arcAngle);
-      ctx.closePath();
-      const hue = 210 + (slice * 100) / numberSlice;
-      ctx.fillStyle = `hsl(${hue}, 55%, 30%)`;
 
-      ctx.shadowColor = "#7C5CFF";
-      ctx.shadowBlur = 30;
-      ctx.stroke();
-      ctx.strokeStyle = "#2415fe";
-      ctx.shadowBlur=20;
-      ctx.lineWidth = 5;
+   const colors = [
+  ["#B15B53", "#88413B"],
+  ["#C87A47", "#9F5B31"],
+  ["#D0AC56", "#AA8637"],
+  ["#9775B2", "#73588F"],
+  ["#6072B6", "#42539A"],
+  ["#9E4942", "#75312B"],
+  ["#3F8A85", "#296B67"],
+  ["#6C8C4F", "#4D6A37"],
+];
 
-      ctx.stroke();
-      ctx.strokeStyle = "#9f99fb";
-       ctx.shadowBlur=40;
-      ctx.lineWidth =3;
+    const startAngle = slice * arcAngle;
+    const endAngle = (slice + 1) * arcAngle;
 
-      ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(center, center);
+    ctx.arc(center, center, 180, startAngle, endAngle);
+    ctx.closePath();
 
-      ctx.shadowBlur = 0;
+    // -------- Gradient --------
 
-      ctx.fill();
+    const gradient = ctx.createRadialGradient(
+        center,
+        center,
+        30,
+        center,
+        center,
+        180
+    );
 
-      ctx.save();
-      ctx.translate(center, center);
-      ctx.rotate(slice * arcAngle + arcAngle / 2);
-      ctx.textAlign = "center";
-      ctx.fillStyle = "white"
-      ctx.font = "bold 11px sans-serif"
+    gradient.addColorStop(0, colors[slice % colors.length][0]);
+    gradient.addColorStop(1, colors[slice % colors.length][1]);
 
-      let currentMovie = displayedMovies[slice].title
+    ctx.fillStyle = gradient;
+    ctx.fill();
 
+    // -------- Grain --------
 
-      if (ctx.measureText(currentMovie).width > 130) {
-        while (ctx.measureText(currentMovie + "...").width > 130) {
-          currentMovie = currentMovie.slice(0, -1)
-        }
-        currentMovie = currentMovie + "..."
-      }
-      ctx.fillText(currentMovie, 110, 5);
-      ctx.restore();
+    ctx.save();
+    ctx.clip();
+
+    for (let i = 0; i < 350; i++) {
+
+        ctx.fillStyle = `rgba(255,255,255,${Math.random()*0.1})`;
+
+        ctx.fillRect(
+            center - 180 + Math.random()*360,
+            center - 180 + Math.random()*360,
+            1,
+            1
+        );
     }
+
+    ctx.restore();
+
+    // -------- Border --------
+
+    ctx.strokeStyle = "rgba(255,255,255,.18)";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // -------- Purple Glow --------
+
+    ctx.save();
+
+    ctx.shadowColor = "#7C5CFF";
+    ctx.shadowBlur = 22;
+
+    ctx.strokeStyle = "#6C5CFF";
+    ctx.lineWidth = 3;
+
+    ctx.stroke();
+
+    ctx.restore();
+
+    // -------- Text --------
+
+    ctx.save();
+
+    ctx.translate(center, center);
+    ctx.rotate(startAngle + arcAngle / 2);
+
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    ctx.fillStyle = "white";
+
+    ctx.font = "bold 11px Poppins";
+
+    let currentMovie = displayedMovies[slice].title;
+
+    while (
+        ctx.measureText(currentMovie + "...").width > 130 &&
+        currentMovie.length > 0
+    ) {
+        currentMovie = currentMovie.slice(0, -1);
+    }
+
+    if (currentMovie !== displayedMovies[slice].title) {
+        currentMovie += "...";
+    }
+
+    // Small text shadow
+    ctx.shadowColor = "rgba(0,0,0,.6)";
+    ctx.shadowBlur = 4;
+
+    ctx.fillText(currentMovie, 110, 0);
+
+    ctx.restore();
+}
 
 
 
