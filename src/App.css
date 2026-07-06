@@ -1,62 +1,118 @@
-body{
+body {
   /* background-color: rgb(7, 7, 35); */
-   background-color: rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0);
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #252729 #243648; 
+  scrollbar-color: #252729 #243648;
 }
 
-.container{
+.container {
   display: flex;
   flex-direction: column;
   gap: 5px;
   align-items: center;
 }
 
-.genrePlusLibrary{
+.genrePlusLibrary {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.mobileOnly{
+.mediaChange {
+  width: min(400px,93%);
+  background-color: blue;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
+ /* From https://css.glass */
+background: rgba(112, 99, 99, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(0, 0, 0, 0.3);
+
+}
+
+.mediaChangeBtn {
+  color: white;
+  height: 40px;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  transition: 0.2s;
+  z-index: 3;
+
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.mediaChangeBtn:hover {
+
+  background: rgba(22, 80, 222, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+.mobileOnly {
   display: none;
 }
-.laptopOnly{
+
+.laptopOnly {
   display: block;
 }
+
 
 
 @media screen and (max-width: 767px) {
-  .yearAndTitle{
+  .yearAndTitle {
     position: relative;
-}
-.genrePlusLibrary{
-  flex-direction: column;
-  color: white;
-  position: relative;
-}
-.genreMobile{
-  display: block;
-  position: absolute;
-  color: white;
-  bottom: 30px;
-  left: 20px;
-  z-index: 100;
-}
-.SpinnerLibrarycontainer{
-  display: flex;
-  position: relative;
-  width: 100%;
-}
-.mobileOnly{
-  display: block;
-}
-.laptopOnly{
-  display: none;
-}
+  }
+
+  .genrePlusLibrary {
+    flex-direction: column;
+    color: white;
+    position: relative;
+  }
+
+  .genreMobile {
+    display: block;
+    position: absolute;
+    color: white;
+    bottom: 30px;
+    left: 20px;
+    z-index: 100;
+  }
+
+  .SpinnerLibrarycontainer {
+    display: flex;
+    position: relative;
+    width: 100%;
+  }
+
+  .mobileOnly {
+    display: block;
+  }
+
+  .laptopOnly {
+    display: none;
+  }
 
 
 }

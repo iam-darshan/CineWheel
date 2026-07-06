@@ -25,6 +25,7 @@ function Library({
   removeMovie,
   addToHistory,
   showPopupDetails,
+  mediaType,
 
   API_KEY,
   genreName,
@@ -47,13 +48,13 @@ function Library({
 
                 const query = e.target.value;
 
-                const res1 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=1`);
+                const res1 = await fetch(`https://api.themoviedb.org/3/search/${mediaType}?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=1`);
                 const page1 = await res1.json();
-                const res2 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=2`);
+                const res2 = await fetch(`https://api.themoviedb.org/3/search/${mediaType}?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=2`);
                 const page2 = await res2.json();
-                const res3 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=3`);
+                const res3 = await fetch(`https://api.themoviedb.org/3/search/${mediaType}?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=3`);
                 const page3 = await res3.json();
-                const res4 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=4`);
+                const res4 = await fetch(`https://api.themoviedb.org/3/search/${mediaType}?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=4`);
                 const page4 = await res4.json();
 
                 const data = [
@@ -64,7 +65,7 @@ function Library({
                 ]
                 const filteredMovie = data.filter(
                   movie =>
-                    movie.title.toLowerCase().startsWith(query.toLowerCase())
+                    (movie.title ?? movie.name ?? "")?.toLowerCase().startsWith(query.toLowerCase())
                 )
                 const sortedMovie = filteredMovie.sort((a, b) => {
                   return b.popularity - a.popularity
@@ -88,8 +89,9 @@ function Library({
 
 
             <ul className='moviesUL'>
-              {movies.map((movie) => (
-                <div style={{position:"relative"}}>
+              {displayedMovies.map((movie) => (
+                <div key={movie.id} style={{position:"relative"}}>
+                  {console.log(movie)}
                 <li className='moviesInSuggestion' key={movie.id}  onClick={()=>{
                   setshowPopup(true);
                   setselectedMovie(movie.id)
@@ -121,7 +123,7 @@ function Library({
                     }
                   </div>
                   <div className='titleAndYear'>
-                    <h3 id='movieTitle'>{movie.title}</h3>
+                    <h3 id='movieTitle'>{movie.title || movie.name}</h3>
                     {/* {console.log(movie)} */}
                     <div>
                       <div className='yearAndrating'>
@@ -178,7 +180,7 @@ function Library({
                       }
                       setSuggestions([]);
                       console.log(movie)
-                      const nextList = [...movies, { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4),  genres: genreName(movie.genre_ids) }]
+                      const nextList = [...movies, { id: movie.id, mediaType:mediaType, title: movie.title || movie.name, poster_path: movie.poster_path, release_year: (movie.release_date || movie.first_air_date).slice(0, 4),  genres: genreName(movie.genre_ids) }]
                       setmovies(nextList);
 
                       inputRef.current.value = ""
@@ -196,10 +198,10 @@ function Library({
                         }
                       </div>
                       <div className='libraryTitleYear'>
-                                    <h3 id='LibrarymovieTitle'>{movie.title}</h3>
+                                    <h4 id='LibrarymovieTitle'>{movie.title || movie.name}</h4>
                                     <div>
                                         <div className='yearAndrating'>
-                                            <h5 id='movieYear'>{movie.release_date.slice(0,4) || "N/A"}</h5>
+                                            <h5 id='movieYear'>{(movie.release_date || movie.first_air_date).slice(0,4) || "N/A"}</h5>
                                             {/* <h5 id id='movieRating'>{movie.vote_average.toFixed(2) || "N/A"}</h5> */}
                                         </div>
                                     </div>

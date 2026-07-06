@@ -6,6 +6,12 @@ import { CircleUserRound,LogOut } from 'lucide-react'
 
 
 function Navbar() {
+
+  const clearData =()=>{
+    localStorage.removeItem("savedMovies");
+    localStorage.removeItem("watchedMovies");
+  }
+
   return (
     <div className='navbar'>
 
@@ -17,7 +23,16 @@ function Navbar() {
       <div className="userDetails">
         <CircleUserRound />
         <h5>UserName</h5>
-        <LogOut />
+        <div className='Clear'>
+          
+        <LogOut onClick={()=>{
+          clearData();
+          window.location.reload();
+        }}/>
+        <span className="tooltip">
+        Clear Data
+    </span>
+        </div>
       </div>
     </div>
   )

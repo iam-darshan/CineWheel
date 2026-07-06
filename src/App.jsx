@@ -10,7 +10,7 @@ import WatchHistory from './components/WatchHistory.jsx'
 import GenreSelector from './components/GenreSelector.jsx'
 import SuggestedMovies from './components/SuggestedMovies.jsx'
 import Alert from './components/Alert.jsx'
-import { AwardIcon } from 'lucide-react'
+import { AwardIcon, Clapperboard ,Tv } from 'lucide-react'
 
 
 
@@ -18,6 +18,7 @@ import { AwardIcon } from 'lucide-react'
 
 
 function App() {
+  
   //clear storage
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -34,8 +35,9 @@ function App() {
   const watchedList = lastWatchedList ? JSON.parse(lastWatchedList) : [];
 
   const movieList = lastList ? JSON.parse(lastList) : [
-    { id: 157336, title: "Interstellar", poster_path: "/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg", release_year: 2014, genres: ["Adventure", "Drama", "Science Fiction"] },
-    { id: 27205, title: "Inception", poster_path: "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg", release_year: 2010, genres: ["Action", "Adventure", "Drama"] }
+    { id: 157336,mediaType:"movie", title: "Interstellar", poster_path: "/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg", release_year: 2014, genres: ["Adventure", "Drama", "Science Fiction"] },
+    { id: 27205,mediaType:"movie", title: "Inception", poster_path: "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg", release_year: 2010, genres: ["Action", "Adventure", "Drama"] },
+    {id: 1396,mediaType: "tv",title: "Breaking Bad",poster_path: "/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg",release_year: 2008,genres: ["Drama", "Crime"]}
   ];
 
   console.log(movieList)
@@ -50,33 +52,11 @@ function App() {
   const [suggestions, setSuggestions] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("Default");
   const [alertMsg, setalertMsg] = useState("");
+  const [mediaType, setmediaType] = useState("movie");
 
 
   const inputRef = useRef();
   const btnRef = useRef();
-
-
-  const genres = [
-    { id: 28, name: "Action" },
-    { id: 12, name: "Adventure" },
-    { id: 16, name: "Animation" },
-    { id: 35, name: "Comedy" },
-    { id: 80, name: "Crime" },
-    { id: 99, name: "Documentary" },
-    { id: 18, name: "Drama" },
-    { id: 10751, name: "Family" },
-    { id: 14, name: "Fantasy" },
-    { id: 36, name: "History" },
-    { id: 27, name: "Horror" },
-    { id: 10402, name: "Music" },
-    { id: 9648, name: "Mystery" },
-    { id: 10749, name: "Romance" },
-    { id: 878, name: "Science Fiction" },
-    { id: 10770, name: "TV Movie" },
-    { id: 53, name: "Thriller" },
-    { id: 10752, name: "War" },
-    { id: 37, name: "Western" }
-  ];
 
   const genreName = (movieIds) => {
     console.log(movieIds)
@@ -104,11 +84,11 @@ function App() {
       return;
     }
     alertFn("Movie Added To Library");
-    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
+    const res = await fetch(`https://api.themoviedb.org/3/${mediaType}/${id}?api_key=${API_KEY}`)
     const result = await res.json();
     const movie = result;
-    console.log(movie)
-    const newMovie = { id: movie.id, title: movie.title, poster_path: movie.poster_path, release_year: movie.release_date.slice(0, 4), genres: movie.genres.map(genre => genre.name) };
+    const newMovie = { id: movie.id, mediaType:mediaType, title: movie.title || movie.name, poster_path: movie.poster_path, release_year: (movie.release_date || movie.first_air_date)?.slice(0, 4), genres: movie.genres.map(genre => genre.name) };
+    console.log(newMovie)
     const newList = [...movies, newMovie];
     setmovies(newList)
     let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(newList))
@@ -177,6 +157,31 @@ function App() {
     alertFn("Movie Removed from Hisory");
   }
 
+  const genres = [
+  { id: 28, name: "Action" },
+  { id: 12, name: "Adventure" },
+  { id: 10759, name: "Action" },       
+  { id: 16, name: "Animation" },
+  { id: 35, name: "Comedy" },
+  { id: 80, name: "Crime" },
+  { id: 99, name: "Documentary" },
+  { id: 18, name: "Drama" },
+  { id: 10751, name: "Family" },
+  { id: 14, name: "Fantasy" },
+  { id: 10765, name: "Science Fiction" },
+  { id: 36, name: "History" },
+  { id: 27, name: "Horror" },
+  { id: 9648, name: "Mystery" },
+  { id: 10402, name: "Music" },
+  { id: 10749, name: "Romance" },
+  { id: 878, name: "Science Fiction" },
+  { id: 53, name: "Thriller" },
+  { id: 10770, name: "TV Movie" },
+  { id: 10752, name: "War" },
+  { id: 10768, name: "War" },           
+  { id: 37, name: "Western" }
+];
+
 
   const changeGenre = (genre) => {
     setSelectedGenre(genre)
@@ -184,10 +189,10 @@ function App() {
   }
 
 
-  const displayedMovies =
-    selectedGenre === "Default" ? movies : movies.filter(movie =>
-      movie.genres?.includes(selectedGenre)
-    )
+const displayedMovies = movies.filter(movie =>
+  (selectedGenre === "Default" || movie.genres?.includes(selectedGenre)) &&
+  movie.mediaType === mediaType
+);
 
   const showPopupDetails = (id) => {
     setselectedMovie(id);
@@ -213,6 +218,19 @@ function App() {
       <div className='container'>
         <Alert alertMsg={alertMsg} />
         <Navbar />
+        <div className='mediaChange'>
+          <div className='mediaChangeBtn' style={{color:"white"}} onClick={()=>{
+            setmediaType("movie")
+          }}>
+            <Clapperboard />
+            Movie</div>
+          <div className='mediaChangeBtn' onClick={()=>{
+            setmediaType("tv")
+            console.log("tv")
+          }}>
+            <Tv />
+            Series</div>
+        </div>
         <div className="genrePlusLibrary">
 
            <div className='laptopOnly'>
@@ -251,6 +269,7 @@ function App() {
               removeMovie={removeMovie}
               addToHistory={addToHistory}
               showPopupDetails={showPopupDetails}
+              mediaType={mediaType}
 
 
               API_KEY={API_KEY}
@@ -261,13 +280,13 @@ function App() {
             
           </div>
         </div>
-        <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} />
+        <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} mediaType={mediaType} />
         <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} />
       </div>
 
       {showPopup && <Popup onClose={() => {
         setshowPopup(false)
-      }} selectedMovie={selectedMovie} addToHistory={addToHistory} spinWheel={spinWheel} movies={movies} />}
+      }} selectedMovie={selectedMovie} addToHistory={addToHistory} spinWheel={spinWheel} movies={movies} mediaType={mediaType}/>}
     </>
   )
 }

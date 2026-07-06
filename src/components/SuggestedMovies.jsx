@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './SuggestedMovies.css'
 import { Plus } from 'lucide-react'
 
-function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn }) {
+function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn,mediaType }) {
 
     const [topMovies, settopMovies] = useState([])
     const [trendingMovies, settrendingMovies] = useState([])
@@ -12,15 +12,23 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn }) {
 
         const fetchMovies = async () => {
 
-            const res1 = await fetch(`https://api.themoviedb.org/3/list/634?api_key=${API_KEY}`);
-            const result1 = await res1.json();
-            const data1 = result1.items;
-            settopMovies(data1);
+            if(mediaType === "movie"){
+                const res1 = await fetch(`https://api.themoviedb.org/3/list/634?api_key=${API_KEY}`);
+                const result1 = await res1.json();
+                const data1 = result1.items;
+                settopMovies(data1);
+            }
+            if(mediaType ==="tv"){
+                const res1 = await fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}`);
+                const result1 = await res1.json();
+                const data1 = result1.results;
+                settopMovies(data1);
+            }
 
-            const res2 = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
+            const res2 = await fetch(`https://api.themoviedb.org/3/trending/${mediaType}/week?api_key=${API_KEY}&language=en-US`)
             const result2 = await res2.json();
             const data2 = result2.results;
-            // console.log(data2)
+            console.log(data2)
             settrendingMovies(data2);
 
 
@@ -29,7 +37,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn }) {
 
         fetchMovies();
 
-    }, [])
+    }, [mediaType])
 
     return (
         <div className='suggestedMoviesContainer'>
@@ -70,10 +78,10 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn }) {
                                     }
                                 </div>
                                 <div className='titleAndYear'>
-                                    <h3 id='movieTitle'>{movie.title}</h3>
+                                    <h3 id='movieTitle'>{movie.title || movie.name}</h3>
                                     <div>
                                         <div className='yearAndrating'>
-                                            <h5 id='movieYear'>{movie.release_date.slice(0, 4) || "N/A"}</h5>
+                                            <h5 id='movieYear'>{movie.release_date?.slice(0, 4) || movie.first_air_date.slice(0, 4)|| "N/A"}</h5>
                                             <h5 id='movieRating'>{movie.vote_average.toFixed(2) || "N/A"}</h5>
                                         </div>
                                     </div>
@@ -112,10 +120,10 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn }) {
                                     }
                                 </div>
                                 <div className='titleAndYear yearAndTitle' >
-                                    <h3 id='movieTitle'>{movie.title}</h3>
+                                    <h3 id='movieTitle'>{movie.title || movie.name}</h3>
                                     <div>
                                         <div className='yearAndrating'>
-                                            <h5 id='movieYear'>{movie.release_date.slice(0, 4) || "N/A"}</h5>
+                                            <h5 id='movieYear'>{movie.release_date?.slice(0, 4) || movie.first_air_date.slice(0, 4)|| "N/A"}</h5>
                                             <h5 id='movieRating'>{movie.vote_average.toFixed(2) || "N/A"}</h5>
                                         </div>
                                     </div>

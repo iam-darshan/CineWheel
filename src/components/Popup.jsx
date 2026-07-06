@@ -4,7 +4,7 @@ import { CircleX, Trophy, RotateCcw } from 'lucide-react';
 
 const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
 
-function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
+function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaType }) {
 
     const [movieDetails, setmovieDetails] = useState(null);
     const [movieCreditDetails, setmovieCreditDetails] = useState();
@@ -19,9 +19,9 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
         try {
 
             const [movieRes, providersRes, creditsRes] = await Promise.all([
-                fetch(`https://api.themoviedb.org/3/movie/${selectedMovie}?api_key=${API_KEY}`),
-                fetch(`https://api.themoviedb.org/3/movie/${selectedMovie}/watch/providers?api_key=${API_KEY}`),
-                fetch(`https://api.themoviedb.org/3/movie/${selectedMovie}/credits?api_key=${API_KEY}`)
+                fetch(`https://api.themoviedb.org/3/${mediaType}/${selectedMovie}?api_key=${API_KEY}`),
+                fetch(`https://api.themoviedb.org/3/${mediaType}/${selectedMovie}/watch/providers?api_key=${API_KEY}`),
+                fetch(`https://api.themoviedb.org/3/${mediaType}/${selectedMovie}/credits?api_key=${API_KEY}`)
             ]);
 
             const movieInfo = await movieRes.json();
@@ -82,9 +82,9 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies }) {
                         }
                     </div>
                     <div className="details">
-                        <h2>{movieDetails.title}</h2>
+                        <h2>{movieDetails.title || movieDetails.name}</h2>
                         <div className="yearAndRating">
-                            <div id='releaseYear'><h4 id='releaseYearh4'>{movieDetails.release_date? movieDetails.release_date.slice(0, 4) : "N/A"}</h4></div>
+                            <div id='releaseYear'><h4 id='releaseYearh4'>{(movieDetails.release_date || movieDetails.first_air_date)? (movieDetails.release_date || movieDetails.first_air_date).slice(0, 4) : "N/A"}</h4></div>
                             <div id='IMDBrating'><h4 id='IMDBratingh4'>{movieDetails.vote_average?(movieDetails.vote_average).toFixed(2) : "N/A"}</h4></div>
                             <div className='runTime'><span>{movieDetails.runtime}</span><span>min</span></div>
                         </div>

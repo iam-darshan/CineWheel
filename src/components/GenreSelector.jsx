@@ -19,7 +19,6 @@ const genreList = [
     "Mystery",
     "Romance",
     "Science Fiction",
-    "TV Movie",
     "Thriller",
     "War"
   ];
