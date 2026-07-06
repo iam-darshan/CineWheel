@@ -51,7 +51,7 @@ border: 1px solid rgba(0, 0, 0, 0.3);
   transition: 0.2s;
   z-index: 3;
 
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(53, 53, 54, 0.2);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
@@ -61,7 +61,7 @@ border: 1px solid rgba(0, 0, 0, 0.3);
 
 .mediaChangeBtn:hover {
 
-  background: rgba(22, 80, 222, 0.2);
+  background: rgba(2, 3, 7, 0.695);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(0px);

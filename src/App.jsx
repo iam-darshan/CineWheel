@@ -294,7 +294,7 @@ const displayedMovies = movies.filter(movie =>
           </div>
         </div>
         <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} mediaType={mediaType} />
-        <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} />
+        <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} mediaType={mediaType} />
       </div>
 
       {showPopup && <Popup onClose={() => {

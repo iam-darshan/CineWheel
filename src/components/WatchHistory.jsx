@@ -2,14 +2,14 @@ import React from 'react'
 import './WatchHistory.css'
 import { Trash2 } from 'lucide-react'
 
-function WatchHistory({watchedMoviesList,removeFromHistory}) {
+function WatchHistory({watchedMoviesList,removeFromHistory,mediaType}) {
   return (
     <div className='watchHistoryContainer'>
-      <h2 id='heading'>Watched Movies</h2>
+      <h2 id='heading'>Watched {mediaType=="movie" ? "Movies" : "Series"}</h2>
                 <div className='movieULcontainer' >
 
                     <ul className='moviesUL'>
-                        {watchedMoviesList.map((movie) => (
+                        {watchedMoviesList.filter(movie => movie.mediaType === mediaType).map((movie) => (
                             <li className='moviesInSuggestion' key={movie.id} >
                                 <div className='Trash'>
                                     <Trash2 className='trashIcon'
