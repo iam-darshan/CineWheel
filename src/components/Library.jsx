@@ -180,7 +180,7 @@ function Library({
                       }
                       setSuggestions([]);
                       console.log(movie)
-                      const nextList = [...movies, { id: movie.id, mediaType:mediaType, title: movie.title || movie.name, poster_path: movie.poster_path, release_year: (movie.release_date || movie.first_air_date).slice(0, 4),  genres: genreName(movie.genre_ids) }]
+                      const nextList = [...movies, { id: movie.id, mediaType:mediaType, title: movie.title || movie.name, poster_path: movie.poster_path, release_year: (movie.release_date || movie.first_air_date)?.slice(0, 4) || "N/A",  genres: genreName(movie.genre_ids) }]
                       setmovies(nextList);
 
                       inputRef.current.value = ""
@@ -201,7 +201,7 @@ function Library({
                                     <h4 id='LibrarymovieTitle'>{movie.title || movie.name}</h4>
                                     <div>
                                         <div className='yearAndrating'>
-                                            <h5 id='movieYear'>{(movie.release_date || movie.first_air_date).slice(0,4) || "N/A"}</h5>
+                                            <h5 id='movieYear'>{(movie.release_date || movie.first_air_date)?.slice(0,4) || "N/A"}</h5>
                                             {/* <h5 id id='movieRating'>{movie.vote_average.toFixed(2) || "N/A"}</h5> */}
                                         </div>
                                     </div>
