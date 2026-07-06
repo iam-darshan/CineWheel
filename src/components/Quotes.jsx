@@ -129,6 +129,11 @@ function Quotes() {
     dialogue: "No one can make you feel inferior without your consent.",
     character: "Mia Thermopolis",
     movie: "The Princess Diaries"
+  },
+  {
+    "dialogue": "Brooks was here.",
+    "character": "Brooks Hatlen",
+    "movie": "The Shawshank Redemption"
   }
 ];
 
