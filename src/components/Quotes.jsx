@@ -1,10 +1,14 @@
-import React from 'react'
-import './Quotes.css'
-import { Quote } from 'lucide-react'
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import './Quotes.css';
+import { Quote as QuoteIcon } from 'lucide-react';
 
 
 function Quotes() {
-  const quotes = [
+
+  const [quote, setquote] = useState()
+  
+const quotes = [
   {
     dialogue: "Why so serious?",
     character: "The Joker",
@@ -131,26 +135,41 @@ function Quotes() {
     movie: "The Princess Diaries"
   },
   {
-    "dialogue": "Brooks was here.",
-    "character": "Brooks Hatlen",
-    "movie": "The Shawshank Redemption"
+    dialogue: "Brooks was here.",
+    character: "Brooks Hatlen",
+    movie: "The Shawshank Redemption"
   }
 ];
 
-const randomIndex = Math.floor(Math.random()*quotes.length)
+useEffect(() => {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const quote = quotes[randomIndex];
+
+  setquote(quote)
+}, [])
+  
 
   return (
-    <div className='QuoteContainer'>
-      <div className='quoteIcon'>
-        <Quote size={35}/>
+    <div className="QuoteContainer">
+      <div className="quoteIcon">
+        <QuoteIcon size={35} />
       </div>
-      <div className='quoteTitle'>{quotes[randomIndex].dialogue}</div>
-      <div className='quoteDetails'>
-        <span className='quoteSpeaker'>- {quotes[randomIndex].character}</span>
-        <span className='quoteMovie'>({quotes[randomIndex].movie})</span>
+
+      <div className="quoteTitle">
+        "{quote?.dialogue}"
+      </div>
+
+      <div className="quoteDetails">
+        <span className="quoteSpeaker">
+          — {quote?.character}
+        </span>
+
+        <span className="quoteMovie">
+          ({quote?.movie})
+        </span>
       </div>
     </div>
-  )
+  );
 }
 
-export default Quotes
+export default Quotes;
