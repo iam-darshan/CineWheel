@@ -29,12 +29,12 @@ body {
   gap: 10px;
   padding: 10px;
  /* From https://css.glass */
-background: rgba(112, 99, 99, 0.2);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(0, 0, 0, 0.3);
+  background: rgba(43, 41, 52, 0.534);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.3);
 
 }
 
@@ -68,6 +68,25 @@ border: 1px solid rgba(0, 0, 0, 0.3);
   -webkit-backdrop-filter: blur(1px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
+.activeMediaChange{
+  background: rgba(2, 3, 7, 0.695);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.inactiveMediaChange{
+  
+  background: rgba(53, 53, 54, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+}
+
 
 
 .mobileOnly {
