@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, version } from 'react'
 import './App.css'
 import './components/Spinner.css'
 
@@ -18,6 +18,19 @@ import { AwardIcon, Clapperboard ,Tv } from 'lucide-react'
 
 
 function App() {
+
+  const STORAGE_VERSION =4;
+
+  useEffect(() => {
+    const savedVersion = Number(localStorage.getItem("storageVersion"))
+    if(savedVersion !== STORAGE_VERSION){
+      localStorage.removeItem("savedMovies");
+      localStorage.removeItem("watchedMovies");
+
+      localStorage.setItem("storageVersion",STORAGE_VERSION)
+    }
+  
+  }, [])
   
   //clear storage
   useEffect(() => {
