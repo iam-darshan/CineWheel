@@ -269,7 +269,7 @@ function App() {
 
             <div className='Spinner'>
 
-              <Spinner displayedMovies={displayedMovies} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} />
+              <Spinner displayedMovies={displayedMovies} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} mediaType={mediaType}/>
               <div className='mobileOnly'>
                 <GenreSelector movies={movies} changeGenre={changeGenre} />
               </div>

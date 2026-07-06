@@ -4,7 +4,7 @@ import './Spinner.css'
 
 
 
-function Spinner({displayedMovies, rotation, spinWheel, isSpinning }) {
+function Spinner({displayedMovies, rotation, spinWheel, isSpinning ,mediaType}) {
   const canvasRef = useRef(null);
 
 
@@ -195,7 +195,7 @@ function Spinner({displayedMovies, rotation, spinWheel, isSpinning }) {
     <div className='spinnerBackground'>
       <div className="spinnerDetails">
         <h3 className='detailsHeading'>Spin.Discover.Watch</h3>
-        <h6 className=''>Add your movies to the library<br></br>
+        <h6 className=''>Add your {mediaType=="movie"? "movies" : "series"} to the library<br></br>
           and let the CineWheel decide.
         </h6>
       </div>
