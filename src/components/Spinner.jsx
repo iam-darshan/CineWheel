@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import './Spinner.css'
+import Quotes from './Quotes.jsx'
 
 
 
@@ -193,11 +194,17 @@ function Spinner({displayedMovies, rotation, spinWheel, isSpinning ,mediaType}) 
 
   return (
     <div className='spinnerBackground'>
+      <div className="quoteMobile mobileOnly" >
+      <Quotes />
+      </div>
       <div className="spinnerDetails">
-        <h3 className='detailsHeading'>Spin.Discover.Watch</h3>
-        <h6 className=''>Add your {mediaType=="movie"? "movies" : "series"} to the library<br></br>
+      <div className="laptopOnly">
+        <h3 className='detailsHeading laptopOnly'>Spin.Discover.Watch</h3>
+        <h6 className='laptopOnly'>Add your {mediaType=="movie"? "movies" : "series"} to the library<br></br>
           and let the CineWheel decide.
         </h6>
+        <Quotes />
+      </div>
       </div>
       <div className='spinnerContainer'>
         <div className="spinBtnCenter" onClick={spinWheel}>
