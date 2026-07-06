@@ -1,6 +1,7 @@
 body {
   /* background-color: rgb(7, 7, 35); */
   background-color: rgb(0, 0, 0);
+  overflow-x: hidden;
 }
 
 * {
