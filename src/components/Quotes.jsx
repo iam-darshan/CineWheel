@@ -7,147 +7,197 @@ import { Quote as QuoteIcon } from 'lucide-react';
 function Quotes() {
 
   const [quote, setquote] = useState()
-  
-const quotes = [
-  {
-    dialogue: "Why so serious?",
-    character: "The Joker",
-    movie: "The Dark Knight"
-  },
-  {
-    dialogue: "May the Force be with you.",
-    character: "Han Solo",
-    movie: "Star Wars"
-  },
-  {
-    dialogue: "I'll be back.",
-    character: "The Terminator",
-    movie: "The Terminator"
-  },
-  {
-    dialogue: "Hasta la vista, baby.",
-    character: "The Terminator",
-    movie: "Terminator 2: Judgment Day"
-  },
-  {
-    dialogue: "With great power comes great responsibility.",
-    character: "Uncle Ben",
-    movie: "Spider-Man"
-  },
-  {
-    dialogue: "I am Iron Man.",
-    character: "Tony Stark",
-    movie: "Iron Man"
-  },
-  {
-    dialogue: "Avengers... Assemble!",
-    character: "Captain America",
-    movie: "Avengers: Endgame"
-  },
-  {
-    dialogue: "Wakanda Forever!",
-    character: "T'Challa",
-    movie: "Black Panther"
-  },
-  {
-    dialogue: "To infinity... and beyond!",
-    character: "Buzz Lightyear",
-    movie: "Toy Story"
-  },
-  {
-    dialogue: "Just keep swimming.",
-    character: "Dory",
-    movie: "Finding Nemo"
-  },
-  {
-    dialogue: "Carpe diem. Seize the day.",
-    character: "John Keating",
-    movie: "Dead Poets Society"
-  },
-  {
-    dialogue: "Adventure is out there!",
-    character: "Ellie",
-    movie: "Up"
-  },
-  {
-    dialogue: "You talking to me?",
-    character: "Travis Bickle",
-    movie: "Taxi Driver"
-  },
-  {
-    dialogue: "Every man dies. Not every man really lives.",
-    character: "William Wallace",
-    movie: "Braveheart"
-  },
-  {
-    dialogue: "Fear can hold you prisoner. Hope can set you free.",
-    character: "Andy Dufresne",
-    movie: "The Shawshank Redemption"
-  },
-  {
-    dialogue: "Get busy living, or get busy dying.",
-    character: "Andy Dufresne",
-    movie: "The Shawshank Redemption"
-  },
-  {
-    dialogue: "Keep your friends close, but your enemies closer.",
-    character: "Michael Corleone",
-    movie: "The Godfather Part II"
-  },
-  {
-    dialogue: "Life is like a box of chocolates.",
-    character: "Forrest Gump",
-    movie: "Forrest Gump"
-  },
-  {
-    dialogue: "Dreams feel real while we're in them.",
-    character: "Cobb",
-    movie: "Inception"
-  },
-  {
-    dialogue: "You mustn't be afraid to dream a little bigger, darling.",
-    character: "Eames",
-    movie: "Inception"
-  },
-  {
-    dialogue: "Do, or do not. There is no try.",
-    character: "Yoda",
-    movie: "The Empire Strikes Back"
-  },
-  {
-    dialogue: "Hope is a good thing, maybe the best of things.",
-    character: "Andy Dufresne",
-    movie: "The Shawshank Redemption"
-  },
-  {
-    dialogue: "After all, tomorrow is another day.",
-    character: "Scarlett O'Hara",
-    movie: "Gone with the Wind"
-  },
-  {
-    dialogue: "The world ain't all sunshine and rainbows.",
-    character: "Rocky Balboa",
-    movie: "Rocky Balboa"
-  },
-  {
-    dialogue: "No one can make you feel inferior without your consent.",
-    character: "Mia Thermopolis",
-    movie: "The Princess Diaries"
-  },
-  {
-    dialogue: "Brooks was here.",
-    character: "Brooks Hatlen",
-    movie: "The Shawshank Redemption"
-  }
-];
 
-useEffect(() => {
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  const quote = quotes[randomIndex];
+  const quotes = [
+    {
+      dialogue: "I'll do you one better... Why is Gamora?",
+      character: "Drax",
+      movie: "Avengers: Infinity War"
+    },
+    {
+      dialogue: "If you want something in this life, reach out and grab it.",
+      character: "Christopher McCandless",
+      movie: "Into the Wild"
+    },
+    {
+      dialogue: "The first rule of ***** is: You do not talk about *****.",
+      character: "Tyler Durden",
+      movie: "*****"
+    },
+    {
+      dialogue: "You either die a hero, or you live long enough to see yourself become the villain.",
+      character: "Harvey Dent",
+      movie: "The Dark Knight"
+    },
+    {
+      dialogue: "Cause in that moment, I'm flying.",
+      character: "Sonny Hayes",
+      movie: "F1: The Movie"
+    },
+    {
+      dialogue: "Always.",
+      character: "Severus Snape",
+      movie: "Harry Potter and the Deathly Hallows"
+    },
+    {
+      dialogue: "I am Groot.",
+      character: "Groot",
+      movie: "Guardians of the Galaxy"
+    },
+    {
+      dialogue: "Say my name.",
+      character: "Walter White",
+      movie: "Breaking Bad"
+    },
+    {
+      dialogue: "I'm inevitable.",
+      character: "Thanos",
+      movie: "Avengers: Endgame"
+    },
+    {
+      dialogue: "I'm gonna make him an offer he can't refuse.",
+      character: "Vito Corleone",
+      movie: "The Godfather"
+    },
+    {
+      dialogue: "Why so serious?",
+      character: "The Joker",
+      movie: "The Dark Knight"
+    },
+    {
+      dialogue: "May the Force be with you.",
+      character: "Han Solo",
+      movie: "Star Wars"
+    },
+    {
+      dialogue: "I'll be back.",
+      character: "The Terminator",
+      movie: "The Terminator"
+    },
+    {
+      dialogue: "Hasta la vista, baby.",
+      character: "The Terminator",
+      movie: "Terminator 2: Judgment Day"
+    },
+    {
+      dialogue: "With great power comes great responsibility.",
+      character: "Uncle Ben",
+      movie: "Spider-Man"
+    },
+    {
+      dialogue: "I am Iron Man.",
+      character: "Tony Stark",
+      movie: "Iron Man"
+    },
+    {
+      dialogue: "Avengers... Assemble!",
+      character: "Captain America",
+      movie: "Avengers: Endgame"
+    },
+    {
+      dialogue: "Wakanda Forever!",
+      character: "T'Challa",
+      movie: "Black Panther"
+    },
+    {
+      dialogue: "To infinity... and beyond!",
+      character: "Buzz Lightyear",
+      movie: "Toy Story"
+    },
+    {
+      dialogue: "Just keep swimming.",
+      character: "Dory",
+      movie: "Finding Nemo"
+    },
+    {
+      dialogue: "Carpe diem. Seize the day.",
+      character: "John Keating",
+      movie: "Dead Poets Society"
+    },
+    {
+      dialogue: "Adventure is out there!",
+      character: "Ellie",
+      movie: "Up"
+    },
+    {
+      dialogue: "You talking to me?",
+      character: "Travis Bickle",
+      movie: "Taxi Driver"
+    },
+    {
+      dialogue: "Every man dies. Not every man really lives.",
+      character: "William Wallace",
+      movie: "Braveheart"
+    },
+    {
+      dialogue: "Fear can hold you prisoner. Hope can set you free.",
+      character: "Andy Dufresne",
+      movie: "The Shawshank Redemption"
+    },
+    {
+      dialogue: "Get busy living, or get busy dying.",
+      character: "Andy Dufresne",
+      movie: "The Shawshank Redemption"
+    },
+    {
+      dialogue: "Keep your friends close, but your enemies closer.",
+      character: "Michael Corleone",
+      movie: "The Godfather Part II"
+    },
+    {
+      dialogue: "Life is like a box of chocolates.",
+      character: "Forrest Gump",
+      movie: "Forrest Gump"
+    },
+    {
+      dialogue: "Dreams feel real while we're in them.",
+      character: "Cobb",
+      movie: "Inception"
+    },
+    {
+      dialogue: "You mustn't be afraid to dream a little bigger, darling.",
+      character: "Eames",
+      movie: "Inception"
+    },
+    {
+      dialogue: "Do, or do not. There is no try.",
+      character: "Yoda",
+      movie: "The Empire Strikes Back"
+    },
+    {
+      dialogue: "Hope is a good thing, maybe the best of things.",
+      character: "Andy Dufresne",
+      movie: "The Shawshank Redemption"
+    },
+    {
+      dialogue: "After all, tomorrow is another day.",
+      character: "Scarlett O'Hara",
+      movie: "Gone with the Wind"
+    },
+    {
+      dialogue: "The world ain't all sunshine and rainbows.",
+      character: "Rocky Balboa",
+      movie: "Rocky Balboa"
+    },
+    {
+      dialogue: "No one can make you feel inferior without your consent.",
+      character: "Mia Thermopolis",
+      movie: "The Princess Diaries"
+    },
+    {
+      dialogue: "Brooks was here.",
+      character: "Brooks Hatlen",
+      movie: "The Shawshank Redemption"
+    }
+  ];
 
-  setquote(quote)
-}, [])
-  
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const quote = quotes[randomIndex];
+
+    setquote(quote)
+  }, [])
+
 
   return (
     <div className="QuoteContainer">
