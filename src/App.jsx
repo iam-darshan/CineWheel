@@ -10,6 +10,7 @@ import WatchHistory from './components/WatchHistory.jsx'
 import GenreSelector from './components/GenreSelector.jsx'
 import SuggestedMovies from './components/SuggestedMovies.jsx'
 import Alert from './components/Alert.jsx'
+import Footer from './components/Footer.jsx'
 import { AwardIcon, Clapperboard, Tv } from 'lucide-react'
 
 
@@ -314,6 +315,8 @@ function App() {
       {showPopup && <Popup onClose={() => {
         setshowPopup(false)
       }} selectedMovie={selectedMovie} addToHistory={addToHistory} spinWheel={spinWheel} movies={movies} mediaType={mediaType} />}
+
+      <Footer />
     </>
   )
 }
