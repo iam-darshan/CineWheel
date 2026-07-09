@@ -30,13 +30,13 @@ const genreList = [
         <div className="genreSelection">
             <div>
                 <ul className='genreUL'>
-                    <li onClick={() => {
+                    <li key={"Genre"} onClick={() => {
                             changeGenre("Default");
                         }}>
                         <div className='genrePlate'>Default</div>
                     </li>
-                    {genreList.map((genre) => (
-                        <li onClick={() => {
+                    {genreList.map((genre,index) => (
+                        <li key={index}  onClick={() => {
                             changeGenre(genre);
                         }}>
                             <div className='genrePlate'>{genre}</div>

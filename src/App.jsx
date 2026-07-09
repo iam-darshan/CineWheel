@@ -8,6 +8,7 @@ import Navbar from './components/Navbar.jsx'
 import Library from './components/Library.jsx'
 import WatchHistory from './components/WatchHistory.jsx'
 import GenreSelector from './components/GenreSelector.jsx'
+import MovieOfDay from './components/MovieOfDay.jsx'
 import SuggestedMovies from './components/SuggestedMovies.jsx'
 import Alert from './components/Alert.jsx'
 import Footer from './components/Footer.jsx'
@@ -308,6 +309,7 @@ function App() {
 
           </div>
         </div>
+        <MovieOfDay watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY} />
         <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} mediaType={mediaType} />
         <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} mediaType={mediaType} />
       </div>
