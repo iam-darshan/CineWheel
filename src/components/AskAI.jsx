@@ -39,7 +39,7 @@ Return ONLY JSON.
     ])
 
     const callAI = async () => {
-        if(question=="") return
+        if (question == "") return
 
         const updatedMessage = [...message,
         {
@@ -73,7 +73,7 @@ Return ONLY JSON.
         )
         )
         replyJSON.movies = movieDetails
-    
+
 
         setmessage([...updatedMessage,
         {
@@ -103,12 +103,24 @@ Return ONLY JSON.
                             <h1 id='cinewheel'>CineWheel AI</h1>
                             <p>Try saying..</p>
                             <div className="grid">
-                                <div className='promptCard'><span className='emoji'>🍿</span> <span className="text">What should I watch after Interstellar?</span></div>
-                                <div className='promptCard'><span className='emoji'>🧠</span> <span className="text">Mind-bending movies</span></div>
-                                <div className='promptCard'><span className='emoji'>✨</span> <span className="text">Surprise me</span></div>
-                                <div className='promptCard'><span className='emoji'>🚀</span> <span className="text">Recommend 5 movies similar to Interstellar, but more emotional.</span></div>
-                                <div className='promptCard'><span className='emoji'>❤️</span> <span className="text">Romantic movies with happy endings</span>  </div>
-                                <div className='promptCard'><span className='emoji'>⏱️</span> <span className="text">Hidden gems under 2 hours</span></div>
+                                <div className='promptCard' onClick={() => {
+                                    setquestion("What should I watch after Interstellar?")
+                                }}><span className='emoji'>🍿</span> <span className="text">What should I watch after Interstellar?</span></div>
+                                <div className='promptCard' onClick={() => {
+                                    setquestion("Mind-bending movies")
+                                }}><span className='emoji'>🧠</span> <span className="text">Mind-bending movies</span></div>
+                                <div className='promptCard' onClick={() => {
+                                    setquestion("Surprise me")
+                                }}><span className='emoji'>✨</span> <span className="text">Surprise me</span></div>
+                                <div className='promptCard' onClick={() => {
+                                    setquestion("Recommend 5 movies similar to Interstellar, but more emotional.")
+                                }}><span className='emoji'>🚀</span> <span className="text">Recommend 5 movies similar to Interstellar, but more emotional.</span></div>
+                                <div className='promptCard' onClick={() => {
+                                    setquestion("Romantic movies with happy endings")
+                                }}><span className='emoji'>❤️</span> <span className="text">Romantic movies with happy endings</span>  </div>
+                                <div className='promptCard' onClick={() => {
+                                    setquestion("Hidden gems under 2 hours")
+                                }}><span className='emoji'>⏱️</span> <span className="text">Hidden gems under 2 hours</span></div>
                             </div>
                         </div>
                     </div>
@@ -117,7 +129,7 @@ Return ONLY JSON.
                         {message.filter(msg => msg.role !== "system").map((msg, index) => {
                             if (msg.role == "assistant") {
                                 const aiMsg = JSON.parse(msg.content)
-            
+
                                 return (
                                     <div className="assistantMessage" key={index}>
 
@@ -173,7 +185,7 @@ Return ONLY JSON.
                                 )
                             }
                             else {
-                    
+
 
                                 return (
                                     <div className={msg.role} key={index}>
