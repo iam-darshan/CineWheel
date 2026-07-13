@@ -21,6 +21,9 @@ import { AwardIcon, Clapperboard, Tv } from 'lucide-react'
 
 
 function App() {
+  
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+
 
   const STORAGE_VERSION = 4;
 
@@ -227,7 +230,6 @@ function App() {
 
 
 
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   return (
     <>
       <div className='container'>
