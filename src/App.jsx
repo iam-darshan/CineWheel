@@ -239,7 +239,7 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
           setshowAI(true)
         }}><span>✨ </span>Ask AI</div>
         {showAI && 
-        <AskAI addMovieFromSuggest={addMovieFromSuggest} setshowAI={setshowAI}/>
+        <AskAI addMovieFromSuggest={addMovieFromSuggest} setshowAI={setshowAI} watchedMoviesList={watchedMoviesList} movies={movies}/>
         }
         <div className='mediaChange'>
           <div
