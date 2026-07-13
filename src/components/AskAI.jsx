@@ -6,7 +6,7 @@ import logo from '../assets/logo.png'
 
 
 
-const API_KEY = "1a89ea5551c72611dcade6ecf04263ac";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 
 

@@ -22,7 +22,7 @@ import { AwardIcon, Clapperboard, Tv } from 'lucide-react'
 
 function App() {
   
-const API_KEY = "1a89ea5551c72611dcade6ecf04263ac";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 
   const STORAGE_VERSION = 4;
