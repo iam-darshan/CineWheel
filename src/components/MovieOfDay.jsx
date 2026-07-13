@@ -29,7 +29,6 @@ function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest })
 
             const keywordRes = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/keywords?api_key=${API_KEY}`)
             const keywordData = await keywordRes.json();
-            console.log(keywordData, movie.title)
             const keywordIds = keywordData.keywords.map(key => key.id).join("|")
             const ids = genreToIds(movie.genres).join(",")
 
@@ -43,7 +42,6 @@ function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest })
             const notInLibrary = notInWatched.filter(movie => movies.every(m => m.id !== movie.id))
             const sortedList = notInLibrary.sort((a, b) => b.vote_rating - a.vote_rating)
 
-            console.log(sortedList);
             const topTwo = sortedList.slice(0, 2);
             settopTwomovies(topTwo)
 
@@ -87,7 +85,7 @@ function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest })
                     : "✨ Today's Picks"}
             </h1>           <div className='movieRow'>
                 {topTwomovies.map((movie, index) => (
-                    <div className='todaysPicks'>
+                    <div className='todaysPicks' key={index}>
                         <div className="pickPoster">
                             <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
                         </div>
@@ -101,7 +99,7 @@ function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest })
                                     <div className='addToLibraryBtn'>Add to Library</div>
                                 </div>
                             </div>
-                            <div className="yearAndRatingNew">{console.log(movie)}
+                            <div className="yearAndRatingNew">
                                 <div id='releaseYear'><h4 id='releaseYearh4'>{(movie.release_date || movieDetails.first_air_date) ? (movie.release_date || movie.first_air_date).slice(0, 4) : "N/A"}</h4></div>
                                 <div id='IMDBrating'><h4 id='IMDBratingh4'>{movie.vote_average ? (movie.vote_average).toFixed(2) : "N/A"}</h4></div>
                                 {/* <div className='runTime'><span>{movie.runtime}</span><span>min</span></div> */}

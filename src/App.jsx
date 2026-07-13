@@ -56,7 +56,6 @@ function App() {
     { id: 1396, mediaType: "tv", title: "Breaking Bad", poster_path: "/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg", release_year: 2008, genres: ["Drama", "Crime"] }
   ];
 
-  console.log(movieList)
 
 
   const [movies, setmovies] = useState(movieList);
@@ -228,8 +227,7 @@ function App() {
 
 
 
-  const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
-
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   return (
     <>
       <div className='container'>

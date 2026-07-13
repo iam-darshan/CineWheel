@@ -91,7 +91,6 @@ function Library({
             <ul className='moviesUL'>
               {displayedMovies.map((movie) => (
                 <div key={movie.id} style={{position:"relative"}}>
-                  {console.log(movie)}
                 <li className='moviesInSuggestion' key={movie.id}  onClick={()=>{
                   setshowPopup(true);
                   setselectedMovie(movie.id)
@@ -124,7 +123,6 @@ function Library({
                   </div>
                   <div className='titleAndYear'>
                     <h3 id='movieTitle'>{movie.title || movie.name}</h3>
-                    {/* {console.log(movie)} */}
                     <div>
                       <div className='yearAndrating'>
                         <h5 id='movieYear'>{movie.release_year || "N/A"}</h5>

@@ -5,9 +5,14 @@ import { Plus, CircleX, Send } from 'lucide-react'
 import logo from '../assets/logo.png'
 
 
+
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
+
+
+
 function AskAI({ addMovieFromSuggest, setshowAI }) {
 
-    const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
 
 
     const [question, setquestion] = useState("")
@@ -48,7 +53,7 @@ Return ONLY JSON.
 
 
 
-        const groq = new Groq({ apiKey: "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", dangerouslyAllowBrowser: true });
+        const groq = new Groq({ apiKey: GROQ_API_KEY, dangerouslyAllowBrowser: true });
         const getGroqChatCompletion = await groq.chat.completions.create({
             messages: updatedMessage,
             model: "openai/gpt-oss-20b",
@@ -67,10 +72,8 @@ Return ONLY JSON.
         }
         )
         )
-        console.log(movieDetails)
         replyJSON.movies = movieDetails
-        console.log(replyJSON)
-
+    
 
         setmessage([...updatedMessage,
         {
@@ -114,8 +117,7 @@ Return ONLY JSON.
                         {message.filter(msg => msg.role !== "system").map((msg, index) => {
                             if (msg.role == "assistant") {
                                 const aiMsg = JSON.parse(msg.content)
-                                console.log(aiMsg)
-
+            
                                 return (
                                     <div className="assistantMessage" key={index}>
 
@@ -132,7 +134,7 @@ Return ONLY JSON.
                                         <div className='ULcontainer' >
                                             <ul className='moviesUL'>
                                                 {aiMsg.movies.map((movie) => (
-                                                    <li className='moviesInSuggestion' key={index} >
+                                                    <li className='moviesInSuggestion' key={movie.id} >
                                                         <div className='Plus'>
                                                             <Plus
                                                                 style={{
@@ -157,7 +159,7 @@ Return ONLY JSON.
                                                             <h3 id='movieTitle'>{movie.title || movie.name}</h3>
                                                             <div className='yearAndrating'>
                                                                 <h5 id='movieYear'>{(movie.release_date || movie.first_air_date)?.slice(0, 4) || "N/A"}</h5>
-                                                                <h5 id='movieRating'>9.00</h5>
+                                                                <h5 id='movieRating'>{movie.vote_average.toFixed(2) || "N/A"}</h5>
                                                             </div>
 
                                                         </div>
@@ -171,7 +173,7 @@ Return ONLY JSON.
                                 )
                             }
                             else {
-                                { console.log(message) }
+                    
 
                                 return (
                                     <div className={msg.role} key={index}>
