@@ -12,6 +12,7 @@ import MovieOfDay from './components/MovieOfDay.jsx'
 import SuggestedMovies from './components/SuggestedMovies.jsx'
 import Alert from './components/Alert.jsx'
 import Footer from './components/Footer.jsx'
+import AskAI from './components/AskAI.jsx'
 import { AwardIcon, Clapperboard, Tv } from 'lucide-react'
 
 
@@ -68,6 +69,7 @@ function App() {
   const [selectedGenre, setSelectedGenre] = useState("Default");
   const [alertMsg, setalertMsg] = useState("");
   const [mediaType, setmediaType] = useState("movie");
+  const [showAI, setshowAI] = useState(false)
 
 
   const inputRef = useRef();
@@ -233,6 +235,12 @@ function App() {
       <div className='container'>
         <Alert alertMsg={alertMsg} />
         <Navbar />
+        <div className='AskAIbtn' onClick={()=>{
+          setshowAI(true)
+        }}><span>✨ </span>Ask AI</div>
+        {showAI && 
+        <AskAI addMovieFromSuggest={addMovieFromSuggest} setshowAI={setshowAI}/>
+        }
         <div className='mediaChange'>
           <div
             className={`mediaChangeBtn ${mediaType === "movie"
