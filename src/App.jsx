@@ -38,15 +38,6 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
   }, [])
 
-  //clear storage
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-
-    if (params.get("reset") === "true") {
-      localStorage.clear();
-      window.location.href = "/";
-    }
-  }, []);
 
   const lastList = localStorage.getItem("savedMovies");
   const lastWatchedList = localStorage.getItem("watchedMovies");
