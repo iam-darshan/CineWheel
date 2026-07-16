@@ -14,15 +14,15 @@ const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 
 
 function AskAI({ addMovieFromSuggest, setshowAI, watchedMoviesList, movies }) {
+    console.log(import.meta.env.VITE_GROQ_API_KEY);
 
-    console.log(movies)
-    const LibraryMovies = movies.filter(movie => movie.mediaType === "movie").map(movie => ({
+    const LibraryMovies = movies.map(movie => ({
         title: movie.title,
         genre: movie.genre
 
     }))
 
-    const watchedMoviesInfo = watchedMoviesList.filter(movie => movie.mediaType === "movie").map(movie => ({
+    const watchedMoviesInfo = watchedMoviesList.map(movie => ({
         title: movie.title,
         genre: movie.genre
 
@@ -103,7 +103,8 @@ Return ONLY valid JSON in exactly this format:
   "movies": [
     {
       "title": "",
-      "year": 0
+      "year": 0,
+      "mediaType":"movie"/"tv"
     }
   ]
 }
@@ -125,35 +126,52 @@ Return ONLY valid JSON in exactly this format:
         setquestion("")
 
 
+        try {
 
-        const groq = new Groq({ apiKey: GROQ_API_KEY, dangerouslyAllowBrowser: true });
-        const getGroqChatCompletion = await groq.chat.completions.create({
-            messages: updatedMessage,
-            model: "openai/gpt-oss-20b",
-        });
+            const groq = new Groq({ apiKey: GROQ_API_KEY, dangerouslyAllowBrowser: true });
+            const getGroqChatCompletion = await groq.chat.completions.create({
+                messages: updatedMessage,
+                model: "openai/gpt-oss-20b",
+            });
 
-        const chatCompletion = await getGroqChatCompletion;
+            const chatCompletion = await getGroqChatCompletion;
 
-        const reply = chatCompletion.choices[0]?.message?.content || "";
+            const reply = chatCompletion.choices[0]?.message?.content || "";
 
-        const replyJSON = JSON.parse(reply)
-        const movieRes = replyJSON.movies;
-        const movieDetails = await Promise.all(movieRes.map(async (movie) => {
-            const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(movie.title)}&year=${movie.year}`);
-            const data = await res.json();
-            return data.results[0] ?? null;
+            const replyJSON = JSON.parse(reply)
+            const movieRes = replyJSON.movies;
+            const movieDetails = await Promise.all(movieRes.map(async (movie) => {
+                const res = await fetch(`https://api.themoviedb.org/3/search/${movie.mediaType}?api_key=${API_KEY}&query=${encodeURIComponent(movie.title)}&year=${movie.year}`);
+                const data = await res.json();
+                const realData = { ...data.results[0], mediaType: movie.mediaType };
+                return realData ?? null;
+            }
+            )
+            )
+            replyJSON.movies = movieDetails
+
+
+            setmessage([...updatedMessage,
+            {
+                role: "assistant",
+                content: JSON.stringify(replyJSON),
+            }
+            ])
         }
-        )
-        )
-        replyJSON.movies = movieDetails
+        catch (err) {
+            console.log(err)
 
-
-        setmessage([...updatedMessage,
-        {
-            role: "assistant",
-            content: JSON.stringify(replyJSON),
+            setmessage([
+                ...updatedMessage,
+                {
+                    role: "assistant",
+                    content: JSON.stringify({
+                        reply: "Sorry, I couldn't process that request. Please try asking again.",
+                        movies: []
+                    })
+                }
+            ]);
         }
-        ])
 
         setquestion("")
 
@@ -231,7 +249,8 @@ Return ONLY valid JSON in exactly this format:
                                                                     }}
 
                                                                     onClick={() => {
-                                                                        addMovieFromSuggest(movie.id);
+                                                                        addMovieFromSuggest(movie.id, movie.mediaType);
+                                                                        console.log(movie.mediaType)
                                                                     }
                                                                     }
                                                                 />
@@ -246,7 +265,9 @@ Return ONLY valid JSON in exactly this format:
                                                                 <h3 id='movieTitle'>{movie.title || movie.name}</h3>
                                                                 <div className='yearAndrating'>
                                                                     <h5 id='movieYear'>{(movie.release_date || movie.first_air_date)?.slice(0, 4) || "N/A"}</h5>
-                                                                    <h5 id='movieRating'>{movie.vote_average.toFixed(2) || "N/A"}</h5>
+                                                                    <h5 id='movieRating'>{movie.vote_average != null
+                                                                        ? movie.vote_average.toFixed(2)
+                                                                        : "N/A"}</h5>
                                                                 </div>
 
                                                             </div>

@@ -25,6 +25,41 @@
     stroke: red;
 }
 
+.titleAndCount{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 18px;
+}
+.countBox{
+    padding: 10px 15px;
+    background-color: rgb(7, 14, 48);
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    gap: 5px;
+    font-weight: 500;
+    font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serifs;
+    background:rgba(122,92,255,.08);
+    border:1px solid rgba(122,92,255,.28);
+    backdrop-filter:blur(18px);
+    box-shadow:
+        0 0 22px rgba(122,92,255,.15),
+        inset 0 0 8px rgba(255,255,255,.03);
+    transition:.25s;
+}
+.countBox:hover{
+    transform: translateY(-3px);
+}
+.countBoxLabel{
+    font-size: 12px;
+    font-weight: 300;
+}
+
+
 
 
 

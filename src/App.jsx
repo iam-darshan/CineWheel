@@ -97,7 +97,7 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
     let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(nextList))
   }
-  const addMovieFromSuggest = async (id) => {
+  const addMovieFromSuggest = async (id,mediaType) => {
     if (movies.some(movie => movie.id == id)) {
       alertFn("Movie Already Exist in Library");
       return;
@@ -317,7 +317,7 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
           </div>
         </div>
-        <MovieOfDay watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY} />
+        <MovieOfDay mediaType={mediaType} watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY} />
         <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} mediaType={mediaType} />
         <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} mediaType={mediaType} />
       </div>
