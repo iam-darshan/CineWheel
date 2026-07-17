@@ -21,8 +21,6 @@ function Authentication({ setuserName, setmovies, setWatchedMoviesList }) {
     const watchedMovies = localStorage.getItem("watchedMovies");
 
 
-    console.log(typeof savedMovies)
-
     const CreateUser = async (id, email, name) => {
         const userRef = doc(db, "CineWheel", id);
         const snap = await getDoc(userRef);
@@ -71,13 +69,6 @@ function Authentication({ setuserName, setmovies, setWatchedMoviesList }) {
 
                         setmovies(data.library || []);
                         setWatchedMoviesList(data.watchedMovies || []);
-
-
-
-                        console.log("Firestore library:", data.library);
-                        console.log("typeof Firestore library:", typeof data.library);
-                        console.log("isArray:", Array.isArray(data.library));
-
                         setmovies(data.library || []);
 
                     }

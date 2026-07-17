@@ -75,7 +75,6 @@ function App() {
   const btnRef = useRef();
 
   const genreName = (movieIds) => {
-    console.log(movieIds)
     return movieIds.map(id =>
       genres.find(genres => genres.id === id)?.name);
   }
@@ -231,12 +230,7 @@ function App() {
 
   const changeGenre = (genre) => {
     setSelectedGenre(genre)
-    console.log("Clicked:", genre);
   }
-
-  console.log("movies =", movies);
-console.log("typeof movies =", typeof movies);
-console.log("isArray =", Array.isArray(movies));
 
     const displayedMovies = movies.filter(movie =>
       (selectedGenre === "Default" || movie.genres?.includes(selectedGenre)) &&
@@ -250,7 +244,6 @@ console.log("isArray =", Array.isArray(movies));
 
   const alertFn = (msg) => {
     setalertMsg(msg)
-    console.log(msg)
     setTimeout(() => {
       setalertMsg("")
     }, 2000);

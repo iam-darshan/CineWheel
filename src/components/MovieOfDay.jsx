@@ -39,7 +39,6 @@ function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest, m
             const data = await res.json();
 
             const result = data.results;
-            console.log(result)
 
             const notInWatched = result.filter(
                 item => watchedMoviesList.every(m => m.id !== item.id));
