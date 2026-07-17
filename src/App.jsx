@@ -98,7 +98,7 @@ function App() {
       alertFn("Movie Already Exist in Library");
       return;
     }
-    if (movies.some(movie => movie.id == id)) {
+    if (watchedMoviesList.some(movie => movie.id == id)) {
       alertFn("Movie Already Exist in Watched List");
       return;
     }
