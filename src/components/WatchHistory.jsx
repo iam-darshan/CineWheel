@@ -16,7 +16,7 @@ function WatchHistory({ watchedMoviesList, removeFromHistory, mediaType }) {
             <div className='movieULcontainer' >
 
                 <ul className='moviesUL'>
-                    {watchedMoviesList.filter(movie => movie.mediaType === mediaType).map((movie) => (
+                    {watchedMoviesList.slice().reverse().filter(movie => movie.mediaType === mediaType).map((movie) => (
                         <li className='moviesInSuggestion' key={movie.id} >
                             <div className='Trash'>
                                 <Trash2 className='trashIcon'
