@@ -212,9 +212,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: rgba(255, 105, 180, .08);
+    border: 1px solid rgba(255, 105, 180, .22);
+
     box-shadow:
-    0 0 8px rgba(122,92,255,.12),
-    inset 0 0 2px rgba(255,255,255,.03);
+        0 0 8px rgba(255, 105, 180, .12),
+        inset 0 0 4px rgba(255, 255, 255, .03);
 }
 
 #releaseYearh4 {
@@ -230,9 +233,9 @@
     background: rgba(122, 92, 255, .08);
     border: 1px solid rgba(122, 92, 255, .22);
     box-shadow:
-    0 0 8px rgba(122,92,255,.12),
-    inset 0 0 2px rgba(255,255,255,.03);
-    
+        0 0 8px rgba(122, 92, 255, .12),
+        inset 0 0 2px rgba(255, 255, 255, .03);
+
 }
 
 #IMDBrating::before {

@@ -141,17 +141,18 @@
     align-items: flex-start;
     gap: 5px;
   }
+  .titleAndBtn h2{
+    margin: 5px 0 0 5px;
+  }
   .addToLibrary{
-    margin: 0;
-    
-    transform: scale(0.7);
+    margin-bottom: 10px;
   }
   .addToLibrary:hover{
-    transform: scale(0.75);
+    transform: translateY(-5px)
   }
   .pickPoster{
-    min-width: 100px;
-    min-height: 130px;
+    min-height: 180px;
+    min-width: 120px;
     height: 90%;
     display: flex;
     align-items: center;
