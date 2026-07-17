@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './MovieOfDay.css'
 import { Plus } from 'lucide-react';
 
-<<<<<<< HEAD
-function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest, mediaType }) {
-=======
 function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest, mediaType ,lastWatchedList}) {
->>>>>>> 40a8bb8 (Firebase in 2nd branch)
 
     const [topTwomovies, settopTwomovies] = useState([])
     const [becauseYouWatched, setbecauseYouWatched] = useState("")
@@ -95,11 +91,7 @@ function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest, m
         };
 
         TodaysPicker()
-<<<<<<< HEAD
-    }, [mediaType,watchedMoviesList])
-=======
     }, [mediaType,lastWatchedList,mediaType])
->>>>>>> 40a8bb8 (Firebase in 2nd branch)
 
     return (
 
@@ -117,15 +109,9 @@ function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest, m
                         <div className="detailsNew">
                             <div className='titleAndBtn'>
                                 <h2>{movie.title || movie.name}</h2>
-<<<<<<< HEAD
-                                <div className='addToLibrary' onClick={() => {
-                                    addMovieFromSuggest(movie.id,mediaType)
-                                }}>
-=======
                                 <div className='addToLibrary'onClick={() => {
                                     addMovieFromSuggest(movie.id,mediaType)
                                 }} >
->>>>>>> 40a8bb8 (Firebase in 2nd branch)
                                     <Plus />
                                     <div className='addToLibraryBtn'>Add to Library</div>
                                 </div>

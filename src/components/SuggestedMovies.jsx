@@ -108,11 +108,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType }) {
                                         }}
 
                                     onClick={() => {
-<<<<<<< HEAD
-                                         addMovieFromSuggest(movie.id,mediaType)
-=======
                                        addMovieFromSuggest(movie.id, mediaType);
->>>>>>> 40a8bb8 (Firebase in 2nd branch)
                                     }
                                     } />
                                 </div>

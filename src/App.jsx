@@ -13,10 +13,7 @@ import SuggestedMovies from './components/SuggestedMovies.jsx'
 import Alert from './components/Alert.jsx'
 import Footer from './components/Footer.jsx'
 import AskAI from './components/AskAI.jsx'
-<<<<<<< HEAD
-=======
 import Authentication from './components/Authentication.jsx'
->>>>>>> 40a8bb8 (Firebase in 2nd branch)
 import { AwardIcon, Clapperboard, Tv } from 'lucide-react'
 
 
@@ -72,14 +69,9 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const [selectedGenre, setSelectedGenre] = useState("Default");
   const [alertMsg, setalertMsg] = useState("");
   const [mediaType, setmediaType] = useState("movie");
-<<<<<<< HEAD
-  const [showAI, setshowAI] = useState(false)
-  const [userName,setuserName] =useState("Username")
-=======
   const [showAI, setshowAI] = useState(false);
   const [userName, setuserName] = useState("Username");
 
->>>>>>> 40a8bb8 (Firebase in 2nd branch)
 
 
   const inputRef = useRef();
@@ -105,11 +97,7 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
     let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(nextList))
   }
-<<<<<<< HEAD
-  const addMovieFromSuggest = async (id,mediaType) => {
-=======
-  const addMovieFromSuggest = async (id, mediaType) => {
->>>>>>> 40a8bb8 (Firebase in 2nd branch)
+  const addMovieFromSuggest = (id, mediaType) => {
     if (movies.some(movie => movie.id == id)) {
       alertFn("Movie Already Exist in Library");
       return;
@@ -281,19 +269,11 @@ console.log("isArray =", Array.isArray(movies));
         <Authentication setuserName={setuserName} setmovies={setmovies} setWatchedMoviesList={setwatchedMoviesList} />
         <Alert alertMsg={alertMsg} />
         <Navbar userName={userName}/>
-<<<<<<< HEAD
-        <div className='AskAIbtn' onClick={()=>{
-          setshowAI(true)
-        }}><span>✨ </span>Ask AI</div>
-        {showAI && 
-        <AskAI addMovieFromSuggest={addMovieFromSuggest} setshowAI={setshowAI} watchedMoviesList={watchedMoviesList} movies={movies}/>
-=======
         <div className='AskAIbtn' onClick={() => {
           setshowAI(true)
         }}><span>✨ </span>Ask AI</div>
         {showAI &&
           <AskAI addMovieFromSuggest={addMovieFromSuggest} setshowAI={setshowAI} watchedMoviesList={watchedMoviesList} movies={movies} />
->>>>>>> 40a8bb8 (Firebase in 2nd branch)
         }
         <div className='mediaChange'>
           <div
@@ -371,11 +351,7 @@ console.log("isArray =", Array.isArray(movies));
 
           </div>
         </div>
-<<<<<<< HEAD
-        <MovieOfDay mediaType={mediaType} watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY} />
-=======
         <MovieOfDay mediaType={mediaType} watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY} lastWatchedList={lastWatchedList}/>
->>>>>>> 40a8bb8 (Firebase in 2nd branch)
         <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} mediaType={mediaType} />
         <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} mediaType={mediaType} />
       </div>

@@ -7,8 +7,6 @@ import { getAuth, signOut } from "firebase/auth";
 
 
 function Navbar({userName}) {
-<<<<<<< HEAD
-=======
 
   const clearData = () => {
 
@@ -18,7 +16,6 @@ function Navbar({userName}) {
     }).catch((error) => {
       console.log(error)
     });
->>>>>>> 40a8bb8 (Firebase in 2nd branch)
 
     localStorage.removeItem("savedMovies");
     localStorage.removeItem("watchedMovies");
