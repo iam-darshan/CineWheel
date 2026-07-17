@@ -63,6 +63,7 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const [alertMsg, setalertMsg] = useState("");
   const [mediaType, setmediaType] = useState("movie");
   const [showAI, setshowAI] = useState(false)
+  const [userName,setuserName] =useState("Username")
 
 
   const inputRef = useRef();
@@ -225,7 +226,7 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
     <>
       <div className='container'>
         <Alert alertMsg={alertMsg} />
-        <Navbar />
+        <Navbar userName={userName}/>
         <div className='AskAIbtn' onClick={()=>{
           setshowAI(true)
         }}><span>✨ </span>Ask AI</div>

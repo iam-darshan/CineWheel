@@ -110,7 +110,7 @@ function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest, m
                             <div className='titleAndBtn'>
                                 <h2>{movie.title || movie.name}</h2>
                                 <div className='addToLibrary' onClick={() => {
-                                    addMovieFromSuggest(movie.id,mediaType);
+                                    addMovieFromSuggest(movie.id)
                                 }}>
                                     <Plus />
                                     <div className='addToLibraryBtn'>Add to Library</div>

@@ -5,7 +5,7 @@ import logo from '../assets/logo.png'
 import { CircleUserRound,LogOut } from 'lucide-react'
 
 
-function Navbar() {
+function Navbar({userName}) {
 
   const clearData =()=>{
     localStorage.removeItem("savedMovies");
