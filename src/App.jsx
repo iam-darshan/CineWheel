@@ -98,6 +98,10 @@ function App() {
       alertFn("Movie Already Exist in Library");
       return;
     }
+    if (watchedMoviesList.some(movie => movie.id == id)) {
+      alertFn("Movie Already Exist in Watched Movies");
+      return;
+    }
     alertFn("Movie Added To Library");
     const res = await fetch(`https://api.themoviedb.org/3/${mediaType}/${id}?api_key=${API_KEY}`)
     const result = await res.json();
