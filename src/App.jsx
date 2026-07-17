@@ -29,9 +29,6 @@ import { auth } from "./firebase.js";
 
 
 function App() {
-  
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-
 
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -97,7 +94,7 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
     let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(nextList))
   }
-  const addMovieFromSuggest = (id, mediaType) => {
+  const addMovieFromSuggest = async (id, mediaType) => {
     if (movies.some(movie => movie.id == id)) {
       alertFn("Movie Already Exist in Library");
       return;
