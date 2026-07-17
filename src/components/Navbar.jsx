@@ -39,7 +39,7 @@ function Navbar({userName}) {
             window.location.reload();
           }} />
           <span className="tooltip">
-            Clear Data
+            Log Out
           </span>
         </div>
       </div>
