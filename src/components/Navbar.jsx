@@ -22,7 +22,7 @@ function Navbar() {
 
       <div className="userDetails">
         <CircleUserRound />
-        <h5>UserName</h5>
+        <h5>{userName}</h5>
         <div className='Clear'>
           
         <LogOut onClick={()=>{

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './SuggestedMovies.css'
 import { Plus } from 'lucide-react'
 
-function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn,mediaType }) {
+function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType }) {
 
     const [topMovies, settopMovies] = useState([])
     const [trendingMovies, settrendingMovies] = useState([])
@@ -66,7 +66,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn,mediaType }) {
                                         }}
 
                                         onClick={() => {
-                                            addMovieFromSuggest(movie.id);
+                                            addMovieFromSuggest(movie.id,mediaType);
                                         }
                                         } />
                                 </div>
@@ -108,7 +108,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn,mediaType }) {
                                         }}
 
                                     onClick={() => {
-                                        addMovieFromSuggest(movie.id);
+                                        addMovieFromSuggest(movie.id,mediaType);
                                     }
                                     } />
                                 </div>
