@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './MovieOfDay.css'
 import { Plus } from 'lucide-react';
 
-function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest, mediaType }) {
+function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest, mediaType ,lastWatchedList}) {
 
     const [topTwomovies, settopTwomovies] = useState([])
     const [becauseYouWatched, setbecauseYouWatched] = useState("")
@@ -39,7 +39,6 @@ function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest, m
             const data = await res.json();
 
             const result = data.results;
-            console.log(result)
 
             const notInWatched = result.filter(
                 item => watchedMoviesList.every(m => m.id !== item.id));
@@ -91,7 +90,7 @@ function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest, m
         };
 
         TodaysPicker()
-    }, [mediaType,watchedMoviesList])
+    }, [mediaType,lastWatchedList,mediaType])
 
     return (
 
@@ -109,9 +108,9 @@ function MovieOfDay({ watchedMoviesList, movies, API_KEY, addMovieFromSuggest, m
                         <div className="detailsNew">
                             <div className='titleAndBtn'>
                                 <h2>{movie.title || movie.name}</h2>
-                                <div className='addToLibrary' onClick={() => {
-                                    addMovieFromSuggest(movie.id,mediaType);
-                                }}>
+                                <div className='addToLibrary'onClick={() => {
+                                    addMovieFromSuggest(movie.id,mediaType)
+                                }} >
                                     <Plus />
                                     <div className='addToLibraryBtn'>Add to Library</div>
                                 </div>

@@ -1,0 +1,96 @@
+.authenticatorContainer{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(5px);
+
+ transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease,
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);;
+
+}
+
+.authenticatorPopup{
+    position: absolute;
+    height: 70vh;
+
+    z-index: 1001;
+    background-color: rgb(6, 55, 120);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    width: min(450px, 90vw);
+    padding: 32px;
+
+    border-radius: 24px;
+
+    background: rgba(6, 21, 54, 0.85);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+        0 15px 40px rgba(17, 19, 48, 0.45),
+        0 0 20px rgba(164, 148, 227, 0.2);
+
+    color: white;
+
+    animation: opacity 1s ease;
+
+}
+
+.AuthenticationText {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    margin-left: 20px;
+    font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.titleAndTag{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.googleSignin{
+    width: 200px;
+}
+
+.authenticatorContainer.show{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: scale(1);
+    backdrop-filter: blur(10px);
+}
+
+.authenticatorContainer.hide{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(0.8);
+    backdrop-filter: blur(10px);
+}
+
+@media screen and (max-width: 767px){
+    .authenticatorPopup{
+        width: 80vw;
+        height: 60vh;
+    }
+}

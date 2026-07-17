@@ -14,7 +14,6 @@ const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
 
 
 function AskAI({ addMovieFromSuggest, setshowAI, watchedMoviesList, movies }) {
-    console.log(import.meta.env.VITE_GROQ_API_KEY);
 
     const LibraryMovies = movies.map(movie => ({
         title: movie.title,
@@ -250,7 +249,7 @@ Return ONLY valid JSON in exactly this format:
 
                                                                     onClick={() => {
                                                                         addMovieFromSuggest(movie.id, movie.mediaType);
-                                                                        console.log(movie.mediaType)
+                                                                   
                                                                     }
                                                                     }
                                                                 />
