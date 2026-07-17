@@ -1,27 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-.popup{
-    position: fixed; 
+.popup {
+    position: fixed;
     inset: 0;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background-color: rgba(255, 255, 255, 0.2); 
+    background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     z-index: 800;
 
-    font-family:'Poppins', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 
 }
 
-.popupCard{
+.popupCard {
     position: relative;
     height: 80vh;
     width: 80vw;
-    background-color: rgba(10,10,12,1);
+    background-color: rgba(10, 10, 12, 1);
     border-radius: 10px;
     overflow: hidden;
 
@@ -31,7 +31,7 @@
 
 }
 
-.header{
+.header {
     height: 15%;
     display: flex;
     flex-direction: row;
@@ -41,7 +41,8 @@
 
     color: white;
 }
-.todayspick{
+
+.todayspick {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -49,23 +50,23 @@
     gap: 10px;
     padding-top: 15px;
 
-    text-shadow: 0 0 1px #00ffc0,0 0 11px #00ffc0;
+    text-shadow: 0 0 1px #00ffc0, 0 0 11px #00ffc0;
     /* filter: drop-shadow(0 0 2px #00ffc0) drop-shadow(0 0 5px #00ffc0); */
 }
 
-.todayspick h2{
+.todayspick h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    color:#21e271;
+    color: #21e271;
     font-size: 30px;
-    font-family:'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 
 }
 
 
-.body{
+.body {
     height: 70%;
     border-top: solid 2px rgba(193, 192, 192, 0.447);
     border-bottom: solid 2px rgba(193, 192, 192, 0.447);
@@ -74,11 +75,11 @@
     display: flex;
     flex-direction: row;
     overflow-y: auto;
-     z-index: 100;
-    
+    z-index: 100;
+
 }
 
-.backdropContainer{
+.backdropContainer {
     position: absolute;
     top: 0;
     right: 0;
@@ -87,81 +88,76 @@
 }
 
 
-.backdropImage{
-    width:100%;
-    height:100%;
+.backdropImage {
+    width: 100%;
+    height: 100%;
 
-    object-fit:cover;
-    object-position:center;
+    object-fit: cover;
+    object-position: center;
 
     filter:
-        opacity(0.5)
-        brightness(.8)
-        contrast(1.08)
-        saturate(1.15);
+        opacity(0.5) brightness(.8) contrast(1.08) saturate(1.15);
 }
-.backdropOverlay{
-    position:absolute;
-    inset:0;
+
+.backdropOverlay {
+    position: absolute;
+    inset: 0;
 
     background:
-    linear-gradient(
-        to right,
-        rgba(10,10,12,.96) 0%,
-        rgba(10,10,12,.72) 22%,
-        rgba(10,10,12,.28) 52%,
-        rgba(10,10,12,0) 100%
-    ),
+        linear-gradient(to right,
+            rgba(10, 10, 12, .96) 0%,
+            rgba(10, 10, 12, .72) 22%,
+            rgba(10, 10, 12, .28) 52%,
+            rgba(10, 10, 12, 0) 100%),
 
-    linear-gradient(
-        to bottom,
-        rgba(0,0,0,.05) 0%,
-        rgba(0,0,0,.15) 25%,
-        rgba(10,10,12,.55) 60%,
-        rgba(10,10,12,.92) 82%,
-        rgba(10,10,12,0) 100%
-    );
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, .05) 0%,
+            rgba(0, 0, 0, .15) 25%,
+            rgba(10, 10, 12, .55) 60%,
+            rgba(10, 10, 12, .92) 82%,
+            rgba(10, 10, 12, 0) 100%);
 
-    z-index:1;
+    z-index: 1;
     height: 100vh;
 }
 
 .poster {
-  width: 40%;       
-  height: 100%;      
-  overflow: hidden;   
-  border-radius: 15px;
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 15px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .header,
 .body,
-.footer{
-    position:relative;
-    z-index:2;
+.footer {
+    position: relative;
+    z-index: 2;
 }
 
 .posterPic {
-  width: 100%;
-  height: 100%;
-   border-radius: 15px; 
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
 }
 
 .posterImage {
-  width:90%;
-  height: 90%;
-  object-fit: contain; 
-  display: block; 
-  border-radius: 15px;
-   z-index: 100;
-  
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    display: block;
+    border-radius: 15px;
+    z-index: 100;
+
 }
-.details{
-     z-index: 100;
+
+.details {
+    z-index: 100;
     width: 65%;
     height: 100%;
     /* background-color: aquamarine; */
@@ -174,16 +170,19 @@
     /*
      padding:10px 0; */
 }
-.details h2{
-     margin: 10px 0;
+
+.details h2 {
+    margin: 10px 0;
 }
-.yearAndRating{
+
+.yearAndRating {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
-.yearAndRating div{
+
+.yearAndRating div {
     width: 60px;
     height: 30px;
     display: flex;
@@ -191,44 +190,64 @@
     justify-content: center;
     border-radius: 10px;
     color: white;
-    filter: drop-shadow(0 0 .5px #00ffc0) drop-shadow(0 0 1px #00ffc0);
+    background: rgba(52, 120, 255, 0.10);
+    border: 1px solid rgba(74, 144, 255, 0.28);
+    box-shadow:
+        0 0 20px rgba(74, 144, 255, 0.18),
+        inset 0 0 8px rgba(255, 255, 255, .03);
     overflow: hidden;
-    border: 1px solid black;
     padding: 0 3px;
-    font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
-.yearAndRating h4{
-    font-family: 'Poppins','Courier New', Courier, monospace;
+
+.yearAndRating h4 {
+    font-family: 'Poppins', 'Courier New', Courier, monospace;
 }
 
-#releaseYear{
-    background-color: blue;
+#releaseYear {
+    background: rgba(122, 92, 255, .08);
+    border: 1px solid rgba(122, 92, 255, .22);
+    backdrop-filter: blur(18px);
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow:
+    0 0 8px rgba(122,92,255,.12),
+    inset 0 0 2px rgba(255,255,255,.03);
 }
-#releaseYearh4{
+
+#releaseYearh4 {
     font-size: 15px;
-    font-family:'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
 }
-#IMDBrating{
+
+#IMDBrating {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: rgba(122, 92, 255, .08);
+    border: 1px solid rgba(122, 92, 255, .22);
+    box-shadow:
+    0 0 8px rgba(122,92,255,.12),
+    inset 0 0 2px rgba(255,255,255,.03);
+    
 }
-#IMDBrating::before{
+
+#IMDBrating::before {
     content: "⭐ ";
     color: #0066cc;
 }
-#IMDBratingh4{
+
+#IMDBratingh4 {
     font-size: 13px;
-    font-family:'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
 }
-.genreDiv{
-     width: fit-content;
+
+.genreDiv {
+    width: fit-content;
     height: 25px;
     display: flex;
     align-items: center;
@@ -239,7 +258,7 @@
     overflow: hidden;
     border: 1px solid rgb(243, 239, 239);
     padding: 0 3px;
-    font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 15px;
     font-weight: 500;
     padding: 0 5px;
@@ -248,54 +267,59 @@
 
 
 /* Provider */
-.watchProviders{
+.watchProviders {
     width: 100%;
 
 }
-.watchProviders h3{
+
+.watchProviders h3 {
     margin: 10px 0;
 }
-.providersRow{
+
+.providersRow {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 10px;
 
 }
-.providerCard{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:8px 12px;
-    background:#23242c;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:12px;
-    transition:.2s;
-}
-.providerCard:hover{
-    transform:translateY(-2px);
-    background:#2d2e38;
+
+.providerCard {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: #23242c;
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 12px;
+    transition: .2s;
 }
 
+.providerCard:hover {
+    transform: translateY(-2px);
+    background: #2d2e38;
+}
 
 
-.providerCard img{
-    width:36px;
-    height:36px;
-    border-radius:8px;
+
+.providerCard img {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
     object-fit: cover;
 }
-.providerCard span{
-    color:white;
-    font-size:14px;
-    font-weight:500;
+
+.providerCard span {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.cast{
+.cast {
     width: 100%;
 }
 
-.castRow{
+.castRow {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -304,12 +328,14 @@
     scrollbar-width: none;
 
 }
-.castCard{
+
+.castCard {
     display: flex;
     flex-direction: column;
     width: 80px;
 }
-.castImg{
+
+.castImg {
     height: 80px;
     aspect-ratio: 1/1;
     border-radius: 50%;
@@ -318,14 +344,16 @@
     justify-content: center;
     align-items: center;
 }
-.castImg img{
+
+.castImg img {
     object-fit: scale-up;
     /* height: 100%; */
     width: 100%;
 }
-.actorName{
+
+.actorName {
     margin: 2px 0;
-    font-family:'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 400;
     text-align: center;
     font-size: 10px;
@@ -335,9 +363,10 @@
 }
 
 
-#addToHistoryh4,#spinAgainh4{
+#addToHistoryh4,
+#spinAgainh4 {
     font-size: 15px;
-    font-family:'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
     text-align: center;
 }
@@ -345,7 +374,7 @@
 
 
 
-.footer{
+.footer {
     height: 15%;
     display: flex;
     flex-direction: row;
@@ -353,9 +382,10 @@
     align-items: center;
     padding: 5px 15px;
 
-    font-family: 'Poppins','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Poppins', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.spinAgain{
+
+.spinAgain {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -366,22 +396,23 @@
     width: 25%;
     border-radius: 10px;
     padding: 5px 15px;
-    margin: 10px,5px;
+    margin: 10px, 5px;
     color: white;
     transition: 0.4s;
 
 }
-.spinAgain:hover{
+
+.spinAgain:hover {
     background-color: rgb(31, 30, 30);
     transform: translateY(-5px)
 }
 
-.addToHistory{
+.addToHistory {
     width: 40%;
     background-color: rgb(75, 110, 224);
     border-radius: 10px;
     padding: 5px 15px;
-    margin: 10px,5px;
+    margin: 10px, 5px;
     height: 70%;
     display: flex;
     align-items: center;
@@ -393,94 +424,102 @@
 
     transition: 0.s;
 }
-.addToHistory:hover{
+
+.addToHistory:hover {
     background-color: rgb(21, 21, 247);
     transform: translateY(-5px)
 }
 
-.desc{
+.desc {
     font-size: 1rem;
     width: 70%;
 }
 
-.genre{
+.genre {
     /* height: 50px; */
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: start;
     /* gap: 5px; */
-    font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
 }
-.genre h6{
+
+.genre h6 {
     margin: 0;
-    padding:0;
+    padding: 0;
     color: rgb(121, 118, 113);
 }
-.genre h5{
+
+.genre h5 {
     margin: 0;
-    padding:0;
-    
+    padding: 0;
+
 }
-.genreRow{
+
+.genreRow {
     display: flex;
     flex-direction: row;
     gap: 5px;
 }
-.desc h6{
+
+.desc h6 {
     margin: 0;
-    padding:0;
+    padding: 0;
     color: rgb(121, 118, 113);
     font-size: 13px;
 }
-.desc h5{
+
+.desc h5 {
     margin: 0;
-    padding:0;
+    padding: 0;
     font-weight: 300;
-    
+
 }
 
 
 @media (max-width: 767px) {
-  
-.popup{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    .popup {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .popupCard {
+        width: 90vw;
+        height: 80vh;
+    }
+
+    .body {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+    }
+
+    .poster {
+        height: 90%;
+
+    }
+
+    .details {
+        height: 60%;
+        width: 90%;
+
+        gap: 8px;
+        z-index: 100;
+    }
+
+    .desc {
+        width: 90%;
+    }
+
+    .backdropContainer {
+        height: 100%;
+        width: 100%;
+    }
 
 }
-.popupCard{
-    width: 90vw;
-    height: 80vh;
-}
-
-.body{
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-     z-index: 100;
-}
-
-.poster{
-    height: 90%;
-
-}
-.details{
-    height: 60%;
-    width: 90%;
-
-    gap: 8px;
-     z-index: 100;
-}
-.desc{
-    width: 90%;
-}
-
-.backdropContainer{
-    height: 100%;
-    width: 100%;
-}
-
-}
-

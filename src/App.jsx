@@ -13,7 +13,18 @@ import SuggestedMovies from './components/SuggestedMovies.jsx'
 import Alert from './components/Alert.jsx'
 import Footer from './components/Footer.jsx'
 import AskAI from './components/AskAI.jsx'
+<<<<<<< HEAD
+=======
+import Authentication from './components/Authentication.jsx'
+>>>>>>> 40a8bb8 (Firebase in 2nd branch)
 import { AwardIcon, Clapperboard, Tv } from 'lucide-react'
+
+
+
+import { db } from "./firebase.js";
+import { doc, collection, getDoc, getDocs, getFirestore, setDoc, updateDoc, onSnapshot, arrayUnion } from "firebase/firestore";
+import { auth } from "./firebase.js";
+
 
 
 
@@ -23,6 +34,9 @@ import { AwardIcon, Clapperboard, Tv } from 'lucide-react'
 function App() {
   
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+
+
+  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 
   const STORAGE_VERSION = 4;
@@ -44,11 +58,7 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
   const watchedList = lastWatchedList ? JSON.parse(lastWatchedList) : [];
 
-  const movieList = lastList ? JSON.parse(lastList) : [
-    { id: 157336, mediaType: "movie", title: "Interstellar", poster_path: "/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg", release_year: 2014, genres: ["Adventure", "Drama", "Science Fiction"] },
-    { id: 27205, mediaType: "movie", title: "Inception", poster_path: "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg", release_year: 2010, genres: ["Action", "Adventure", "Drama"] },
-    { id: 1396, mediaType: "tv", title: "Breaking Bad", poster_path: "/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg", release_year: 2008, genres: ["Drama", "Crime"] }
-  ];
+  const movieList = lastList ? JSON.parse(lastList) : [];
 
 
 
@@ -62,8 +72,14 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const [selectedGenre, setSelectedGenre] = useState("Default");
   const [alertMsg, setalertMsg] = useState("");
   const [mediaType, setmediaType] = useState("movie");
+<<<<<<< HEAD
   const [showAI, setshowAI] = useState(false)
   const [userName,setuserName] =useState("Username")
+=======
+  const [showAI, setshowAI] = useState(false);
+  const [userName, setuserName] = useState("Username");
+
+>>>>>>> 40a8bb8 (Firebase in 2nd branch)
 
 
   const inputRef = useRef();
@@ -89,7 +105,11 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
     let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(nextList))
   }
+<<<<<<< HEAD
   const addMovieFromSuggest = async (id,mediaType) => {
+=======
+  const addMovieFromSuggest = async (id, mediaType) => {
+>>>>>>> 40a8bb8 (Firebase in 2nd branch)
     if (movies.some(movie => movie.id == id)) {
       alertFn("Movie Already Exist in Library");
       return;
@@ -99,10 +119,17 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
     const result = await res.json();
     const movie = result;
     const newMovie = { id: movie.id, mediaType: mediaType, title: movie.title || movie.name, poster_path: movie.poster_path, release_year: (movie.release_date || movie.first_air_date)?.slice(0, 4), genres: movie.genres.map(genre => genre.name) };
-    console.log(newMovie)
+
     const newList = [...movies, newMovie];
     setmovies(newList)
     let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(newList))
+    const user = auth.currentUser;
+
+     DBupdater({
+      library: newList
+    })
+
+
   }
 
 
@@ -145,15 +172,25 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
     let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(newMovieList));
     alertFn("Added to Watched Movies");
 
+     DBupdater({
+      library:newMovieList,
+      watchedMovies: newWatchedList
+    })
+
+
   };
 
   const removeMovie = (movieToRemove) => {
+    const user = auth.currentUser;
     const newMovieList =
       movies.filter(
-        movie => movie.id !== movieToRemove
-      )
-      ;
+        movie => movie.id !== movieToRemove)
     setmovies(newMovieList)
+
+    DBupdater({
+      library: newMovieList
+    })
+
     let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(newMovieList))
     alertFn("Movie Removed from Library");
   }
@@ -166,6 +203,19 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
     setwatchedMoviesList(newWatchedList)
     let watchedMovies = localStorage.setItem("watchedMovies", JSON.stringify(newWatchedList));
     alertFn("Movie Removed from Hisory");
+
+    DBupdater({
+      watchedMovies: newWatchedList
+    })
+  }
+
+  const DBupdater = async (change) => {
+    const user = auth.currentUser;
+
+    if (user) {
+      await updateDoc(doc(db, "CineWheel", user.uid), change);
+
+    }
   }
 
   const genres = [
@@ -199,11 +249,14 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
     console.log("Clicked:", genre);
   }
 
+  console.log("movies =", movies);
+console.log("typeof movies =", typeof movies);
+console.log("isArray =", Array.isArray(movies));
 
-  const displayedMovies = movies.filter(movie =>
-    (selectedGenre === "Default" || movie.genres?.includes(selectedGenre)) &&
-    movie.mediaType === mediaType
-  );
+    const displayedMovies = movies.filter(movie =>
+      (selectedGenre === "Default" || movie.genres?.includes(selectedGenre)) &&
+      movie.mediaType === mediaType
+    );
 
   const showPopupDetails = (id) => {
     setselectedMovie(id);
@@ -225,19 +278,28 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   return (
     <>
       <div className='container'>
+        <Authentication setuserName={setuserName} setmovies={setmovies} setWatchedMoviesList={setwatchedMoviesList} />
         <Alert alertMsg={alertMsg} />
         <Navbar userName={userName}/>
+<<<<<<< HEAD
         <div className='AskAIbtn' onClick={()=>{
           setshowAI(true)
         }}><span>✨ </span>Ask AI</div>
         {showAI && 
         <AskAI addMovieFromSuggest={addMovieFromSuggest} setshowAI={setshowAI} watchedMoviesList={watchedMoviesList} movies={movies}/>
+=======
+        <div className='AskAIbtn' onClick={() => {
+          setshowAI(true)
+        }}><span>✨ </span>Ask AI</div>
+        {showAI &&
+          <AskAI addMovieFromSuggest={addMovieFromSuggest} setshowAI={setshowAI} watchedMoviesList={watchedMoviesList} movies={movies} />
+>>>>>>> 40a8bb8 (Firebase in 2nd branch)
         }
         <div className='mediaChange'>
           <div
             className={`mediaChangeBtn ${mediaType === "movie"
-                ? "activeMediaChange"
-                : "inactiveMediaChange"
+              ? "activeMediaChange"
+              : "inactiveMediaChange"
               }`}
             onClick={() => {
               setmediaType("movie");
@@ -249,8 +311,8 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
           <div
             className={`mediaChangeBtn ${mediaType === "tv"
-                ? "activeMediaChange"
-                : "inactiveMediaChange"
+              ? "activeMediaChange"
+              : "inactiveMediaChange"
               }`}
             onClick={() => {
               setmediaType("tv");
@@ -271,7 +333,7 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
             <div className='Spinner'>
 
-              <Spinner displayedMovies={displayedMovies} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} mediaType={mediaType}/>
+              <Spinner displayedMovies={displayedMovies} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} mediaType={mediaType} />
               <div className='mobileOnly'>
                 <GenreSelector movies={movies} changeGenre={changeGenre} />
               </div>
@@ -309,7 +371,11 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
           </div>
         </div>
+<<<<<<< HEAD
         <MovieOfDay mediaType={mediaType} watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY} />
+=======
+        <MovieOfDay mediaType={mediaType} watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY} lastWatchedList={lastWatchedList}/>
+>>>>>>> 40a8bb8 (Firebase in 2nd branch)
         <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} mediaType={mediaType} />
         <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} mediaType={mediaType} />
       </div>

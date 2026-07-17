@@ -44,7 +44,11 @@
 
 .pickPoster{
     min-height: 200px;
+<<<<<<< HEAD
     min-width: 120px;
+=======
+    min-width: 133px;
+>>>>>>> 40a8bb8 (Firebase in 2nd branch)
     aspect-ratio: 2 / 3;
     overflow: hidden;
 }
@@ -92,6 +96,7 @@
 }
 
 .addToLibrary{
+<<<<<<< HEAD
     display: flex;
     flex-direction: row;
     padding: 10px;
@@ -105,6 +110,30 @@
 }
 .addToLibrary:hover{
     transform: scale(1.05);
+=======
+    padding: 10px 10px;
+    background-color: rgb(7, 14, 48);
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    gap: 5px;
+    font-weight: 500;
+    font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serifs;
+    background:rgba(50, 4, 255, 0.08);
+    border:1px solid rgba(122,92,255,.28);
+    backdrop-filter:blur(18px);
+    box-shadow:
+        0 0 22px rgba(122,92,255,.15),
+        inset 0 0 8px rgba(255,255,255,.03);
+    transition:.25s;
+    font-size: 13px;
+    cursor: pointer;
+}
+.addToLibrary:hover{
+    transform: translateY(-3px);
+>>>>>>> 40a8bb8 (Firebase in 2nd branch)
 }
 
 .titleAndBtn{
@@ -126,7 +155,19 @@
   .todaysPicks h2{
     font-size: 15px;
   }
+<<<<<<< HEAD
   .addToLibrary{
+=======
+
+  .titleAndBtn{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .addToLibrary{
+    margin: 0;
+    
+>>>>>>> 40a8bb8 (Firebase in 2nd branch)
     transform: scale(0.7);
   }
   .addToLibrary:hover{
