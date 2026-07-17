@@ -185,9 +185,15 @@
 .inputAndSubmit button {
     height: 35px;
     width: 80px;
-    background-color: rgb(147, 147, 214);
     border-radius: 10px;
     margin-left: 5px;
+    color: white;
+    font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background: rgba(99, 102, 241, .08);
+    border: 1px solid rgba(99, 102, 241, .22);
+    box-shadow:
+        0 0 8px rgba(99, 102, 241, .12),
+        inset 0 0 4px rgba(255, 255, 255, .03);
 }
 
 .suggestion-dropdown {

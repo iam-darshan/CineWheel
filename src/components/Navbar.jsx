@@ -2,12 +2,21 @@ import React from 'react'
 import './Navbar.css'
 import logo from '../assets/logo.png'
 
-import { CircleUserRound,LogOut } from 'lucide-react'
+import { CircleUserRound, LogOut } from 'lucide-react'
+import { getAuth, signOut } from "firebase/auth";
 
 
-function Navbar() {
+function Navbar({userName}) {
 
-  const clearData =()=>{
+  const clearData = () => {
+
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      console.log("User Signed Out")
+    }).catch((error) => {
+      console.log(error)
+    });
+
     localStorage.removeItem("savedMovies");
     localStorage.removeItem("watchedMovies");
   }
@@ -22,16 +31,16 @@ function Navbar() {
 
       <div className="userDetails">
         <CircleUserRound />
-        <h5>UserName</h5>
+        <h5>{userName}</h5>
         <div className='Clear'>
-          
-        <LogOut onClick={()=>{
-          clearData();
-          window.location.reload();
-        }}/>
-        <span className="tooltip">
-        Clear Data
-    </span>
+
+          <LogOut onClick={() => {
+            clearData();
+            window.location.reload();
+          }} />
+          <span className="tooltip">
+            Clear Data
+          </span>
         </div>
       </div>
     </div>

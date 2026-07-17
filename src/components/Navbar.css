@@ -1,12 +1,12 @@
-.navbar {
-    width: 90%;
-    height: 9vh;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    .navbar {
+        width: 90%;
+        height: 9vh;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
 
-}
+    }
 
 .logoAndTitle {
     display: flex;
@@ -35,6 +35,7 @@
     font-size: 20px;
     position: relative;
 }
+
 .Clear:hover{
     color: rgb(200, 36, 36);
 }
@@ -64,4 +65,10 @@
         font-size: 0.5em;
         margin: 0;
     }
+    .userDetails h5{
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 }

@@ -28,8 +28,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn,mediaType }) {
             const res2 = await fetch(`https://api.themoviedb.org/3/trending/${mediaType}/week?api_key=${API_KEY}&language=en-US`)
             const result2 = await res2.json();
             const data2 = result2.results;
-            console.log(data2)
-            settrendingMovies(data2);
+            settrendingMovies(data2 || []);
 
 
 
@@ -67,7 +66,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn,mediaType }) {
                                         }}
 
                                         onClick={() => {
-                                            addMovieFromSuggest(movie.id);
+                                            addMovieFromSuggest(movie.id,mediaType);
                                         }
                                         } />
                                 </div>
@@ -109,7 +108,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn,mediaType }) {
                                         }}
 
                                     onClick={() => {
-                                        addMovieFromSuggest(movie.id);
+                                       addMovieFromSuggest(movie.id, mediaType);
                                     }
                                     } />
                                 </div>
