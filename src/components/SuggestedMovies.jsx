@@ -108,7 +108,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType }) {
                                         }}
 
                                     onClick={() => {
-                                        addMovieFromSuggest(movie.id,mediaType);
+                                         addMovieFromSuggest(movie.id,mediaType)
                                     }
                                     } />
                                 </div>
