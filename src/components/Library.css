@@ -8,8 +8,13 @@
 .libraryContainerMain {
     height: fit-content;
     position: relative;
-    width: 90%;
-    margin-left: 40px;
+    width: 100%;
+    max-width: 1370px;  
+    /* margin: 0 auto; */
+    margin-left: 20px;
+    padding: 0 30px;
+    box-sizing: border-box;
+
 }
 
 .inputLibraryContainer {
@@ -23,6 +28,7 @@
     justify-content: center;
     gap: 5px;
     padding: 0;
+    width: 100%;
 }
 
 .moviesInLibrary {

@@ -17,34 +17,39 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from
 function Authentication({ setuserName, setmovies, setWatchedMoviesList }) {
     const [show, setshow] = useState("show");
 
-    const savedMovies = localStorage.getItem("savedMovies");
-    const watchedMovies = localStorage.getItem("watchedMovies");
-
 
     const CreateUser = async (id, email, name) => {
         const userRef = doc(db, "CineWheel", id);
         const snap = await getDoc(userRef);
 
-        if (!snap.exists()) {
-            await setDoc(userRef, {
-                userName: name,
-                email: email,
-                library: savedMovies
-                    ? JSON.parse(savedMovies)
-                    : [
-                        { id: 157336, mediaType: "movie", title: "Interstellar", poster_path: "/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg", release_year: 2014, genres: ["Adventure", "Drama", "Science Fiction"] },
-                        { id: 27205, mediaType: "movie", title: "Inception", poster_path: "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg", release_year: 2010, genres: ["Action", "Adventure", "Drama"] },
-                        { id: 1396, mediaType: "tv", title: "Breaking Bad", poster_path: "/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg", release_year: 2008, genres: ["Drama", "Crime"] }
-                    ],
+        const CreateUser = async (id, email, name) => {
+    const userRef = doc(db, "CineWheel", id);
+    const snap = await getDoc(userRef);
 
-                watchedMovies: watchedMovies
-                    ? JSON.parse(watchedMovies)
-                    : []
-            });
-            setuserName(name)
+    if (snap.exists()) {
+        const data = snap.data();
 
-        }
+        console.log("Using existing Firestore data:", data);
 
+        setuserName(data.userName || name);
+        setmovies(data.library || []);
+        setWatchedMoviesList(data.watchedMovies || []);
+
+        return;
+    }
+
+    // New user
+    await setDoc(userRef, {
+        userName: name,
+        email: email,
+        library: defaultLibrary,
+        watchedMovies: []
+    });
+
+    setuserName(name);
+    setmovies(defaultLibrary);
+    setWatchedMoviesList([]);
+};
     }
 
 

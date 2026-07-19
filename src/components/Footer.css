@@ -34,3 +34,13 @@
 h1{
     margin-left:"0px";
 }
+
+
+@media screen and (min-width: 1024px) {
+    .footerContainer{
+        width: 100vw;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+   
+}

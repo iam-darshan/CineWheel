@@ -11,7 +11,8 @@
 
 .spinnerBackground{
     min-height: 60vh;
-    width: 120%;
+    
+    width: 120%; 
    border-radius: 10px;
     background-color: rgba(43, 41, 52, 0.534);
     display: flex;
@@ -110,7 +111,7 @@
 
   .spinnerBackground{
     width: 90%;
-    margin: 0 40px;
+    margin: 0 50px;
     height: fit-content;
 
   }

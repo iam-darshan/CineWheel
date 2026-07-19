@@ -33,31 +33,9 @@ function App() {
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 
-  const STORAGE_VERSION = 4;
 
-  useEffect(() => {
-    const savedVersion = Number(localStorage.getItem("storageVersion"))
-    if (savedVersion !== STORAGE_VERSION) {
-      localStorage.removeItem("savedMovies");
-      localStorage.removeItem("watchedMovies");
-
-      localStorage.setItem("storageVersion", STORAGE_VERSION)
-    }
-
-  }, [])
-
-
-  const lastList = localStorage.getItem("savedMovies");
-  const lastWatchedList = localStorage.getItem("watchedMovies");
-
-  const watchedList = lastWatchedList ? JSON.parse(lastWatchedList) : [];
-
-  const movieList = lastList ? JSON.parse(lastList) : [];
-
-
-
-  const [movies, setmovies] = useState(movieList);
-  const [watchedMoviesList, setwatchedMoviesList] = useState(watchedList);
+  const [movies, setmovies] = useState([]);
+  const [watchedMoviesList, setwatchedMoviesList] = useState([]);
   const [rotation, setrotation] = useState(0);
   const [isSpinning, setisSpinning] = useState(false);
   const [showPopup, setshowPopup] = useState(false);
@@ -90,8 +68,6 @@ function App() {
 
     setmovies(nextList)
     inputRef.current.value = "";
-
-    let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(nextList))
   }
   const addMovieFromSuggest = async (id, mediaType) => {
     if (movies.some(movie => movie.id == id)) {
@@ -110,7 +86,6 @@ function App() {
 
     const newList = [...movies, newMovie];
     setmovies(newList)
-    let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(newList))
     const user = auth.currentUser;
 
      DBupdater({
@@ -156,8 +131,6 @@ function App() {
     const newWatchedList = [...watchedMoviesList, watchedMovie];
     setmovies(newMovieList);
     setwatchedMoviesList([...watchedMoviesList, watchedMovie]);
-    let watchedMovies = localStorage.setItem("watchedMovies", JSON.stringify(newWatchedList));
-    let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(newMovieList));
     alertFn("Added to Watched Movies");
 
      DBupdater({
@@ -179,7 +152,6 @@ function App() {
       library: newMovieList
     })
 
-    let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(newMovieList))
     alertFn("Movie Removed from Library");
   }
 
@@ -189,7 +161,6 @@ function App() {
         movie => movie.id !== movieToRemove
       )
     setwatchedMoviesList(newWatchedList)
-    let watchedMovies = localStorage.setItem("watchedMovies", JSON.stringify(newWatchedList));
     alertFn("Movie Removed from Hisory");
 
     DBupdater({
@@ -345,7 +316,7 @@ function App() {
 
           </div>
         </div>
-        <MovieOfDay mediaType={mediaType} watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY} lastWatchedList={lastWatchedList}/>
+        <MovieOfDay mediaType={mediaType} watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY}/>
         <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} mediaType={mediaType} />
         <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} mediaType={mediaType} />
       </div>
