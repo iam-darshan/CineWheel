@@ -26,7 +26,7 @@ body {
   flex-direction: row;
   /* justify-content: space-around; */
   justify-content: center;
-    width: 100%;
+    width: 113%;
 }
 
 .mediaChange {
@@ -100,12 +100,12 @@ body {
   
 }
 
-@media screen and (min-width: 1024px) {
+/* @media screen and (min-width: 1024px) {
   .container{
   width: 100vw;
-  padding: 0 25px;
+  padding-right: 10px;
   }
-}
+} */
 
 
 @media screen and (max-width: 767px) {

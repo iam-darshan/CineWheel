@@ -15,42 +15,40 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from
 
 
 function Authentication({ setuserName, setmovies, setWatchedMoviesList }) {
+
+    
     const [show, setshow] = useState("show");
 
 
-    const CreateUser = async (id, email, name) => {
-        const userRef = doc(db, "CineWheel", id);
-        const snap = await getDoc(userRef);
-
         const CreateUser = async (id, email, name) => {
-    const userRef = doc(db, "CineWheel", id);
-    const snap = await getDoc(userRef);
+            const userRef = doc(db, "CineWheel", id);
+            const snap = await getDoc(userRef);
 
-    if (snap.exists()) {
-        const data = snap.data();
+            if (snap.exists()) {
+                const data = snap.data();
 
-        console.log("Using existing Firestore data:", data);
+                console.log("Using existing Firestore data:", data);
 
-        setuserName(data.userName || name);
-        setmovies(data.library || []);
-        setWatchedMoviesList(data.watchedMovies || []);
+                setuserName(data.userName || name);
+                setmovies(data.library || []);
+                setWatchedMoviesList(data.watchedMovies || []);
 
-        return;
-    }
+                return;
+            }
 
-    // New user
-    await setDoc(userRef, {
-        userName: name,
-        email: email,
-        library: defaultLibrary,
-        watchedMovies: []
-    });
+            // New user
+            await setDoc(userRef, {
+                userName: name,
+                email: email,
+                library: defaultLibrary,
+                watchedMovies: []
+            });
 
-    setuserName(name);
-    setmovies(defaultLibrary);
-    setWatchedMoviesList([]);
-};
-    }
+            setuserName(name);
+            setmovies(defaultLibrary);
+            setWatchedMoviesList([]);
+        };
+
 
 
     const provider = new GoogleAuthProvider();
@@ -62,6 +60,21 @@ function Authentication({ setuserName, setmovies, setWatchedMoviesList }) {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
 
             if (user) {
+                 const cachedLibrary = JSON.parse(
+                localStorage.getItem(`library_${user.uid}`)
+            );
+
+            const cachedWatched = JSON.parse(
+                localStorage.getItem(`watched_${user.uid}`)
+            );
+
+            if (cachedLibrary) {
+                setmovies(cachedLibrary);
+            }
+
+            if (cachedWatched) {
+                setWatchedMoviesList(cachedWatched);
+            }   
 
                 setshow("hide");
                 setuserName(user.displayName)
@@ -75,6 +88,10 @@ function Authentication({ setuserName, setmovies, setWatchedMoviesList }) {
                         setmovies(data.library || []);
                         setWatchedMoviesList(data.watchedMovies || []);
                         setmovies(data.library || []);
+
+
+                        localStorage.setItem(`library_${user.uid}`, JSON.stringify(data.library || []));
+                        localStorage.setItem(`watched_${user.uid}`, JSON.stringify(data.watchedMovies || []));
 
                     }
                 );
