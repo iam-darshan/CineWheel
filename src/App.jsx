@@ -46,6 +46,7 @@ function App() {
   const [mediaType, setmediaType] = useState("movie");
   const [showAI, setshowAI] = useState(false);
   const [userName, setuserName] = useState("Username");
+  const [page, setpage] = useState("home");
 
 
 
@@ -88,7 +89,7 @@ function App() {
     setmovies(newList)
     const user = auth.currentUser;
 
-     DBupdater({
+    DBupdater({
       library: newList
     })
 
@@ -133,8 +134,8 @@ function App() {
     setwatchedMoviesList([...watchedMoviesList, watchedMovie]);
     alertFn("Added to Watched Movies");
 
-     DBupdater({
-      library:newMovieList,
+    DBupdater({
+      library: newMovieList,
       watchedMovies: newWatchedList
     })
 
@@ -157,7 +158,7 @@ function App() {
 
   const removeFromHistory = (movieToRemove) => {
     const newWatchedList =
-      watchedList.filter(
+      watchedMoviesList.filter(
         movie => movie.id !== movieToRemove
       )
     setwatchedMoviesList(newWatchedList)
@@ -207,10 +208,10 @@ function App() {
     setSelectedGenre(genre)
   }
 
-    const displayedMovies = movies.filter(movie =>
-      (selectedGenre === "Default" || movie.genres?.includes(selectedGenre)) &&
-      movie.mediaType === mediaType
-    );
+  const displayedMovies = movies.filter(movie =>
+    (selectedGenre === "Default" || movie.genres?.includes(selectedGenre)) &&
+    movie.mediaType === mediaType
+  );
 
   const showPopupDetails = (id) => {
     setselectedMovie(id);
@@ -233,13 +234,18 @@ function App() {
       <div className='container'>
         <Authentication setuserName={setuserName} setmovies={setmovies} setWatchedMoviesList={setwatchedMoviesList} />
         <Alert alertMsg={alertMsg} />
-        <Navbar userName={userName}/>
+        <Navbar userName={userName} />
         <div className='AskAIbtn' onClick={() => {
           setshowAI(true)
         }}><span>✨ </span>Ask AI</div>
         {showAI &&
           <AskAI addMovieFromSuggest={addMovieFromSuggest} setshowAI={setshowAI} watchedMoviesList={watchedMoviesList} movies={movies} />
         }
+
+
+
+        {page==="home" ? 
+        <> 
         <div className='mediaChange'>
           <div
             className={`mediaChangeBtn ${mediaType === "movie"
@@ -316,10 +322,15 @@ function App() {
 
           </div>
         </div>
-        <MovieOfDay mediaType={mediaType} watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY}/>
+        <MovieOfDay mediaType={mediaType} watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY} />
         <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} mediaType={mediaType} />
         <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} mediaType={mediaType} />
-      </div>
+       </>
+       : 
+       <Collections />
+       }
+
+       </div>
 
       {showPopup && <Popup onClose={() => {
         setshowPopup(false)
