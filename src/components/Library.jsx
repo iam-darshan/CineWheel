@@ -72,12 +72,12 @@ function Library({
                 ]
                 const filteredMovie = data.filter(
                   movie =>
-                    (movie.title ?? movie.name ?? "")?.toLowerCase().startsWith(query.toLowerCase())
+                    (movie.title ?? movie.name ?? "")?.toLowerCase().includes(query.toLowerCase())
                 )
                 const sortedMovie = filteredMovie.sort((a, b) => {
                   return b.popularity - a.popularity
                 })
-                const top5search = sortedMovie.slice(0, 5);
+                const top5search = sortedMovie.slice(0, 10);
                 setSuggestions(top5search)
 
 
