@@ -53,7 +53,7 @@ function Library({
               onChange={async (e) => {
                 if (!e.target.value) return setSuggestions([]);
 
-                const query = e.target.value;
+                const query = e.target.value.trim();
 
                 const res1 = await fetch(`https://api.themoviedb.org/3/search/${mediaType}?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=1`);
                 const page1 = await res1.json();
@@ -70,10 +70,10 @@ function Library({
                   ...(page3.results || []),
                   ...(page4.results || [])
                 ]
-                const filteredMovie = data.filter(
-                  movie =>
-                    (movie.title ?? movie.name ?? "")?.toLowerCase().includes(query.toLowerCase())
-                )
+                  const filteredMovie = data.filter(
+                    movie =>
+                      (movie.title ?? movie.name ?? "")?.toLowerCase().includes(query.toLowerCase())
+                  )
                 const sortedMovie = filteredMovie.sort((a, b) => {
                   return b.popularity - a.popularity
                 })
