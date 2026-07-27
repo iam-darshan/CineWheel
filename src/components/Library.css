@@ -320,8 +320,8 @@
     }
 
     .libraryContainerMain {
-        width: 84%;
-        /* margin: 10px; */
+        width: 98%;
+        margin: 0 15px;
     }
 
 }
