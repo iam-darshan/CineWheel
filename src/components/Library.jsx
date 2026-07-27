@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Spinner from './Spinner';
 import './Library.css'
-import { Trash2, CircleCheckBig, EllipsisVertical,LibraryBig } from 'lucide-react';
+import { Trash2, CircleCheckBig, EllipsisVertical, LibraryBig } from 'lucide-react';
 
 
 const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
@@ -43,9 +43,9 @@ function Library({
           <div className='titleAndCount'>
             <h2 id='heading'>Library</h2>
             <div className='countBox'>
-                <LibraryBig />
-                <span className="badgeCount">{movies.filter(movie=> movie.mediaType===mediaType).length }</span>
-                <span className='countBoxLabel'> to watch</span>
+              <LibraryBig />
+              <span className="badgeCount">{movies.filter(movie => movie.mediaType === mediaType).length}</span>
+              <span className='countBoxLabel'> to watch</span>
             </div>
           </div>
           <div className='inputAndSubmit'>
@@ -70,14 +70,19 @@ function Library({
                   ...(page3.results || []),
                   ...(page4.results || [])
                 ]
-                  const filteredMovie = data.filter(
-                    movie =>
-                      (movie.title ?? movie.name ?? "")?.toLowerCase().includes(query.toLowerCase())
-                  )
+                const filteredMovie = data.filter(
+                  movie =>
+                    (movie.title ?? movie.name ?? "")?.toLowerCase().includes(query.toLowerCase())
+                )
                 const sortedMovie = filteredMovie.sort((a, b) => {
                   return b.popularity - a.popularity
                 })
                 const top5search = sortedMovie.slice(0, 10);
+
+                if (inputRef.current.value.trim() === "") {
+                  return;
+                }
+
                 setSuggestions(top5search)
 
 
