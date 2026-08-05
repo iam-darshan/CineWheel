@@ -1,0 +1,56 @@
+.QuoteContainer {
+ 
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  padding: 20px;
+  font-family: 'Philosopher', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-bottom: 10px;
+
+  border-radius: 8px;
+  
+  box-shadow: 0 0 18px rgba(122, 92, 255, .18);
+  border: 1px solid rgba(122, 92, 255, .25);
+  border-left: 3px solid #7a5cff;
+
+}
+
+.quoteIcon {
+  color: 7a5cff;
+  margin-bottom: 5px;
+  transform: scaleX(-1);
+  display: flex;
+  align-items: start;
+  justify-content: end;
+}
+
+.quoteTitle {
+  margin-left: 30px;
+  font-style: italic;
+}
+
+.quoteDetails {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.quoteSpeaker{
+  font-size: 15px;
+  color: rgb(214, 216, 219);
+
+}
+.quoteMovie{
+  color: grey;
+  font-size: 13px;
+}
+
+@media screen and (max-width:767px){
+  .QuoteContainer{
+     width: 70%;
+  }
+  
+}

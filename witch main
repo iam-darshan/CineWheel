@@ -1,0 +1,296 @@
+[33mcommit cc6c3d2d5e5d69845feb1a5db64109ff4ddf6a09[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfirebase-auth[m[33m, [m[1;31morigin/firebase-auth[m[33m)[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Fri Jul 17 13:34:38 2026 +0530
+
+    Movie added bug fix
+
+[33mcommit 309da642e40c1e56d2b1d55351e7ba55fbbbbf30[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Fri Jul 17 13:25:33 2026 +0530
+
+    bug
+
+[33mcommit 630dae28eebec3e2e77578ede7f99f3f5cd3ce31[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Fri Jul 17 13:13:08 2026 +0530
+
+    for preview
+
+[33mcommit 0df77af018b94776bf30d1cd92ebf1364f8bacec[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Thu Jul 16 22:55:46 2026 +0530
+
+    removed url clear
+
+[33mcommit d53d47f23a3064fa5ca8a9ecf77ab3a2454074f2[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Thu Jul 16 19:21:49 2026 +0530
+
+    added count plus series in ai
+
+[33mcommit d60753063109a3cfdc639f894f3ee139d56ae8b0[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 13 17:51:53 2026 +0530
+
+    some minor changes and library and watched history
+
+[33mcommit 992b68cb0db1be662cb44c29b865169dac47dc87[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 13 15:25:17 2026 +0530
+
+    Added prompt suggegstion
+
+[33mcommit 5d5d446d9e470a857f417c69ed89bd9c81855cdf[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 13 15:06:47 2026 +0530
+
+    backto env
+
+[33mcommit 18fa5e41f9ca989c61149cc55d2668e7e838e5a2[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 13 15:03:45 2026 +0530
+
+    removed tmdb from env
+
+[33mcommit 160ce1160ed9d356a64473c1e47e5b242cdc02bb[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 13 15:01:39 2026 +0530
+
+    new
+
+[33mcommit 015472ac5000ef2843984fe63c1ae0100a5a1889[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 13 14:56:49 2026 +0530
+
+    Added AskAI feature
+
+[33mcommit 132c373776b3c0f8fb51e8e1099c9af48cf45749[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 13 14:28:25 2026 +0530
+
+    added AI chat
+
+[33mcommit 309229d1ee4277484e43cecb496111c212d4a9bb[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Thu Jul 9 19:27:46 2026 +0530
+
+    causeYouwatched
+
+[33mcommit a31b8a52b2056970bda9ec781c9095fdbcafb990[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Wed Jul 8 00:29:47 2026 +0530
+
+    copyright
+
+[33mcommit c4a3a2ac34cefe04a1c517a56bb4b0f6bdc41fd2[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Tue Jul 7 12:09:07 2026 +0530
+
+    added Quotes
+
+[33mcommit a8ea81b6e119bd16318250118d312aaa2eec4a6a[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 6 23:03:34 2026 +0530
+
+    bug fix
+
+[33mcommit 45e8a1bdb121d356a80350d50635abf9da6aaeb1[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 6 22:45:44 2026 +0530
+
+    t bug fix
+
+[33mcommit 062481b078b41a945f7bf6dd1680e1209a1e1c60[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 6 21:33:26 2026 +0530
+
+    added Dialogue
+
+[33mcommit e9228a6d537da77c5727b8cb6bd76927fcb5dd7c[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 6 21:20:11 2026 +0530
+
+    Quote Update
+
+[33mcommit abe04c698befb0192c82665c7c96cfd287d8f7ff[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 6 14:15:01 2026 +0530
+
+    simple text edit
+
+[33mcommit 1236344470f0bc255f6801089911555e5e778518[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 6 14:09:28 2026 +0530
+
+    scrool ui
+
+[33mcommit 804c088a68595b1dd36744ebe266d6445b2740a2[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 6 14:09:11 2026 +0530
+
+    change scroll
+
+[33mcommit 8939fc109a1857f9e05ecbfbcd6f43c2b297d13f[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 6 14:04:59 2026 +0530
+
+    btn clr
+
+[33mcommit 292480b2742715540c59dde198f8b3c7b7606311[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 6 14:03:54 2026 +0530
+
+    toggle Btn
+
+[33mcommit f6deb1c884dd327d2a9ae67aff3df32351f1e658[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 6 13:47:12 2026 +0530
+
+    watch History update
+
+[33mcommit 4e31b82f028ff7897716f2d895793a52de311faa[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 6 13:38:38 2026 +0530
+
+    Pushing AUto clear version based update
+
+[33mcommit b5a4da49dfcfdf3077273f92968c1203086980b5[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Mon Jul 6 13:30:32 2026 +0530
+
+    TV series added with clear btn
+
+[33mcommit 0a3e7e73f771936cf2c1f447dfa7969e26c144a5[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 23:05:40 2026 +0530
+
+    new spinner
+
+[33mcommit a1aff9fdbd4dee4b4c2af1b442b93056f81db546[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 22:01:24 2026 +0530
+
+    fianl fix
+
+[33mcommit 8f840d7dccdced8c1a5198f222d0621a27591759[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 21:32:12 2026 +0530
+
+    dropdown fix
+
+[33mcommit c275b24273cbdee193b5d27df587557aab4c3757[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 21:27:58 2026 +0530
+
+    bug fix
+
+[33mcommit 697845179f60b0abcdd77554709eac985ed6f9c4[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 21:19:45 2026 +0530
+
+    Genre list for mobile
+
+[33mcommit c62d4f2ac5de57b7f9613a9c1b0e4dd7b613c1e2[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 20:05:31 2026 +0530
+
+    minor UI fix
+
+[33mcommit 4d7092b8f8fa4fd34fae89e8ec977223792a692d[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 19:43:35 2026 +0530
+
+    directed by
+
+[33mcommit 10ebff35a2df9f8a65523112fd5af1a076949c2a[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 19:12:21 2026 +0530
+
+    UI colour change+genere updated
+
+[33mcommit f10b5fd3b7126855181720d53f75b7b76a6b24dc[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 17:48:07 2026 +0530
+
+    Added Cast
+
+[33mcommit 3eb8a2a9a3824321ac00aa273a859cdfdcbfb0a5[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 16:58:34 2026 +0530
+
+    provider update push
+
+[33mcommit 62d876d45d24b50fb17450ae8a613e44b3074daa[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 16:14:37 2026 +0530
+
+    ui fix popup card
+
+[33mcommit 04b59d5b09dc60933580c55cd1da6eeebe79fd24[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 16:06:35 2026 +0530
+
+    popup ui update for mobile
+
+[33mcommit 89c14974d6a5952b42d887d047fa9a2134f296df[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 15:52:47 2026 +0530
+
+    popup card backgorund
+
+[33mcommit 52f578a6cfdf7ce1d7468c370ae3029675580470[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 13:36:02 2026 +0530
+
+    remove btn fix mobile
+
+[33mcommit 16cb237e8ef8e160056943c9f9093065f79fbd49[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 13:33:28 2026 +0530
+
+    some bug fix aliggn
+
+[33mcommit 8915ad05e1bb9691922fa4ff3b2df4baccc2e014[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 12:03:22 2026 +0530
+
+    bug fix
+
+[33mcommit ae544e1cf1f97cb9429ee699fb575d84c73f98ee[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sun Jul 5 11:43:32 2026 +0530
+
+    commit major UI upgrades
+
+[33mcommit 98ae86a0248f7ffc02a4e03a1154fe122b4f8712[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sat Jul 4 08:15:18 2026 +0530
+
+    new UI of watched list
+
+[33mcommit 496ea8934bb908e1ac5e0d7f20b9298c086d5a6f[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Sat Jul 4 01:04:09 2026 +0530
+
+    semi new UI
+
+[33mcommit a0f4029b9107bda48bfb444cd59c65966ddf3581[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Fri Jul 3 00:09:16 2026 +0530
+
+    removed random Alert
+
+[33mcommit 05c93978d8b8a28ad9aac798b7683c009f8436bf[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Fri Jul 3 00:06:25 2026 +0530
+
+    genreBug fix
+
+[33mcommit 47bbb1beefaebb07d23b86f83fb08376d79c1647[m
+Author: iam-darshan <darshandsmail@gmail.com>
+Date:   Thu Jul 2 23:46:22 2026 +0530
+
+    fixed Bugs library UI fix
+
+[33mcommit 10eb2f7ef439b9d86df81d8fc6326db0542d8688[m
+Mer

@@ -1,0 +1,59 @@
+.genreSelection{
+    color: white;
+    display: flex   ;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding-left: 80px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    
+}
+.genreUL{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 5px;
+}
+.genreUL li{
+    list-style: none;
+    margin: 0;
+}
+
+.genrePlate{
+    background-color: rgb(36, 39, 44);
+    padding: 5px 5px;
+    font-family: 'Jost','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-radius: 5px;
+    width:110px;
+    transition: 0.2s;
+}
+@media screen and (min-width: 1024px) {
+  .genrePlate{
+    width: 140px;
+  }
+}
+.genrePlate:hover{
+    background-color: rgb(19, 20, 20);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .genreSelection{
+    display: block;
+    width: 100%;
+    overflow-x: scroll;
+    padding: 0;
+  }
+  .genreUL{
+    flex-direction: row;
+  }
+  .genrePlate{
+    text-align: center;
+    
+  }
+}
+

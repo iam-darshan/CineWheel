@@ -1,0 +1,207 @@
+.suggestedMoviesContainer{
+    height: fit-content;
+    width: 97%;
+    background-color: rgba(35, 34, 42, 0.534);
+    margin: 20px 0 10px 0;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.TopIMDBcontainer{
+    width: 100%;
+    height: fit-content;
+}
+
+.movieULcontainer{
+   background-color: rgb(15, 15, 15);
+    /* background-color: rgb(7, 7, 35); */
+    min-width: 40%;
+    height: 80%;
+    margin: 20px;
+    border-radius:10px;
+    /* overflow-y: scroll; */
+    overflow-x: scroll;
+    scrollbar-width:none;
+}
+.moviesUL{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin: 0;
+    padding: 5px;
+    height: 190px;
+
+}
+.moviesUL li{
+    list-style: none;
+    
+}
+.suggestionCard{
+    color: white;
+    height: 40px;
+    background-color: rgb(51, 41, 59);
+    font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif   ;
+}
+
+
+.moviesInSuggestion{
+    position: relative;
+
+    color: white;
+    cursor: pointer;
+    transition: 0.1s;
+
+    width: 100px;
+    height: 180px;
+    aspect-ratio: 2 / 3;
+    /* overflow: hidden; */
+    margin: 0 8px;
+    flex-shrink: 0;
+    padding-bottom: 5px;
+
+
+   border-radius: 5px;
+    background-color: rgb(30, 30, 36);
+    box-shadow: 0 0 3px gray;
+}
+.moviesInSuggestion:hover{
+    background-color: rgb(28, 28, 53);
+}
+
+.suggestionPoster{
+    
+    width: 100%;
+    height: auto;
+}
+
+.suggestionPosterImage{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px 5px 0 0;
+    object-fit: cover;
+
+}
+#movieTitle{
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 3px;
+    text-align: left;
+    max-width: 95px;
+}
+#movieYear{
+  font-size: 9px;
+  padding-left: 5px;
+  color: rgb(174, 173, 169);
+  position: absolute;
+  left: 0;
+}
+#movieRating{
+  font-size: 9px;
+  padding-left: 3px;
+  color: rgb(198, 231, 90);
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3px;
+  right: 10px;
+  font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  margin: 0;
+}
+#movieRating::before{
+  content: "⭐";
+  color: #0066cc;
+}
+
+.yearAndrating{
+  position: relative;
+  width: 100px
+}
+
+.Plus{
+    position: absolute;
+    right: 0;
+}
+.plusIcon{
+    color: white;
+    filter: drop-shadow(0 0 8px #0e0f0f);
+}
+
+h4{
+    text-align: left;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    margin: 25px 0 5px 25px;
+}
+.toggleContainer{
+    display: none;
+}
+
+@media only screen and (max-width: 767px) {
+    .suggestedMoviesContainer{
+    flex-direction: column;
+    align-items: center;
+    }
+  .TopIMDBcontainer{
+    width: 100%;
+    height: 110%;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .toggleContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkblue;
+    width: 200px;
+    margin-top: 20px;
+    border-radius: 5px;
+    
+
+  }
+  .activetoggleBtn{
+    background-color: rgb(41, 96, 206);
+  }
+  .inactivetoggledBtn{
+    background-color: rgb(64, 56, 73);
+  }
+
+  .lefttoggle{
+    border-radius: 5px 0 0 5px;
+    width: 100px;
+    text-align: center;
+    color: white;
+    font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  }
+  .righttoggle{
+    border-radius: 0 5px 5px 0;
+     width: 100px;
+    text-align: center;
+    color: white;
+    font-family:'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  }
+
+  .show{
+    display: block;
+  }
+  .hide{
+    display: none;
+  }
+
+  .titleName{
+    display: none;
+  }
+}
+
