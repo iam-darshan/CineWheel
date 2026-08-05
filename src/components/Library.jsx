@@ -24,6 +24,7 @@ function Library({
   addMovie,
   removeMovie,
   addToHistory,
+  addMovieFromSuggest,
   showPopupDetails,
   mediaType,
 
@@ -183,20 +184,10 @@ function Library({
               <ul className='suggestion-dropdown'>
                 {suggestions.map((movie) => (
                   <li className='suggestions' key={movie.id} onClick={() => {
-
-                    if (movies.some(m => m.id == movie.id)) {
-                      alertFn("Movie Already Exist in Library");
-                      return;
-                    }
                     setSuggestions([]);
-                    console.log(movie)
-                    const nextList = [...movies, { id: movie.id, mediaType: mediaType, title: movie.title || movie.name, poster_path: movie.poster_path, release_year: (movie.release_date || movie.first_air_date)?.slice(0, 4) || "N/A", genres: genreName(movie.genre_ids) }]
-                    setmovies(nextList);
+                    inputRef.current.value = "";
 
-                    inputRef.current.value = ""
-                    let savedMovies = localStorage.setItem("savedMovies", JSON.stringify(nextList))
-
-
+                    addMovieFromSuggest(movie.id, mediaType);
                   }}>
 
                     <div>

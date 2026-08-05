@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './Popup.css'
 import { CircleX, Trophy, RotateCcw } from 'lucide-react';
 
-const API_KEY = "1a89ea5551c72611dcade6ecf04263ac"
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaType }) {
 
@@ -100,7 +100,7 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
                             <h6>Genre</h6>
                             <div className="genreRow">
 
-                           {movieDetails.genres.map((genre)=>(
+                           {movieDetails.genres?.map((genre)=>(
                                <div className='genreDiv'>
                                 <h5>{genre.name}</h5>
                                 </div>

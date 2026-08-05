@@ -1,157 +1,175 @@
-import React from 'react'
-import './Authentication.css'
-import logo from '../assets/logo.png'
-import { Flame } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
+import "./Authentication.css";
+import logo from "../assets/logo.png";
 
-import app from "../firebase.js";
 import { db } from "../firebase.js";
-import { doc, collection, getDoc, getDocs, getFirestore, setDoc, onSnapshot } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  setDoc,
+  onSnapshot,
+} from "firebase/firestore";
 
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+} from "firebase/auth";
 
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+function Authentication({
+  setuserName,
+  setmovies,
+  setWatchedMoviesList,
+}) {
+  const [show, setshow] = useState("show");
 
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
 
+  // Empty library for new users
+  const defaultLibrary = [];
 
+  // Create Firestore document if it doesn't exist
+  const CreateUser = async (id, email, name) => {
+    const userRef = doc(db, "CineWheel", id);
 
-function Authentication({ setuserName, setmovies, setWatchedMoviesList }) {
+    try {
+      const snap = await getDoc(userRef);
 
-    
-    const [show, setshow] = useState("show");
+      if (snap.exists()) {
+        const data = snap.data();
 
+        console.log("Existing user");
 
-        const CreateUser = async (id, email, name) => {
-            const userRef = doc(db, "CineWheel", id);
-            const snap = await getDoc(userRef);
+        setuserName(data.userName || name);
+        setmovies(data.library || []);
+        setWatchedMoviesList(data.watchedMovies || []);
 
-            if (snap.exists()) {
-                const data = snap.data();
+        return;
+      }
 
-                console.log("Using existing Firestore data:", data);
+      console.log("Creating Firestore document...");
 
-                setuserName(data.userName || name);
-                setmovies(data.library || []);
-                setWatchedMoviesList(data.watchedMovies || []);
+      await setDoc(userRef, {
+        userName: name,
+        email: email,
+        library: defaultLibrary,
+        watchedMovies: [],
+      });
 
-                return;
-            }
+      console.log("Firestore document created");
 
-            // New user
-            await setDoc(userRef, {
-                userName: name,
-                email: email,
-                library: defaultLibrary,
-                watchedMovies: []
-            });
-
-            setuserName(name);
-            setmovies(defaultLibrary);
-            setWatchedMoviesList([]);
-        };
-
-
-
-    const provider = new GoogleAuthProvider();
-    const auth = getAuth();
-
-    useEffect(() => {
-
-
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-
-            if (user) {
-                 const cachedLibrary = JSON.parse(
-                localStorage.getItem(`library_${user.uid}`)
-            );
-
-            const cachedWatched = JSON.parse(
-                localStorage.getItem(`watched_${user.uid}`)
-            );
-
-            if (cachedLibrary) {
-                setmovies(cachedLibrary);
-            }
-
-            if (cachedWatched) {
-                setWatchedMoviesList(cachedWatched);
-            }   
-
-                setshow("hide");
-                setuserName(user.displayName)
-
-                const unsubscribeSnapshot = onSnapshot(
-                    doc(db, "CineWheel", user.uid),
-                    (docSnap) => {
-
-                        const data = docSnap.data();
-
-                        setmovies(data.library || []);
-                        setWatchedMoviesList(data.watchedMovies || []);
-                        setmovies(data.library || []);
-
-
-                        localStorage.setItem(`library_${user.uid}`, JSON.stringify(data.library || []));
-                        localStorage.setItem(`watched_${user.uid}`, JSON.stringify(data.watchedMovies || []));
-
-                    }
-                );
-
-            }
-
-        });
-
-        return unsubscribe;
-    }, []);
-
-    const SignInWithGoogle = () => {
-        const auth = getAuth();
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                // The signed-in user info.
-                const user = result.user;
-                console.log("Signed In")
-                console.log(user.email, user.displayName)
-                CreateUser(user.uid, user.email, user.displayName)
-
-
-                // IdP data available using getAdditionalUserInfo(result)
-                // ...
-            }).catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // The email of the user's account used.
-                const email = error.customData.email;
-                // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                // ...
-            });
+      setuserName(name);
+      setmovies(defaultLibrary);
+      setWatchedMoviesList([]);
+    } catch (err) {
+      console.error("CreateUser Error:", err);
     }
+  };
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user) return;
 
+      setshow("hide");
+      setuserName(user.displayName);
 
-    return (
-        <div className={`authenticatorContainer ${show}`}>
-            <div className="authenticatorPopup">
-                <div className='titleAndTag'>
-                    <div className='AuthenticationText' style={{ margin: 0 }}>
-                        <img src={logo} alt="logo" className='logo' />
-                        <h1>CineWheel</h1>
-                    </div>
-                    <h5 className='AuthenticationText' >Spin. Discover. Watch. ⭐</h5>
-                </div>
+      // Load cached data first
+      const cachedLibrary = JSON.parse(
+        localStorage.getItem(`library_${user.uid}`)
+      );
 
-                <div>
-                    <img src="/google.png" alt="Google SignIN" className='googleSignin' onClick={() => {
-                        SignInWithGoogle()
-                    }} />
-                </div>
-            </div>
+      const cachedWatched = JSON.parse(
+        localStorage.getItem(`watched_${user.uid}`)
+      );
+
+      if (cachedLibrary) {
+        setmovies(cachedLibrary);
+      }
+
+      if (cachedWatched) {
+        setWatchedMoviesList(cachedWatched);
+      }
+
+      // Listen to Firestore
+      const unsubscribeSnapshot = onSnapshot(
+        doc(db, "CineWheel", user.uid),
+        (docSnap) => {
+          if (!docSnap.exists()) {
+            console.log("Waiting for Firestore document...");
+            return;
+          }
+
+          const data = docSnap.data();
+
+          setmovies(data.library || []);
+          setWatchedMoviesList(data.watchedMovies || []);
+
+          localStorage.setItem(
+            `library_${user.uid}`,
+            JSON.stringify(data.library || [])
+          );
+
+          localStorage.setItem(
+            `watched_${user.uid}`,
+            JSON.stringify(data.watchedMovies || [])
+          );
+        },
+        (err) => {
+          console.error("Snapshot Error:", err);
+        }
+      );
+
+      return () => unsubscribeSnapshot();
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const SignInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then(async (result) => {
+        const user = result.user;
+
+        console.log("Signed In");
+        console.log(user.email);
+
+        // Wait until Firestore document exists
+        await CreateUser(
+          user.uid,
+          user.email,
+          user.displayName
+        );
+      })
+      .catch((err) => {
+        console.error("Google Sign In Error:", err);
+      });
+  };
+
+  return (
+    <div className={`authenticatorContainer ${show}`}>
+      <div className="authenticatorPopup">
+        <div className="titleAndTag">
+          <div className="AuthenticationText" style={{ margin: 0 }}>
+            <img src={logo} alt="logo" className="logo" />
+            <h1>CineWheel</h1>
+          </div>
+
+          <h5 className="AuthenticationText">
+            Spin. Discover. Watch. ⭐
+          </h5>
         </div>
-    )
+
+        <img
+          src="/google.png"
+          alt="Google Sign In"
+          className="googleSignin"
+          onClick={SignInWithGoogle}
+        />
+      </div>
+    </div>
+  );
 }
 
-export default Authentication
+export default Authentication;

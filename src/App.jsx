@@ -172,11 +172,21 @@ function App() {
   const DBupdater = async (change) => {
     const user = auth.currentUser;
 
-    if (user) {
-      await updateDoc(doc(db, "CineWheel", user.uid), change);
-
+    if (!user) {
+        console.log("❌ No authenticated user");
+        return;
     }
-  }
+
+    console.log("Updating Firestore for:", user.uid);
+    console.log("Data:", change);
+
+    try {
+        await updateDoc(doc(db, "CineWheel", user.uid), change);
+        console.log("✅ Firestore updated successfully");
+    } catch (err) {
+        console.error("❌ Firestore update failed:", err);
+    }
+};
 
   const genres = [
     { id: 28, name: "Action" },
@@ -310,6 +320,7 @@ function App() {
               addMovie={addMovie}
               removeMovie={removeMovie}
               addToHistory={addToHistory}
+              addMovieFromSuggest={addMovieFromSuggest}
               showPopupDetails={showPopupDetails}
               mediaType={mediaType}
 
