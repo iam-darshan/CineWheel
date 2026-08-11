@@ -1,0 +1,230 @@
+{
+  "id": "road-to-doomsday",
+  "title": "Road to Doomsday",
+  "movies": [
+    {
+      "id": 36658,
+      "mediaType": "movie",
+      "title": "X2",
+      "rating": 7.043,
+      "poster_path": "/bst4alFUXCxISwdRUKSMhhkrX1M.jpg",
+      "release_year": "2003"
+    },
+    {
+      "id": 36668,
+      "mediaType": "movie",
+      "title": "X-Men: The Last Stand",
+      "rating": 6.425,
+      "poster_path": "/a2xicU8DpKtRizOHjQLC1JyCSRS.jpg",
+      "release_year": "2006"
+    },
+    {
+      "id": 127585,
+      "mediaType": "movie",
+      "title": "X-Men: Days of Future Past",
+      "rating": 7.534,
+      "poster_path": "/tYfijzolzgoMOtegh1Y7j2Enorg.jpg",
+      "release_year": "2014"
+    },
+    {
+      "id": 293660,
+      "mediaType": "movie",
+      "title": "Deadpool",
+      "rating": 7.6,
+      "poster_path": "/3E53WEZJqP6aM84D8CckXx4pIHw.jpg",
+      "release_year": "2016"
+    },
+    {
+      "id": 263115,
+      "mediaType": "movie",
+      "title": "Logan",
+      "rating": 7.821,
+      "poster_path": "/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg",
+      "release_year": "2017"
+    },
+    {
+      "id": 383498,
+      "mediaType": "movie",
+      "title": "Deadpool 2",
+      "rating": 7.49,
+      "poster_path": "/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg",
+      "release_year": "2018"
+    },
+    {
+      "id": 1771,
+      "mediaType": "movie",
+      "title": "Captain America: The First Avenger",
+      "rating": 7.009,
+      "poster_path": "/vSNxAJTlD0r02V9sPYpOjqDZXUK.jpg",
+      "release_year": "2011"
+    },
+    {
+      "id": 24428,
+      "mediaType": "movie",
+      "title": "The Avengers",
+      "rating": 8.065,
+      "poster_path": "/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
+      "release_year": "2012"
+    },
+    {
+      "id": 100402,
+      "mediaType": "movie",
+      "title": "Captain America: The Winter Soldier",
+      "rating": 7.655,
+      "poster_path": "/tVFRpFw3xTedgPGqxW0AOI8Qhh0.jpg",
+      "release_year": "2014"
+    },
+    {
+      "id": 99861,
+      "mediaType": "movie",
+      "title": "Avengers: Age of Ultron",
+      "rating": 7.276,
+      "poster_path": "/4ssDuvEDkSArWEdyBl2X5EHvYKU.jpg",
+      "release_year": "2015"
+    },
+    {
+      "id": 271110,
+      "mediaType": "movie",
+      "title": "Captain America: Civil War",
+      "rating": 7.45,
+      "poster_path": "/rAGiXaUfPzY7CDEyNKUofk3Kw2e.jpg",
+      "release_year": "2016"
+    },
+    {
+      "id": 497698,
+      "mediaType": "movie",
+      "title": "Black Widow",
+      "rating": 7.16,
+      "poster_path": "/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg",
+      "release_year": "2021"
+    },
+    {
+      "id": 299536,
+      "mediaType": "movie",
+      "title": "Avengers: Infinity War",
+      "rating": 8.24,
+      "poster_path": "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
+      "release_year": "2018"
+    },
+    {
+      "id": 299534,
+      "mediaType": "movie",
+      "title": "Avengers: Endgame",
+      "rating": 8.239,
+      "poster_path": "/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg",
+      "release_year": "2019"
+    },
+    {
+      "id": 84958,
+      "mediaType": "tv",
+      "title": "Loki",
+      "rating": 8.171,
+      "poster_path": "/rX1wQMTKFqF0gvZyS0DDQqgnQPB.jpg",
+      "release_year": "2021"
+    },
+    {
+      "id": 85271,
+      "mediaType": "tv",
+      "title": "WandaVision",
+      "rating": 8.183,
+      "poster_path": "/ijWWwINc8h71NQ8j1LTJMFSj5wr.jpg",
+      "release_year": "2021"
+    },
+    {
+      "id": 88396,
+      "mediaType": "tv",
+      "title": "The Falcon and the Winter Soldier",
+      "rating": 7.591,
+      "poster_path": "/6kbAMLteGO8yyewYau6bJ683sw7.jpg",
+      "release_year": "2021"
+    },
+    {
+      "id": 566525,
+      "mediaType": "movie",
+      "title": "Shang-Chi and the Legend of the Ten Rings",
+      "rating": 7.489,
+      "poster_path": "/9f2Q0U3IOsLgrI2HkvldwSABZy5.jpg",
+      "release_year": "2021"
+    },
+    {
+      "id": 634649,
+      "mediaType": "movie",
+      "title": "Spider-Man: No Way Home",
+      "rating": 7.938,
+      "poster_path": "/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+      "release_year": "2021"
+    },
+    {
+      "id": 453395,
+      "mediaType": "movie",
+      "title": "Doctor Strange in the Multiverse of Madness",
+      "rating": 7.231,
+      "poster_path": "/ddJcSKbcp4rKZTmuyWaMhuwcfMz.jpg",
+      "release_year": "2022"
+    },
+    {
+      "id": 616037,
+      "mediaType": "movie",
+      "title": "Thor: Love and Thunder",
+      "rating": 6.362,
+      "poster_path": "/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg",
+      "release_year": "2022"
+    },
+    {
+      "id": 505642,
+      "mediaType": "movie",
+      "title": "Black Panther: Wakanda Forever",
+      "rating": 7,
+      "poster_path": "/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
+      "release_year": "2022"
+    },
+    {
+      "id": 640146,
+      "mediaType": "movie",
+      "title": "Ant-Man and the Wasp: Quantumania",
+      "rating": 6.222,
+      "poster_path": "/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg",
+      "release_year": "2023"
+    },
+    {
+      "id": 609681,
+      "mediaType": "movie",
+      "title": "The Marvels",
+      "rating": 5.927,
+      "poster_path": "/9GBhzXMFjgcZ3FdR9w3bUMMTps5.jpg",
+      "release_year": "2023"
+    },
+    {
+      "id": 533535,
+      "mediaType": "movie",
+      "title": "Deadpool & Wolverine",
+      "rating": 7.6,
+      "poster_path": "/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
+      "release_year": "2024"
+    },
+    {
+      "id": 822119,
+      "mediaType": "movie",
+      "title": "Captain America: Brave New World",
+      "rating": 5.955,
+      "poster_path": "/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg",
+      "release_year": "2025"
+    },
+    {
+      "id": 986056,
+      "mediaType": "movie",
+      "title": "Thunderbolts*",
+      "rating": 7.3,
+      "poster_path": "/hqcexYHbiTBfDIdDWxrxPtVndBX.jpg",
+      "release_year": "2025"
+    },
+    {
+      "id": 617126,
+      "mediaType": "movie",
+      "title": "The Fantastic 4: First Steps",
+      "rating": 6.945,
+      "poster_path": "/nf5qaSEvyYSNeFH0YhSs5EsBLX9.jpg",
+      "release_year": "2025"
+    }
+  ]
+}

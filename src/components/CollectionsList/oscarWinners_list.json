@@ -1,0 +1,166 @@
+{
+  "id": "oscar-winners",
+  "title": "Oscar Winning Collection",
+  "movies": [
+    {
+      "id": 1054867,
+      "mediaType": "movie",
+      "title": "One Battle After Another",
+      "rating": 7.6,
+      "poster_path": "/lbBWwxBht4JFP5PsuJ5onpMqugW.jpg",
+      "release_year": "2025"
+    },
+    {
+      "id": 1064213,
+      "mediaType": "movie",
+      "title": "Anora",
+      "rating": 7.075,
+      "poster_path": "/cgXk2tNYhJZLXdBDO5DidAVzQ82.jpg",
+      "release_year": "2024"
+    },
+    {
+      "id": 872585,
+      "mediaType": "movie",
+      "title": "Oppenheimer",
+      "rating": 8.023,
+      "poster_path": "/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+      "release_year": "2023"
+    },
+    {
+      "id": 545611,
+      "mediaType": "movie",
+      "title": "Everything Everywhere All at Once",
+      "rating": 7.71,
+      "poster_path": "/u68AjlvlutfEIcpmbYpKcdi09ut.jpg",
+      "release_year": "2022"
+    },
+    {
+      "id": 496243,
+      "mediaType": "movie",
+      "title": "Parasite",
+      "rating": 8.49,
+      "poster_path": "/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+      "release_year": "2019"
+    },
+    {
+      "id": 376867,
+      "mediaType": "movie",
+      "title": "Moonlight",
+      "rating": 7.355,
+      "poster_path": "/qLnfEmPrDjJfPyyddLJPkXmshkp.jpg",
+      "release_year": "2016"
+    },
+    {
+      "id": 314365,
+      "mediaType": "movie",
+      "title": "Spotlight",
+      "rating": 7.812,
+      "poster_path": "/8DPGG400FgaFWaqcv11n8mRd2NG.jpg",
+      "release_year": "2015"
+    },
+    {
+      "id": 194662,
+      "mediaType": "movie",
+      "title": "Birdman or (The Unexpected Virtue of Ignorance)",
+      "rating": 7.437,
+      "poster_path": "/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg",
+      "release_year": "2014"
+    },
+    {
+      "id": 76203,
+      "mediaType": "movie",
+      "title": "12 Years a Slave",
+      "rating": 7.9,
+      "poster_path": "/xdANQijuNrJaw1HA61rDccME4Tm.jpg",
+      "release_year": "2013"
+    },
+    {
+      "id": 27205,
+      "mediaType": "movie",
+      "title": "Inception",
+      "rating": 8.373,
+      "poster_path": "/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg",
+      "release_year": "2010"
+    },
+    {
+      "id": 155,
+      "mediaType": "movie",
+      "title": "The Dark Knight",
+      "rating": 8.534,
+      "poster_path": "/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+      "release_year": "2008"
+    },
+    {
+      "id": 6977,
+      "mediaType": "movie",
+      "title": "No Country for Old Men",
+      "rating": 7.948,
+      "poster_path": "/6d5XOczc226jECq0LIX0siKtgHR.jpg",
+      "release_year": "2007"
+    },
+    {
+      "id": 1422,
+      "mediaType": "movie",
+      "title": "The Departed",
+      "rating": 8.159,
+      "poster_path": "/nT97ifVT2J1yMQmeq20Qblg61T.jpg",
+      "release_year": "2006"
+    },
+    {
+      "id": 98,
+      "mediaType": "movie",
+      "title": "Gladiator",
+      "rating": 8.23,
+      "poster_path": "/wN2xWp1eIwCKOD0BHTcErTBv1Uq.jpg",
+      "release_year": "2000"
+    },
+    {
+      "id": 597,
+      "mediaType": "movie",
+      "title": "Titanic",
+      "rating": 7.901,
+      "poster_path": "/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
+      "release_year": "1997"
+    },
+    {
+      "id": 13,
+      "mediaType": "movie",
+      "title": "Forrest Gump",
+      "rating": 8.464,
+      "poster_path": "/Cw4hIUIAmSYfK9QfaUW5igp9La.jpg",
+      "release_year": "1994"
+    },
+    {
+      "id": 424,
+      "mediaType": "movie",
+      "title": "Schindler's List",
+      "rating": 8.57,
+      "poster_path": "/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg",
+      "release_year": "1993"
+    },
+    {
+      "id": 274,
+      "mediaType": "movie",
+      "title": "The Silence of the Lambs",
+      "rating": 8.3,
+      "poster_path": "/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg",
+      "release_year": "1991"
+    },
+    {
+      "id": 240,
+      "mediaType": "movie",
+      "title": "The Godfather Part II",
+      "rating": 8.571,
+      "poster_path": "/hek3koDUyRQk7FIhPXsa6mT2Zc3.jpg",
+      "release_year": "1974"
+    },
+    {
+      "id": 238,
+      "mediaType": "movie",
+      "title": "The Godfather",
+      "rating": 8.686,
+      "poster_path": "/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
+      "release_year": "1972"
+    }
+  ]
+}

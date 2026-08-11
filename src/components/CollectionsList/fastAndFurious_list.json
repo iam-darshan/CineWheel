@@ -1,0 +1,94 @@
+{
+  "id": "fast-and-furious",
+  "title": "Fast & Furious Franchise",
+  "movies": [
+    {
+      "id": 9799,
+      "mediaType": "movie",
+      "title": "The Fast and the Furious",
+      "rating": 7.013,
+      "poster_path": "/gqY0ITBgT7A82poL9jv851qdnIb.jpg",
+      "release_year": "2001"
+    },
+    {
+      "id": 584,
+      "mediaType": "movie",
+      "title": "2 Fast 2 Furious",
+      "rating": 6.522,
+      "poster_path": "/6nDZExrDKIXvSAghsFKVFRVJuSf.jpg",
+      "release_year": "2003"
+    },
+    {
+      "id": 9615,
+      "mediaType": "movie",
+      "title": "The Fast and the Furious: Tokyo Drift",
+      "rating": 6.553,
+      "poster_path": "/46xqGOwHbh2TH2avWSw3SMXph4E.jpg",
+      "release_year": "2006"
+    },
+    {
+      "id": 13804,
+      "mediaType": "movie",
+      "title": "Fast & Furious",
+      "rating": 6.69,
+      "poster_path": "/lUtVoRukW7WNtUySwd8hWlByBds.jpg",
+      "release_year": "2009"
+    },
+    {
+      "id": 51497,
+      "mediaType": "movie",
+      "title": "Fast Five",
+      "rating": 7.245,
+      "poster_path": "/gEfQjjQwY7fh5bI4GlG0RrBu7Pz.jpg",
+      "release_year": "2011"
+    },
+    {
+      "id": 82992,
+      "mediaType": "movie",
+      "title": "Fast & Furious 6",
+      "rating": 6.817,
+      "poster_path": "/thSmnRdrzPBBospIOJjLZBReqzo.jpg",
+      "release_year": "2013"
+    },
+    {
+      "id": 168259,
+      "mediaType": "movie",
+      "title": "Furious 7",
+      "rating": 7.215,
+      "poster_path": "/ktofZ9Htrjiy0P6LEowsDaxd3Ri.jpg",
+      "release_year": "2015"
+    },
+    {
+      "id": 337339,
+      "mediaType": "movie",
+      "title": "The Fate of the Furious",
+      "rating": 6.9,
+      "poster_path": "/dImWM7GJqryWJO9LHa3XQ8DD5NH.jpg",
+      "release_year": "2017"
+    },
+    {
+      "id": 384018,
+      "mediaType": "movie",
+      "title": "Fast & Furious Presents: Hobbs & Shaw",
+      "rating": 6.826,
+      "poster_path": "/qRyy2UmjC5ur9bDi3kpNNRCc5nc.jpg",
+      "release_year": "2019"
+    },
+    {
+      "id": 385128,
+      "mediaType": "movie",
+      "title": "F9",
+      "rating": 6.99,
+      "poster_path": "/deEmLILTPejEb6OGsXRJ5MCvyDW.jpg",
+      "release_year": "2021"
+    },
+    {
+      "id": 385687,
+      "mediaType": "movie",
+      "title": "Fast X",
+      "rating": 6.984,
+      "poster_path": "/fiVW06jE7z9YnO4trhaMEdclSiC.jpg",
+      "release_year": "2023"
+    }
+  ]
+}

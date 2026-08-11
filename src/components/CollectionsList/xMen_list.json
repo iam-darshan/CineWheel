@@ -1,0 +1,118 @@
+{
+  "id": "x-men",
+  "title": "X-Men Universe",
+  "movies": [
+    {
+      "id": 36657,
+      "mediaType": "movie",
+      "title": "X-Men",
+      "rating": 7.022,
+      "poster_path": "/bRDAc4GogyS9ci3ow7UnInOcriN.jpg",
+      "release_year": "2000"
+    },
+    {
+      "id": 36658,
+      "mediaType": "movie",
+      "title": "X2",
+      "rating": 7.043,
+      "poster_path": "/bst4alFUXCxISwdRUKSMhhkrX1M.jpg",
+      "release_year": "2003"
+    },
+    {
+      "id": 36668,
+      "mediaType": "movie",
+      "title": "X-Men: The Last Stand",
+      "rating": 6.425,
+      "poster_path": "/a2xicU8DpKtRizOHjQLC1JyCSRS.jpg",
+      "release_year": "2006"
+    },
+    {
+      "id": 2080,
+      "mediaType": "movie",
+      "title": "X-Men Origins: Wolverine",
+      "rating": 6.296,
+      "poster_path": "/yj8LbTju1p7CUJg7US2unSBk33s.jpg",
+      "release_year": "2009"
+    },
+    {
+      "id": 49538,
+      "mediaType": "movie",
+      "title": "X-Men: First Class",
+      "rating": 7.304,
+      "poster_path": "/hNEokmUke0dazoBhttFN0o3L7Xv.jpg",
+      "release_year": "2011"
+    },
+    {
+      "id": 76170,
+      "mediaType": "movie",
+      "title": "The Wolverine",
+      "rating": 6.437,
+      "poster_path": "/t2wVAcoRlKvEIVSbiYDb8d0QqqS.jpg",
+      "release_year": "2013"
+    },
+    {
+      "id": 127585,
+      "mediaType": "movie",
+      "title": "X-Men: Days of Future Past",
+      "rating": 7.534,
+      "poster_path": "/tYfijzolzgoMOtegh1Y7j2Enorg.jpg",
+      "release_year": "2014"
+    },
+    {
+      "id": 293660,
+      "mediaType": "movie",
+      "title": "Deadpool",
+      "rating": 7.6,
+      "poster_path": "/3E53WEZJqP6aM84D8CckXx4pIHw.jpg",
+      "release_year": "2016"
+    },
+    {
+      "id": 246655,
+      "mediaType": "movie",
+      "title": "X-Men: Apocalypse",
+      "rating": 6.527,
+      "poster_path": "/ikA8UhYdTGpqbatFa93nIf6noSr.jpg",
+      "release_year": "2016"
+    },
+    {
+      "id": 263115,
+      "mediaType": "movie",
+      "title": "Logan",
+      "rating": 7.821,
+      "poster_path": "/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg",
+      "release_year": "2017"
+    },
+    {
+      "id": 383498,
+      "mediaType": "movie",
+      "title": "Deadpool 2",
+      "rating": 7.49,
+      "poster_path": "/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg",
+      "release_year": "2018"
+    },
+    {
+      "id": 320288,
+      "mediaType": "movie",
+      "title": "Dark Phoenix",
+      "rating": 5.966,
+      "poster_path": "/cCTJPelKGLhALq3r51A9uMonxKj.jpg",
+      "release_year": "2019"
+    },
+    {
+      "id": 340102,
+      "mediaType": "movie",
+      "title": "The New Mutants",
+      "rating": 6.068,
+      "poster_path": "/xiDGcXJTvu1lazFRYip6g1eLt9c.jpg",
+      "release_year": "2020"
+    },
+    {
+      "id": 533535,
+      "mediaType": "movie",
+      "title": "Deadpool & Wolverine",
+      "rating": 7.6,
+      "poster_path": "/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
+      "release_year": "2024"
+    }
+  ]
+}

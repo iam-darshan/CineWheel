@@ -1,0 +1,62 @@
+{
+  "id": "harry-potter",
+  "title": "Harry Potter",
+  "movies": [
+    {
+      "id": 672,
+      "mediaType": "movie",
+      "title": "Harry Potter and the Chamber of Secrets",
+      "rating": 7.707,
+      "poster_path": "/sdEOH0992YZ0QSxgXNIGLq1ToUi.jpg",
+      "release_year": "2002"
+    },
+    {
+      "id": 673,
+      "mediaType": "movie",
+      "title": "Harry Potter and the Prisoner of Azkaban",
+      "rating": 8.01,
+      "poster_path": "/aWxwnYoe8p2d2fcxOqtvAtJ72Rw.jpg",
+      "release_year": "2004"
+    },
+    {
+      "id": 674,
+      "mediaType": "movie",
+      "title": "Harry Potter and the Goblet of Fire",
+      "rating": 7.802,
+      "poster_path": "/fECBtHlr0RB3foNHDiCBXeg9Bv9.jpg",
+      "release_year": "2005"
+    },
+    {
+      "id": 675,
+      "mediaType": "movie",
+      "title": "Harry Potter and the Order of the Phoenix",
+      "rating": 7.673,
+      "poster_path": "/5aOyriWkPec0zUDxmHFP9qMmBaj.jpg",
+      "release_year": "2007"
+    },
+    {
+      "id": 767,
+      "mediaType": "movie",
+      "title": "Harry Potter and the Half-Blood Prince",
+      "rating": 7.682,
+      "poster_path": "/z7uo9zmQdQwU5ZJHFpv2Upl30i1.jpg",
+      "release_year": "2009"
+    },
+    {
+      "id": 12444,
+      "mediaType": "movie",
+      "title": "Harry Potter and the Deathly Hallows: Part 1",
+      "rating": 7.733,
+      "poster_path": "/iGoXIpQb7Pot00EEdwpwPajheZ5.jpg",
+      "release_year": "2010"
+    },
+    {
+      "id": 12445,
+      "mediaType": "movie",
+      "title": "Harry Potter and the Deathly Hallows: Part 2",
+      "rating": 8.08,
+      "poster_path": "/c54HpQmuwXjHq2C9wmoACjxoom3.jpg",
+      "release_year": "2011"
+    }
+  ]
+}
