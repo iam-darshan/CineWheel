@@ -30,9 +30,10 @@ function WatchHistory({ watchedMoviesList, removeFromHistory, mediaType,moveToRi
                                         removeFromHistory(movie.id);
                                     }
                                     } />
-                                    <div className='Trash' onClick={()=>{
+                                    {/* <div className='Trash' onClick={()=>{
                                         moveToRight(movie.id)
                                     }}>Move</div>
+                                     */}
                             </div>
                             <div className="suggestionPoster">
                                 {movie.poster_path ? (
