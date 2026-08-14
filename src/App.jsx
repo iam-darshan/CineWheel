@@ -159,7 +159,7 @@ function App() {
 
   const removeFromHistory = (movieToRemove) => {
     const newWatchedList =
-      watchedMoviesList.filter(
+      watchedMoviesList.f(
         movie => movie.id !== movieToRemove
       )
     setwatchedMoviesList(newWatchedList)
@@ -170,6 +170,17 @@ function App() {
     })
   }
 
+  const moveToRight = (movieID)=>{
+    const currentLocation = watchedMoviesList.findIndex(movie => movie.id == movieID);
+    const newWatched = [...watchedMoviesList];
+    [newWatched[currentLocation],newWatched[currentLocation+1]]=[newWatched[currentLocation+1],newWatched[currentLocation]]
+    setwatchedMoviesList(newWatched)
+
+    DBupdater({
+      watchedMovies: newWatched
+    })
+  }
+
   const DBupdater = async (change) => {
     const user = auth.currentUser;
 
@@ -177,13 +188,8 @@ function App() {
       console.log("❌ No authenticated user");
       return;
     }
-
-    console.log("Updating Firestore for:", user.uid);
-    console.log("Data:", change);
-
     try {
       await updateDoc(doc(db, "CineWheel", user.uid), change);
-      console.log("✅ Firestore updated successfully");
     } catch (err) {
       console.error("❌ Firestore update failed:", err);
     }
@@ -373,7 +379,7 @@ function App() {
             </div>
             <MovieOfDay mediaType={mediaType} watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY} />
             <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} mediaType={mediaType} />
-            <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} mediaType={mediaType} />
+            <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} mediaType={mediaType} moveToRight={moveToRight}/>
           </>
           :
           <Collections addMovieFromSuggest={addMovieFromSuggest} watchedMoviesList={watchedMoviesList}/>

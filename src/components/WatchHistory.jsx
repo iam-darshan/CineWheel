@@ -2,7 +2,7 @@ import React from 'react'
 import './WatchHistory.css'
 import { Trash2,Clapperboard,Tv } from 'lucide-react'
 
-function WatchHistory({ watchedMoviesList, removeFromHistory, mediaType }) {
+function WatchHistory({ watchedMoviesList, removeFromHistory, mediaType,moveToRight  }) {
     return (
         <div className='watchHistoryContainer'>
             <div className='titleAndCount'>
@@ -30,6 +30,9 @@ function WatchHistory({ watchedMoviesList, removeFromHistory, mediaType }) {
                                         removeFromHistory(movie.id);
                                     }
                                     } />
+                                    {/* <div className='Trash' onClick={()=>{
+                                        moveToRight(movie.id)
+                                    }}>Move</div> */}
                             </div>
                             <div className="suggestionPoster">
                                 {movie.poster_path ? (
