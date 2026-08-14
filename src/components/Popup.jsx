@@ -9,42 +9,55 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
     const [movieDetails, setmovieDetails] = useState(null);
     const [movieCreditDetails, setmovieCreditDetails] = useState();
     const [movieProvidersDetails, setmovieProvidersDetails] = useState();
+    const [trailerKey, settrailerKey] = useState(null);
 
     useEffect(() => {
 
-    if (selectedMovie === "userMovie") return;
+        if (selectedMovie === "userMovie") return;
 
-    const fetchDetails = async () => {
+        const fetchDetails = async () => {
 
-        try {
+            try {
 
-            const [movieRes, providersRes, creditsRes] = await Promise.all([
-                fetch(`https://api.themoviedb.org/3/${mediaType}/${selectedMovie}?api_key=${API_KEY}`),
-                fetch(`https://api.themoviedb.org/3/${mediaType}/${selectedMovie}/watch/providers?api_key=${API_KEY}`),
-                fetch(`https://api.themoviedb.org/3/${mediaType}/${selectedMovie}/credits?api_key=${API_KEY}`)
-            ]);
+                const [movieRes, providersRes, creditsRes, trailerRes] = await Promise.all([
+                    fetch(`https://api.themoviedb.org/3/${mediaType}/${selectedMovie}?api_key=${API_KEY}`),
+                    fetch(`https://api.themoviedb.org/3/${mediaType}/${selectedMovie}/watch/providers?api_key=${API_KEY}`),
+                    fetch(`https://api.themoviedb.org/3/${mediaType}/${selectedMovie}/credits?api_key=${API_KEY}`),
+                    fetch(`https://api.themoviedb.org/3/${mediaType}/${selectedMovie}/videos?api_key=${API_KEY}`)
+                ]);
 
-            const movieInfo = await movieRes.json();
-            const providersData = await providersRes.json();
-            const creditsData = await creditsRes.json();
+                const movieInfo = await movieRes.json();
+                const providersData = await providersRes.json();
+                const creditsData = await creditsRes.json();
+                const trailerData = await trailerRes.json();
+                const trailer = trailerData.results.find(
+                    video =>
+                        video.site === "YouTube" &&
+                        video.type === "Trailer" &&
+                        video.official === true
+                );
 
-            setmovieDetails(movieInfo);
 
-            setmovieProvidersDetails(
-                providersData.results?.IN?.flatrate || []
-            );
+                setmovieDetails(movieInfo);
 
-            setmovieCreditDetails(creditsData);
+                setmovieProvidersDetails(
+                    providersData.results?.IN?.flatrate || []
+                );
 
-        } catch (error) {
-            console.error("Failed to fetch movie details:", error);
-        }
+                setmovieCreditDetails(creditsData);
 
-    };
+                settrailerKey(trailer?.key || null);
 
-    fetchDetails();
 
-}, [selectedMovie]);
+            } catch (error) {
+                console.error("Failed to fetch movie details:", error);
+            }
+
+        };
+
+        fetchDetails();
+
+    }, [selectedMovie]);
 
     if (!movieDetails) {
         return <div className="loading">Loading movie data...</div>;
@@ -84,29 +97,29 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
                     <div className="details">
                         <h2>{movieDetails.title || movieDetails.name}</h2>
                         <div className="yearAndRating">
-                            <div id='releaseYear'><h4 id='releaseYearh4'>{(movieDetails.release_date || movieDetails.first_air_date)? (movieDetails.release_date || movieDetails.first_air_date).slice(0, 4) : "N/A"}</h4></div>
-                            <div id='IMDBrating'><h4 id='IMDBratingh4'>{movieDetails.vote_average?(movieDetails.vote_average).toFixed(2) : "N/A"}</h4></div>
+                            <div id='releaseYear'><h4 id='releaseYearh4'>{(movieDetails.release_date || movieDetails.first_air_date) ? (movieDetails.release_date || movieDetails.first_air_date).slice(0, 4) : "N/A"}</h4></div>
+                            <div id='IMDBrating'><h4 id='IMDBratingh4'>{movieDetails.vote_average ? (movieDetails.vote_average).toFixed(2) : "N/A"}</h4></div>
                             <div className='runTime'><span>{movieDetails.runtime}</span><span>min</span></div>
                         </div>
                         <div>
                             <span>Directed by </span>
                             <span>{movieCreditDetails?.crew?.find(
-                                person => person.job ==="Director"
+                                person => person.job === "Director"
                             )?.name}</span>
-                        
+
                         </div>
                         <div className="genre">
-                            
+
                             <h6>Genre</h6>
                             <div className="genreRow">
 
-                           {movieDetails.genres?.map((genre)=>(
-                               <div className='genreDiv'>
-                                <h5>{genre.name}</h5>
-                                </div>
-                           ))}
-                           </div>
-                            
+                                {movieDetails.genres?.map((genre) => (
+                                    <div className='genreDiv'>
+                                        <h5>{genre.name}</h5>
+                                    </div>
+                                ))}
+                            </div>
+
                         </div>
                         <div className='desc'>
                             <h6>Overview</h6>
@@ -114,38 +127,54 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
                                 {movieDetails.overview}
                             </h5>
                         </div>
-                        {movieProvidersDetails &&
-                        <div className="watchProviders">
-                            <h3>Included with Subscription</h3>
-                            <div className="providersRow">
-                                {movieProvidersDetails.map((provider) => (
-                                    <div className="providerCard"
-                                     key={provider.provider_id}
-                                     >
-                                        
-                                        <img src={`https://image.tmdb.org/t/p/w92${provider.logo_path}`}
-                                            alt={provider.provider_name}
-                                            title={provider.provider_name} />
-                                          <span>{provider.provider_name}</span>  
-                                    </div>
-                                ))}
+
+                        {trailerKey && (
+                            <div className="trailerContainer">
+
+                                <iframe
+                                    src={`https://www.youtube.com/embed/${trailerKey}`}
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                                    allowFullScreen
+                                    title="video"
+                                />
+
                             </div>
-                        </div>
+                        )}
+
+
+                        {movieProvidersDetails &&
+                            <div className="watchProviders">
+                                <h3>Included with Subscription</h3>
+                                <div className="providersRow">
+                                    {movieProvidersDetails.map((provider) => (
+                                        <div className="providerCard"
+                                            key={provider.provider_id}
+                                        >
+
+                                            <img src={`https://image.tmdb.org/t/p/w92${provider.logo_path}`}
+                                                alt={provider.provider_name}
+                                                title={provider.provider_name} />
+                                            <span>{provider.provider_name}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         }
                         <div className="cast">
                             <h3>Cast</h3>
                             <div className="castRow">
                                 {
-                                    movieCreditDetails.cast.slice(0,4).map((actor)=>(
+                                    movieCreditDetails.cast.slice(0, 4).map((actor) => (
                                         <div className="castCard" key={actor.id}>
                                             <div className='castImg'>
 
-                                            <img  src={`https://image.tmdb.org/t/p/w92${actor.profile_path}`}
-                                            // alt={provider.provider_name}
-                                            title={actor.name} 
-                                            />
+                                                <img src={`https://image.tmdb.org/t/p/w92${actor.profile_path}`}
+                                                    // alt={provider.provider_name}
+                                                    title={actor.name}
+                                                />
                                             </div>
-                                        <h6 className='actorName'>{actor.name}</h6>
+                                            <h6 className='actorName'>{actor.name}</h6>
                                         </div>
                                     ))
                                 }

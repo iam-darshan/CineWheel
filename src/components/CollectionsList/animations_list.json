@@ -1,0 +1,318 @@
+{
+  "id": "animatedMasterpieces",
+  "title": "Animated Masterpieces",
+  "movies": [
+    {
+      "id": 129,
+      "mediaType": "movie",
+      "title": "Spirited Away",
+      "rating": 8.534,
+      "poster_path": "/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+      "release_year": "2001"
+    },
+    {
+      "id": 569094,
+      "mediaType": "movie",
+      "title": "Spider-Man: Across the Spider-Verse",
+      "rating": 8.342,
+      "poster_path": "/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
+      "release_year": "2023"
+    },
+    {
+      "id": 324857,
+      "mediaType": "movie",
+      "title": "Spider-Man: Into the Spider-Verse",
+      "rating": 8.394,
+      "poster_path": "/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
+      "release_year": "2018"
+    },
+    {
+      "id": 10681,
+      "mediaType": "movie",
+      "title": "WALL·E",
+      "rating": 8.119,
+      "poster_path": "/hbhFnRzzg6ZDmm8YAmxBnQpQIPh.jpg",
+      "release_year": "2008"
+    },
+    {
+      "id": 14160,
+      "mediaType": "movie",
+      "title": "Up",
+      "rating": 7.961,
+      "poster_path": "/mFvoEwSfLqbcWwFsDjQebn9bzFe.jpg",
+      "release_year": "2009"
+    },
+    {
+      "id": 862,
+      "mediaType": "movie",
+      "title": "Toy Story",
+      "rating": 7.985,
+      "poster_path": "/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg",
+      "release_year": "1995"
+    },
+    {
+      "id": 8587,
+      "mediaType": "movie",
+      "title": "The Lion King",
+      "rating": 8.253,
+      "poster_path": "/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg",
+      "release_year": "1994"
+    },
+    {
+      "id": 10191,
+      "mediaType": "movie",
+      "title": "How to Train Your Dragon",
+      "rating": 7.866,
+      "poster_path": "/ygGmAO60t8GyqUo9xYeYxSZAR3b.jpg",
+      "release_year": "2010"
+    },
+    {
+      "id": 2062,
+      "mediaType": "movie",
+      "title": "Ratatouille",
+      "rating": 7.846,
+      "poster_path": "/t3vaWRPSf6WjDSamIkKDs1iQWna.jpg",
+      "release_year": "2007"
+    },
+    {
+      "id": 1184918,
+      "mediaType": "movie",
+      "title": "The Wild Robot",
+      "rating": 8.308,
+      "poster_path": "/wTnV3PCVW5O92JMrFvvrRcV39RU.jpg",
+      "release_year": "2024"
+    },
+    {
+      "id": 354912,
+      "mediaType": "movie",
+      "title": "Coco",
+      "rating": 8.197,
+      "poster_path": "/6Ryitt95xrO8KXuqRGm1fUuNwqF.jpg",
+      "release_year": "2017"
+    },
+    {
+      "id": 372058,
+      "mediaType": "movie",
+      "title": "Your Name.",
+      "rating": 8.484,
+      "poster_path": "/vfJFJPepRKapMd5G2ro7klIRysq.jpg",
+      "release_year": "2016"
+    },
+    {
+      "id": 9806,
+      "mediaType": "movie",
+      "title": "The Incredibles",
+      "rating": 7.728,
+      "poster_path": "/2LqaLgk4Z226KkgPJuiOQ58wvrm.jpg",
+      "release_year": "2004"
+    },
+    {
+      "id": 128,
+      "mediaType": "movie",
+      "title": "Princess Mononoke",
+      "rating": 8.32,
+      "poster_path": "/cMYCDADoLKLbB83g4WnJegaZimC.jpg",
+      "release_year": "1997"
+    },
+    {
+      "id": 4935,
+      "mediaType": "movie",
+      "title": "Howl's Moving Castle",
+      "rating": 8.387,
+      "poster_path": "/13kOl2v0nD2OLbVSHnHk8GUFEhO.jpg",
+      "release_year": "2004"
+    },
+    {
+      "id": 10193,
+      "mediaType": "movie",
+      "title": "Toy Story 3",
+      "rating": 7.814,
+      "poster_path": "/AbbXspMOwdvwWZgVN0nabZq03Ec.jpg",
+      "release_year": "2010"
+    },
+    {
+      "id": 10315,
+      "mediaType": "movie",
+      "title": "Fantastic Mr. Fox",
+      "rating": 7.823,
+      "poster_path": "/euZyZb6iGreujYKrGyZHRddhUYh.jpg",
+      "release_year": "2009"
+    },
+    {
+      "id": 378064,
+      "mediaType": "movie",
+      "title": "A Silent Voice: The Movie",
+      "rating": 8.394,
+      "poster_path": "/tuFaWiqX0TXoWu7DGNcmX3UW7sT.jpg",
+      "release_year": "2016"
+    },
+    {
+      "id": 809,
+      "mediaType": "movie",
+      "title": "Shrek 2",
+      "rating": 7.326,
+      "poster_path": "/2yYP0PQjG8zVqturh1BAqu2Tixl.jpg",
+      "release_year": "2004"
+    },
+    {
+      "id": 12,
+      "mediaType": "movie",
+      "title": "Finding Nemo",
+      "rating": 7.822,
+      "poster_path": "/5lc6nQc0VhWFYFbNv016xze8Jvy.jpg",
+      "release_year": "2003"
+    },
+    {
+      "id": 150540,
+      "mediaType": "movie",
+      "title": "Inside Out",
+      "rating": 7.906,
+      "poster_path": "/2H1TmgdfNtsKlU9jKdeNyYL5y8T.jpg",
+      "release_year": "2015"
+    },
+    {
+      "id": 315162,
+      "mediaType": "movie",
+      "title": "Puss in Boots: The Last Wish",
+      "rating": 8.214,
+      "poster_path": "/kuf6dutpsT0vSVehic3EZIqkOBt.jpg",
+      "release_year": "2022"
+    },
+    {
+      "id": 8355,
+      "mediaType": "movie",
+      "title": "Ice Age: Dawn of the Dinosaurs",
+      "rating": 6.775,
+      "poster_path": "/cXOLaxcNjNAYmEx1trZxOTKhK3Q.jpg",
+      "release_year": "2009"
+    },
+    {
+      "id": 508965,
+      "mediaType": "movie",
+      "title": "Klaus",
+      "rating": 8.22,
+      "poster_path": "/q125RHUDgR4gjwh1QkfYuJLYkL.jpg",
+      "release_year": "2019"
+    },
+    {
+      "id": 9502,
+      "mediaType": "movie",
+      "title": "Kung Fu Panda",
+      "rating": 7.334,
+      "poster_path": "/wWt4JYXTg5Wr3xBW2phBrMKgp3x.jpg",
+      "release_year": "2008"
+    },
+    {
+      "id": 508883,
+      "mediaType": "movie",
+      "title": "The Boy and the Heron",
+      "rating": 7.39,
+      "poster_path": "/f4oZTcfGrVTXKTWg157AwikXqmP.jpg",
+      "release_year": "2023"
+    },
+    {
+      "id": 10020,
+      "mediaType": "movie",
+      "title": "Beauty and the Beast",
+      "rating": 7.726,
+      "poster_path": "/hUJ0UvQ5tgE2Z9WpfuduVSdiCiU.jpg",
+      "release_year": "1991"
+    },
+    {
+      "id": 82702,
+      "mediaType": "movie",
+      "title": "How to Train Your Dragon 2",
+      "rating": 7.685,
+      "poster_path": "/d13Uj86LdbDLrfDoHR5aDOFYyJC.jpg",
+      "release_year": "2014"
+    },
+    {
+      "id": 501929,
+      "mediaType": "movie",
+      "title": "The Mitchells vs. the Machines",
+      "rating": 7.83,
+      "poster_path": "/mI2Di7HmskQQ34kz0iau6J1vr70.jpg",
+      "release_year": "2021"
+    },
+    {
+      "id": 863,
+      "mediaType": "movie",
+      "title": "Toy Story 2",
+      "rating": 7.618,
+      "poster_path": "/4rbcp3ng8n1MKHjpeqW0L7Fnpzz.jpg",
+      "release_year": "1999"
+    },
+    {
+      "id": 808,
+      "mediaType": "movie",
+      "title": "Shrek",
+      "rating": 7.775,
+      "poster_path": "/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg",
+      "release_year": "2001"
+    },
+    {
+      "id": 10674,
+      "mediaType": "movie",
+      "title": "Mulan",
+      "rating": 7.903,
+      "poster_path": "/jAbexAtB0aSfP5Ay4TpWHARyVnG.jpg",
+      "release_year": "1998"
+    },
+    {
+      "id": 177572,
+      "mediaType": "movie",
+      "title": "Big Hero 6",
+      "rating": 7.726,
+      "poster_path": "/2mxS4wUimwlLmI1xp6QW6NSU361.jpg",
+      "release_year": "2014"
+    },
+    {
+      "id": 38757,
+      "mediaType": "movie",
+      "title": "Tangled",
+      "rating": 7.6,
+      "poster_path": "/ym7Kst6a4uodryxqbGOxmewF235.jpg",
+      "release_year": "2010"
+    },
+    {
+      "id": 10494,
+      "mediaType": "movie",
+      "title": "Perfect Blue",
+      "rating": 8.305,
+      "poster_path": "/6WTiOCfDPP8XV4jqfloiVWf7KHq.jpg",
+      "release_year": "1998"
+    },
+    {
+      "id": 508442,
+      "mediaType": "movie",
+      "title": "Soul",
+      "rating": 8.089,
+      "poster_path": "/hm58Jw4Lw8OIeECIq5qyPYhAeRJ.jpg",
+      "release_year": "2020"
+    },
+    {
+      "id": 9837,
+      "mediaType": "movie",
+      "title": "The Prince of Egypt",
+      "rating": 7.318,
+      "poster_path": "/2xUjYwL6Ol7TLJPPKs7sYW5PWLX.jpg",
+      "release_year": "1998"
+    },
+    {
+      "id": 1022789,
+      "mediaType": "movie",
+      "title": "Inside Out 2",
+      "rating": 7.542,
+      "poster_path": "/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
+      "release_year": "2024"
+    },
+    {
+      "id": 9479,
+      "mediaType": "movie",
+      "title": "The Nightmare Before Christmas",
+      "rating": 7.833,
+      "poster_path": "/oQffRNjK8e19rF7xVYEN8ew0j7b.jpg",
+      "release_year": "1993"
+    }
+  ]
+}

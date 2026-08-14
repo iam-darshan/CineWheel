@@ -5,6 +5,7 @@ import FastAndFurious from './CollectionsList/fastAndFurious_list.json'
 import OscarWinning from './CollectionsList/oscarWinners_list.json'
 import XMen from './CollectionsList/xMen_list.json'
 import BeforeDoomsDay from'./CollectionsList/doomsday_list.json'
+import AnimatedMasterpieces from './CollectionsList/animations_list.json'
 
 const collections = [
     BeforeDoomsDay,
@@ -13,7 +14,8 @@ const collections = [
     Marvel,
     DC,
     FastAndFurious,
-    XMen
+    XMen,
+    AnimatedMasterpieces
 ];
 
 export default collections;

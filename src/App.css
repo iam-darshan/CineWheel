@@ -160,7 +160,6 @@ body,
         inset 0 1px 1px rgba(255, 255, 255, 0.08);
 
     transition: 0.2s ease;
-    -webkit-backface-visibility: hidden;
 }
 
 

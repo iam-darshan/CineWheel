@@ -6,62 +6,125 @@ const API_KEY = '004a86336944d50c3df15414daa2c285';
 // Movies + TV series for the Road to Doomsday collection
 const mediaIds = [
 
-    // =========================
-    // X-MEN
-    // =========================
+  // 1. Spirited Away
+  { id: 129, mediaType: "movie" },
 
-    { id: 36657, mediaType: "movie" },   // X-Men
-    { id: 36658, mediaType: "movie" },   // X2: X-Men United
-    { id: 36668, mediaType: "movie" },   // X-Men: The Last Stand
-    { id: 127585, mediaType: "movie" },  // X-Men: Days of Future Past
+  // 2. Spider-Man: Across the Spider-Verse
+  { id: 569094, mediaType: "movie" },
 
-    // Deadpool / Wolverine
-    { id: 293660, mediaType: "movie" },  // Deadpool
-    { id: 263115, mediaType: "movie" },  // Logan
-    { id: 383498, mediaType: "movie" },  // Deadpool 2
+  // 3. Spider-Man: Into the Spider-Verse
+  { id: 324857, mediaType: "movie" },
 
+  // 4. WALL-E
+  { id: 10681, mediaType: "movie" },
 
-    // =========================
-    // MCU — INFINITY SAGA
-    // =========================
+  // 5. Toy Story
+  { id: 862, mediaType: "movie" },
 
-    { id: 1771, mediaType: "movie" },     // Captain America: The First Avenger
-    { id: 24428, mediaType: "movie" },    // The Avengers
-    { id: 100402, mediaType: "movie" },   // Captain America: The Winter Soldier
-    { id: 99861, mediaType: "movie" },    // Avengers: Age of Ultron
-    { id: 271110, mediaType: "movie" },   // Captain America: Civil War
-    { id: 497698, mediaType: "movie" },   // Black Widow
-    { id: 299536, mediaType: "movie" },   // Avengers: Infinity War
-    { id: 299534, mediaType: "movie" },   // Avengers: Endgame
+  // 6. The Lion King
+  { id: 8587, mediaType: "movie" },
 
+  // 7. How to Train Your Dragon
+  { id: 10191, mediaType: "movie" },
 
-    // =========================
-    // MCU — MULTIVERSE SAGA
-    // =========================
+  // 8. Ratatouille
+  { id: 2062, mediaType: "movie" },
 
-    { id: 84958, mediaType: "tv" },       // Loki
-    { id: 85271, mediaType: "tv" },       // WandaVision
-    { id: 88396, mediaType: "tv" },       // The Falcon and the Winter Soldier
+  // 9. The Wild Robot
+  { id: 1184918, mediaType: "movie" },
 
-    { id: 566525, mediaType: "movie" },   // Shang-Chi and the Legend of the Ten Rings
-    { id: 634649, mediaType: "movie" },   // Spider-Man: No Way Home
-    { id: 453395, mediaType: "movie" },   // Doctor Strange in the Multiverse of Madness
-    { id: 616037, mediaType: "movie" },   // Thor: Love and Thunder
-    { id: 505642, mediaType: "movie" },   // Black Panther: Wakanda Forever
-    { id: 640146, mediaType: "movie" },   // Ant-Man and the Wasp: Quantumania
-    { id: 609681, mediaType: "movie" },   // The Marvels
+  // 10. Coco
+  { id: 354912, mediaType: "movie" },
 
-    // Deadpool & Wolverine
-    { id: 533535, mediaType: "movie" },   // Deadpool & Wolverine
+  // 11. Your Name
+  { id: 372058, mediaType: "movie" },
 
+  // 12. The Incredibles
+  { id: 9806, mediaType: "movie" },
 
-    // =========================
-    // CURRENT MCU
-    // =========================
+  // 13. Princess Mononoke
+  { id: 128, mediaType: "movie" },
 
-    { id: 822119, mediaType: "movie" },   // Captain America: Brave New World
-    { id: 986056, mediaType: "movie" },   // Thunderbolts*
-    { id: 617126, mediaType: "movie" }    // The Fantastic Four: First Steps
+  // 14. Howl's Moving Castle
+  { id: 4935, mediaType: "movie" },
+
+  // 15. Toy Story 3
+  { id: 10193, mediaType: "movie" },
+
+  // 16. Up
+  { id: 14160, mediaType: "movie" },
+
+  // 17. Fantastic Mr. Fox
+  { id: 10315, mediaType: "movie" },
+
+  // 18. A Silent Voice
+  { id: 378064, mediaType: "movie" },
+
+  // 19. Shrek 2
+  { id: 809, mediaType: "movie" },
+
+  // 20. Finding Nemo
+  { id: 12, mediaType: "movie" },
+
+  // 21. Inside Out
+  { id: 150540, mediaType: "movie" },
+
+  // 22. Puss in Boots: The Last Wish
+  { id: 315162, mediaType: "movie" },
+
+  // 23. Coraline
+  { id: 8355, mediaType: "movie" },
+
+  // 24. Klaus
+  { id: 508965, mediaType: "movie" },
+
+  // 25. Kung Fu Panda
+  { id: 9502, mediaType: "movie" },
+
+  // 26. The Boy and the Heron
+  { id: 508883, mediaType: "movie" },
+
+  // 27. Beauty and the Beast
+  { id: 10020, mediaType: "movie" },
+
+  // 28. How to Train Your Dragon 2
+  { id: 82702, mediaType: "movie" },
+
+  // 29. The Mitchells vs. the Machines
+  { id: 501929, mediaType: "movie" },
+
+  // 30. Toy Story 2
+  { id: 863, mediaType: "movie" },
+
+  // 31. Kung Fu Panda 2
+  { id: 49451, mediaType: "movie" },
+
+  // 32. Shrek
+  { id: 808, mediaType: "movie" },
+
+  // 33. Mulan
+  { id: 10674, mediaType: "movie" },
+
+  // 34. Big Hero 6
+  { id: 177572, mediaType: "movie" },
+
+  // 35. Tangled
+  { id: 38757, mediaType: "movie" },
+
+  // 36. Perfect Blue
+  { id: 10494, mediaType: "movie" },
+
+  // 37. Soul
+  { id: 508442, mediaType: "movie" },
+
+  // 38. The Prince of Egypt
+  { id: 9837, mediaType: "movie" },
+
+  // 39. Inside Out 2
+  { id: 1022789, mediaType: "movie" },
+
+  // 40. The Nightmare Before Christmas
+  { id: 9479, mediaType: "movie" }
 
 ];
 
@@ -148,9 +211,9 @@ async function fetchMediaData() {
 
     const outputData = {
 
-        id: "road-to-doomsday",
+        id: "animatedMasterpieces",
 
-        title: "Road to Doomsday",
+        title: "Animated Masterpieces",
 
         movies: movieResults
 
@@ -159,7 +222,7 @@ async function fetchMediaData() {
 
     fs.writeFileSync(
 
-        "roadToDoomsday_list.json",
+        "animations_list.json",
 
         JSON.stringify(outputData, null, 2)
 
