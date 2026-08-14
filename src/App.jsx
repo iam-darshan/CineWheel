@@ -173,7 +173,7 @@ function App() {
   const moveToRight = (movieID)=>{
     const currentLocation = watchedMoviesList.findIndex(movie => movie.id == movieID);
     const newWatched = [...watchedMoviesList];
-    [newWatched[currentLocation],newWatched[currentLocation+1]]=[newWatched[currentLocation+1],newWatched[currentLocation]]
+    [newWatched[currentLocation],newWatched[currentLocation-1]]=[newWatched[currentLocation-1],newWatched[currentLocation]]
     setwatchedMoviesList(newWatched)
 
     DBupdater({
