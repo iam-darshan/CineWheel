@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './SuggestedMovies.css'
 import { Plus } from 'lucide-react'
 
-function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType ,setshowPopup, setselectedMovie,setpopupType }) {
+function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType, setshowPopup, setselectedMovie, setpopupType, watchedMoviesList }) {
 
     const [topMovies, settopMovies] = useState([])
     const [trendingMovies, settrendingMovies] = useState([])
@@ -55,45 +55,54 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType ,set
                 <div className='movieULcontainer' >
 
                     <ul className='moviesUL'>
-                        {topMovies.map((movie) => (
-                            <li className='moviesInSuggestion' key={movie.id} onClick={() => {
-                    setshowPopup(true);
-                    setpopupType("suggested");
-                    setselectedMovie(movie.id)
-                  }}>
-                                <div className='Plus'>
-                                    <Plus
-                                        style={{
-                                            color: "white",
-                                            filter:
-                                                "drop-shadow(0 2px 2px rgba(0,0,0,1)) drop-shadow(0 0 4px rgba(0,0,0,0.9)) drop-shadow(0 0 8px #000000) drop-shadow(0 0 16px #000000)"
-                                        }}
+                        {topMovies.map((movie) => {
+                            const isWatched = watchedMoviesList.some((watchedMovie) => {
+                                return watchedMovie.id == movie.id;
+                            })
 
-                                        onClick={() => {
-                                            e.stopPropagation();
-                                            addMovieFromSuggest(movie.id, mediaType);
+                            return (
+                                <li className={`moviesInSuggestion ${isWatched && "isWatchedBorder"}`} key={movie.id} onClick={() => {
+                                    setshowPopup(true);
+                                    setpopupType("suggested");
+                                    setselectedMovie(movie.id)
+                                }}>
+                                    <div className='Plus' 
+                                    onClick={(e) => {
+                                                e.stopPropagation();
+                                                addMovieFromSuggest(movie.id, mediaType);
+                                            }
+                                            }
+                                    >
+                                        <Plus
+                                            style={{
+                                                color: "white",
+                                                filter:
+                                                    "drop-shadow(0 2px 2px rgba(0,0,0,1)) drop-shadow(0 0 4px rgba(0,0,0,0.9)) drop-shadow(0 0 8px #000000) drop-shadow(0 0 16px #000000)"
+                                            }}
+
+                                        />
+                                    </div>
+                                    <div className="suggestionPoster">
+                                        {movie.poster_path ? (
+                                            <img className='suggestionPosterImage' src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
+                                        ) : (<div className="no-poster">No Image Available</div>)
                                         }
-                                        } />
-                                </div>
-                                <div className="suggestionPoster">
-                                    {movie.poster_path ? (
-                                        <img className='suggestionPosterImage' src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
-                                    ) : (<div className="no-poster">No Image Available</div>)
-                                    }
-                                </div>
-                                <div className='titleAndYear'>
-                                    <h3 id='movieTitle'>{movie.title || movie.name}</h3>
-                                    <div>
-                                        <div className='yearAndrating'>
-                                            <h5 id='movieYear'>{movie.release_date?.slice(0, 4) || movie.first_air_date.slice(0, 4) || "N/A"}</h5>
-                                            <h5 id='movieRating'>{movie.vote_average.toFixed(2) || "N/A"}</h5>
+                                    </div>
+                                    <div className='titleAndYear'>
+                                        <h3 id='movieTitle'>{movie.title || movie.name}</h3>
+                                        <div>
+                                            <div className='yearAndrating'>
+                                                <h5 id='movieYear'>{movie.release_date?.slice(0, 4) || movie.first_air_date.slice(0, 4) || "N/A"}</h5>
+                                                <h5 id='movieRating'>{movie.vote_average.toFixed(2) || "N/A"}</h5>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
 
-                            </li>
-                        ))}
+                                </li>
+                            )
+                        })}
+
                     </ul>
                 </div>
             </div>
@@ -102,42 +111,52 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType ,set
                 <div className='movieULcontainer'>
 
                     <ul className='moviesUL'>
-                        {trendingMovies.map((movie) => (
-                           <li className='moviesInSuggestion' key={movie.id} onClick={() => {
-                    setshowPopup(true);
-                    setselectedMovie(movie.id)
-                  }}>
-                                <div className='Plus'>
-                                    <Plus
-                                        style={{
-                                            color: "white",
-                                            filter:
-                                                "drop-shadow(0 2px 2px rgba(0,0,0,1)) drop-shadow(0 0 4px rgba(0,0,0,0.9)) drop-shadow(0 0 8px #000000) drop-shadow(0 0 16px #000000)"
-                                        }}
+                        {trendingMovies.map((movie) => {
+                            const isWatched = watchedMoviesList.some((watchedMovie) => {
+                                return watchedMovie.id == movie.id;
+                            })
 
-                                        onClick={() => {
-                                            addMovieFromSuggest(movie.id, mediaType);
+                            return (
+                                <li className={`moviesInSuggestion ${isWatched && "isWatchedBorder"}`} key={movie.id} onClick={() => {
+                                    setshowPopup(true);
+                                    setselectedMovie(movie.id)
+                                }}>
+                                    <div className='Plus' 
+                                    onClick={(e) => {
+                                                e.stopPropagation();
+                                                addMovieFromSuggest(movie.id, mediaType);
+                                            }
+                                            }
+                                    >
+                                        <Plus
+                                            style={{
+                                                color: "white",
+                                                filter:
+                                                    "drop-shadow(0 2px 2px rgba(0,0,0,1)) drop-shadow(0 0 4px rgba(0,0,0,0.9)) drop-shadow(0 0 8px #000000) drop-shadow(0 0 16px #000000)"
+                                            }}
+
+                                             />
+                                    </div>
+                                    <div className="suggestionPoster">
+                                        {movie.poster_path ? (
+                                            <img className='suggestionPosterImage' src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
+                                        ) : (<div className="no-poster">No Image Available</div>)
                                         }
-                                        } />
-                                </div>
-                                <div className="suggestionPoster">
-                                    {movie.poster_path ? (
-                                        <img className='suggestionPosterImage' src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
-                                    ) : (<div className="no-poster">No Image Available</div>)
-                                    }
-                                </div>
-                                <div className='titleAndYear yearAndTitle' >
-                                    <h3 id='movieTitle'>{movie.title || movie.name}</h3>
-                                    <div>
-                                        <div className='yearAndrating'>
-                                            <h5 id='movieYear'>{movie.release_date?.slice(0, 4) || movie.first_air_date.slice(0, 4) || "N/A"}</h5>
-                                            <h5 id='movieRating'>{movie.vote_average.toFixed(2) || "N/A"}</h5>
+                                    </div>
+                                    <div className='titleAndYear yearAndTitle' >
+                                        <h3 id='movieTitle'>{movie.title || movie.name}</h3>
+                                        <div>
+                                            <div className='yearAndrating'>
+                                                <h5 id='movieYear'>{movie.release_date?.slice(0, 4) || movie.first_air_date.slice(0, 4) || "N/A"}</h5>
+                                                <h5 id='movieRating'>{movie.vote_average.toFixed(2) || "N/A"}</h5>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </li>
-                        ))}
+                                </li>
+                            )
+                        })}
+
                     </ul>
                 </div>
             </div>

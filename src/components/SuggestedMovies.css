@@ -143,6 +143,10 @@ h4{
 }
 .toggleContainer{
     display: none;
+    cursor: pointer;
+}
+.isWatchedBorder{
+  border: 2px solid green ;
 }
 
 @media only screen and (max-width: 767px) {

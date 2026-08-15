@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import './Popup.css'
 import { CircleX, Trophy, RotateCcw } from 'lucide-react';
+import * as streamingAvailability from "streaming-availability";
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+const PROVIDER_API_KEY = "motn-key-v4-XfuK22SOvXRDoX0UIb8CnXHLWNRdsEwV";
 
-function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaType,popupType,addMovieFromSuggest }) {
+function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaType, popupType, addMovieFromSuggest }) {
 
     const [movieDetails, setmovieDetails] = useState(null);
     const [movieCreditDetails, setmovieCreditDetails] = useState();
@@ -19,15 +21,13 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
 
             try {
 
-                const [movieRes, providersRes, creditsRes, trailerRes] = await Promise.all([
+                const [movieRes, creditsRes, trailerRes] = await Promise.all([
                     fetch(`https://api.themoviedb.org/3/${mediaType}/${selectedMovie}?api_key=${API_KEY}`),
-                    fetch(`https://api.themoviedb.org/3/${mediaType}/${selectedMovie}/watch/providers?api_key=${API_KEY}`),
                     fetch(`https://api.themoviedb.org/3/${mediaType}/${selectedMovie}/credits?api_key=${API_KEY}`),
                     fetch(`https://api.themoviedb.org/3/${mediaType}/${selectedMovie}/videos?api_key=${API_KEY}`)
                 ]);
 
                 const movieInfo = await movieRes.json();
-                const providersData = await providersRes.json();
                 const creditsData = await creditsRes.json();
                 const trailerData = await trailerRes.json();
                 const trailer = trailerData.results.find(
@@ -39,10 +39,6 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
 
 
                 setmovieDetails(movieInfo);
-
-                setmovieProvidersDetails(
-                    providersData.results?.IN?.flatrate || []
-                );
 
                 setmovieCreditDetails(creditsData);
 
@@ -58,6 +54,32 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
         fetchDetails();
 
     }, [selectedMovie]);
+    useEffect(() => {
+        const getStreamingAvailability = async () => {
+            try {
+                const client = new streamingAvailability.Client(
+                    new streamingAvailability.Configuration({
+                        apiKey: PROVIDER_API_KEY
+                    })
+                );
+
+                const data = await client.showsApi.getShow({
+                    id: movieDetails.imdb_id,
+                    country: "in"
+                });
+
+            
+                setmovieProvidersDetails(data.streamingOptions.in)
+
+            } catch (error) {
+                console.error("Streaming availability failed:", error);
+            }
+        };
+
+        if (movieDetails?.imdb_id) {
+            getStreamingAvailability();
+        }
+    }, [movieDetails]);
 
     if (!movieDetails) {
         return <div className="loading">Loading movie data...</div>;
@@ -143,33 +165,39 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
 
 
                         {movieProvidersDetails &&
-                        
+
                             <div className="watchProviders">
-                                {console.log(movieProvidersDetails)}
-                                <h3>Included with Subscription</h3>
+                                <h3>Where to Watch</h3>
                                 <div className="providersRow">
-                                    {movieProvidersDetails.filter(provider => provider.provider_id !== 2100).map((provider) => (
+
+
+                                    {movieProvidersDetails.sort((a,b)=> {
+                                        const order ={
+                                            subscription:1,
+                                            buy:2,
+                                            rent:3
+                                        }
+                                        return order[a.type]-order[b.type];
+                                    }).map((provider) => (
                                         <div className="providerCard"
                                             key={provider.provider_id}
                                             onClick={() => {
-                                                switch (provider.provider_id) {
-                                                    case 8:
-                                                        window.open(`https://www.netflix.com/search?q=${movieDetails.title}`, '_blank')
-                                                        break;
-                                                    case 119:
-                                                        window.open(`https://www.primevideo.com/search/ref=atv_nb_sr?phrase=${movieDetails.title}`, '_blank')
-                                                        break;
-                                                    case 2336:
-                                                        window.open(`https://www.jiohotstar.com/search?search_query=${movieDetails.title}`,'_blank')
-                                                        break;
-                                                }       
+                                                window.open(`${provider.link}`, '_blank')
                                             }}
                                         >
 
-                                            <img src={`https://image.tmdb.org/t/p/w92${provider.logo_path}`}
+                                            <img src={provider.service?.imageSet.darkThemeImage}
                                                 alt={provider.provider_name}
                                                 title={provider.provider_name} />
-                                            <span>{provider.provider_name}</span>
+                                            {provider.type !== "subscription" && 
+                                            
+                                                <div className="providerPrice">
+                                            <span>{provider.type}</span>
+                                            <span>{provider.price?.formatted}</span>
+
+                                            </div>
+                                            }    
+                                            
                                         </div>
                                     ))}
                                 </div>
@@ -179,7 +207,7 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
                             <h3>Cast</h3>
                             <div className="castRow">
                                 {
-                                    movieCreditDetails.cast.slice(0, 4).map((actor) => (
+                                    movieCreditDetails.cast.slice(0, 8).map((actor) => (
                                         <div className="castCard" key={actor.id}>
                                             <div className='castImg'>
 
@@ -199,43 +227,43 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
                 </div>
 
                 <div className="footer">
-                    {popupType==="spin" ? 
+                    {popupType === "spin" ?
 
                         <div className="spinAgain" onClick={() => {
                             spinWheel();
                             onClose();
                         }}>
-                        <RotateCcw size={40} />
-                        <h4 id='spinAgainh4'>Spin Again</h4>
+                            <RotateCcw size={40} />
+                            <h4 id='spinAgainh4'>Spin Again</h4>
                         </div>
                         :
                         <div className="spinAgain" onClick={() => {
-                            addMovieFromSuggest(movieDetails.id,mediaType)
+                            addMovieFromSuggest(movieDetails.id, mediaType)
                             onClose();
                         }}>
-                        <h4 id='spinAgainh4'>Add to Library</h4>
+                            <h4 id='spinAgainh4'>Add to Library</h4>
                         </div>
-                        
+
                     }
-                     {popupType==="spin" ? 
+                    {popupType === "spin" ?
 
                         <div className="addToHistory" onClick={() => {
-                        addToHistory(movieDetails.id);
-                        onClose();
-                    }}>
-                        <h4 id='addToHistoryh4'>Watched <br />Add to History</h4>
-                    </div>
+                            addToHistory(movieDetails.id);
+                            onClose();
+                        }}>
+                            <h4 id='addToHistoryh4'>Watched <br />Add to History</h4>
+                        </div>
                         :
                         <div className="addToHistory" onClick={() => {
-                        addToHistory(movieDetails.id,"suggestion");
-                        onClose();
-                    }}>
-                        <h4 id='addToHistoryh4'>Watched <br />Add to History</h4>
-                    </div>
-                        
+                            addToHistory(movieDetails.id, "suggestion");
+                            onClose();
+                        }}>
+                            <h4 id='addToHistoryh4'>Watched <br />Add to History</h4>
+                        </div>
+
                     }
-                    
-                    
+
+
                 </div>
             </div>
         </div>

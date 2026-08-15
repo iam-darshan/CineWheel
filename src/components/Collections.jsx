@@ -45,12 +45,17 @@ function Collections({ addMovieFromSuggest, watchedMoviesList, setshowPopup, set
 
 
                                             return (
-                                                <li className='moviesInSuggestion' key={movie.id} onClick={() => {
+                                                <li className={`moviesInSuggestion ${isWatched && "isWatchedBorder"}`} key={movie.id} onClick={() => {
                                                     setshowPopup(true);
                                                     setpopupType("suggested");
                                                     setselectedMovie(movie.id)
                                                 }}>
-                                                    {!isWatched ? (<div className='Plus'>
+                                                    {!isWatched ? 
+                                                    (<div className='Plus' onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                addMovieFromSuggest(movie.id, movie.mediaType);
+                                                            }
+                                                            }>
                                                         <Plus
                                                             style={{
                                                                 color: "white",
@@ -58,10 +63,7 @@ function Collections({ addMovieFromSuggest, watchedMoviesList, setshowPopup, set
                                                                     "drop-shadow(0 2px 2px rgba(0,0,0,1)) drop-shadow(0 0 4px rgba(0,0,0,0.9)) drop-shadow(0 0 8px #000000) drop-shadow(0 0 16px #000000)"
                                                             }}
 
-                                                            onClick={() => {
-                                                                addMovieFromSuggest(movie.id, movie.mediaType);
-                                                            }
-                                                            } />
+                                                             />
                                                     </div>) : (
 
                                                         <div className='tick'>
