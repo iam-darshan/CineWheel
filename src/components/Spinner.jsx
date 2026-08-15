@@ -5,7 +5,7 @@ import Quotes from './Quotes.jsx'
 
 
 
-function Spinner({displayedMovies, rotation, spinWheel, isSpinning ,mediaType}) {
+function Spinner({displayedMovies, rotation, spinWheel, isSpinning ,mediaType,setpopupType}) {
   const canvasRef = useRef(null);
 
 

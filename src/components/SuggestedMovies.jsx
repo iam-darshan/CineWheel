@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './SuggestedMovies.css'
 import { Plus } from 'lucide-react'
 
-function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType }) {
+function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType ,setshowPopup, setselectedMovie,setpopupType }) {
 
     const [topMovies, settopMovies] = useState([])
     const [trendingMovies, settrendingMovies] = useState([])
@@ -12,13 +12,13 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType }) {
 
         const fetchMovies = async () => {
 
-            if(mediaType === "movie"){
+            if (mediaType === "movie") {
                 const res1 = await fetch(`https://api.themoviedb.org/3/list/634?api_key=${API_KEY}`);
                 const result1 = await res1.json();
                 const data1 = result1.items;
                 settopMovies(data1);
             }
-            if(mediaType ==="tv"){
+            if (mediaType === "tv") {
                 const res1 = await fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}`);
                 const result1 = await res1.json();
                 const data1 = result1.results;
@@ -56,7 +56,11 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType }) {
 
                     <ul className='moviesUL'>
                         {topMovies.map((movie) => (
-                            <li className='moviesInSuggestion' key={movie.id} >
+                            <li className='moviesInSuggestion' key={movie.id} onClick={() => {
+                    setshowPopup(true);
+                    setpopupType("suggested");
+                    setselectedMovie(movie.id)
+                  }}>
                                 <div className='Plus'>
                                     <Plus
                                         style={{
@@ -66,7 +70,8 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType }) {
                                         }}
 
                                         onClick={() => {
-                                            addMovieFromSuggest(movie.id,mediaType);
+                                            e.stopPropagation();
+                                            addMovieFromSuggest(movie.id, mediaType);
                                         }
                                         } />
                                 </div>
@@ -80,7 +85,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType }) {
                                     <h3 id='movieTitle'>{movie.title || movie.name}</h3>
                                     <div>
                                         <div className='yearAndrating'>
-                                            <h5 id='movieYear'>{movie.release_date?.slice(0, 4) || movie.first_air_date.slice(0, 4)|| "N/A"}</h5>
+                                            <h5 id='movieYear'>{movie.release_date?.slice(0, 4) || movie.first_air_date.slice(0, 4) || "N/A"}</h5>
                                             <h5 id='movieRating'>{movie.vote_average.toFixed(2) || "N/A"}</h5>
                                         </div>
                                     </div>
@@ -98,19 +103,22 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType }) {
 
                     <ul className='moviesUL'>
                         {trendingMovies.map((movie) => (
-                            <li className='moviesInSuggestion' key={movie.id} >
+                           <li className='moviesInSuggestion' key={movie.id} onClick={() => {
+                    setshowPopup(true);
+                    setselectedMovie(movie.id)
+                  }}>
                                 <div className='Plus'>
                                     <Plus
-                                    style={{
+                                        style={{
                                             color: "white",
                                             filter:
                                                 "drop-shadow(0 2px 2px rgba(0,0,0,1)) drop-shadow(0 0 4px rgba(0,0,0,0.9)) drop-shadow(0 0 8px #000000) drop-shadow(0 0 16px #000000)"
                                         }}
 
-                                    onClick={() => {
-                                       addMovieFromSuggest(movie.id, mediaType);
-                                    }
-                                    } />
+                                        onClick={() => {
+                                            addMovieFromSuggest(movie.id, mediaType);
+                                        }
+                                        } />
                                 </div>
                                 <div className="suggestionPoster">
                                     {movie.poster_path ? (
@@ -122,7 +130,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType }) {
                                     <h3 id='movieTitle'>{movie.title || movie.name}</h3>
                                     <div>
                                         <div className='yearAndrating'>
-                                            <h5 id='movieYear'>{movie.release_date?.slice(0, 4) || movie.first_air_date.slice(0, 4)|| "N/A"}</h5>
+                                            <h5 id='movieYear'>{movie.release_date?.slice(0, 4) || movie.first_air_date.slice(0, 4) || "N/A"}</h5>
                                             <h5 id='movieRating'>{movie.vote_average.toFixed(2) || "N/A"}</h5>
                                         </div>
                                     </div>

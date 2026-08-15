@@ -3,8 +3,7 @@ import './Collections.css'
 import collections from './CollectionList'
 import { Plus, CircleCheckBig } from 'lucide-react'
 
-function Collections({ addMovieFromSuggest, watchedMoviesList }) {
-
+function Collections({ addMovieFromSuggest, watchedMoviesList, setshowPopup, setselectedMovie, setpopupType }) {
     return (
         <div className='collectionContianer'>
             <div className='collections'>
@@ -21,7 +20,7 @@ function Collections({ addMovieFromSuggest, watchedMoviesList }) {
                             )
                         ).length
                         const collectionCount = collection.movies.length
-                        const progress=(watchedMoviesCount/collectionCount)*100
+                        const progress = (watchedMoviesCount / collectionCount) * 100
 
 
                         return (
@@ -31,7 +30,7 @@ function Collections({ addMovieFromSuggest, watchedMoviesList }) {
                                     <div className='progress'>{watchedMoviesCount}/{collectionCount}</div>
                                 </div>
                                 <div className="progressBar">
-                                    <div className="progressFill" style={{width:`${progress}%`}}></div>
+                                    <div className="progressFill" style={{ width: `${progress}%` }}></div>
                                 </div>
 
                                 <div className='movieULcontainer'>
@@ -42,9 +41,15 @@ function Collections({ addMovieFromSuggest, watchedMoviesList }) {
                                                 return watchedMovie.id == movie.id;
                                             })
 
+                                            
+
 
                                             return (
-                                                <li className='moviesInSuggestion' key={movie.id} >
+                                                <li className='moviesInSuggestion' key={movie.id} onClick={() => {
+                                                    setshowPopup(true);
+                                                    setpopupType("suggested");
+                                                    setselectedMovie(movie.id)
+                                                }}>
                                                     {!isWatched ? (<div className='Plus'>
                                                         <Plus
                                                             style={{

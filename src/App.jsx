@@ -41,6 +41,7 @@ function App() {
   const [isSpinning, setisSpinning] = useState(false);
   const [showPopup, setshowPopup] = useState(false);
   const [selectedMovie, setselectedMovie] = useState(null);
+  const [popupType, setpopupType] = useState("spin");
   const [suggestions, setSuggestions] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("Default");
   const [alertMsg, setalertMsg] = useState("");
@@ -115,33 +116,61 @@ function App() {
       setTimeout(() => {
         setisSpinning(false);
         setshowPopup(true);
+        setpopupType("spin");
         setselectedMovie(displayedMovies[movieIndex].id)
       }, 4000);
 
     }
   }
 
-  const addToHistory = (movieToRemove) => {
-    const newMovieList =
-      movies.filter(
-        movie => movie.id !== movieToRemove
-      )
-      ;
-    const watchedMovie =
-      movies.find(
-        movie => movie.id === movieToRemove);
-    const newWatchedList = [...watchedMoviesList, watchedMovie];
+  const addToHistory = async (movieToRemove, type) => {
+
+    let newMovieList;
+    let watchedMovie;
+
+    if (type === "suggestion") {
+
+        
+        const res = await fetch(`https://api.themoviedb.org/3/${mediaType}/${movieToRemove}?api_key=${API_KEY}`)
+        const result = await res.json();
+        const movie = result;
+        watchedMovie = { id: movie.id, mediaType: mediaType, title: movie.title || movie.name, poster_path: movie.poster_path, release_year: (movie.release_date || movie.first_air_date)?.slice(0, 4), genres: movie.genres.map(genre => genre.name) };
+
+
+        newMovieList = movies;
+
+    } else {
+
+        watchedMovie = movies.find(
+            movie => movie.id === movieToRemove
+        );
+
+        newMovieList = movies.filter(
+            movie => movie.id !== movieToRemove
+        );
+    }
+
+
+    if (!watchedMovie) {
+        console.error("Movie not found:", movieToRemove);
+        return;
+    }
+
+    const newWatchedList = [
+        ...watchedMoviesList,
+        watchedMovie
+    ];
+
     setmovies(newMovieList);
-    setwatchedMoviesList([...watchedMoviesList, watchedMovie]);
+    setwatchedMoviesList(newWatchedList);
+
     alertFn("Added to Watched Movies");
 
     DBupdater({
-      library: newMovieList,
-      watchedMovies: newWatchedList
-    })
-
-
-  };
+        library: newMovieList,
+        watchedMovies: newWatchedList
+    });
+};
 
   const removeMovie = (movieToRemove) => {
     const user = auth.currentUser;
@@ -159,7 +188,7 @@ function App() {
 
   const removeFromHistory = (movieToRemove) => {
     const newWatchedList =
-      watchedMoviesList.f(
+      watchedMoviesList.filter(
         movie => movie.id !== movieToRemove
       )
     setwatchedMoviesList(newWatchedList)
@@ -267,8 +296,8 @@ function App() {
 
   return (
     <>
+      <Authentication setuserName={setuserName} setmovies={setmovies} setWatchedMoviesList={setwatchedMoviesList} />
       <div className='container'>
-        <Authentication setuserName={setuserName} setmovies={setmovies} setWatchedMoviesList={setwatchedMoviesList} />
         <Alert alertMsg={alertMsg} />
         <Navbar userName={userName} />
         <div className='AskAIbtn' onClick={() => {
@@ -338,7 +367,7 @@ function App() {
 
                 <div className='Spinner'>
 
-                  <Spinner displayedMovies={displayedMovies} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} mediaType={mediaType} />
+                  <Spinner displayedMovies={displayedMovies} rotation={rotation} spinWheel={spinWheel} isSpinning={isSpinning} mediaType={mediaType} setpopupType={setpopupType}/>
                   <div className='mobileOnly'>
                     <GenreSelector movies={movies} changeGenre={changeGenre} />
                   </div>
@@ -367,6 +396,7 @@ function App() {
                   addMovieFromSuggest={addMovieFromSuggest}
                   showPopupDetails={showPopupDetails}
                   mediaType={mediaType}
+                  setpopupType={setpopupType}
 
 
                   API_KEY={API_KEY}
@@ -378,18 +408,18 @@ function App() {
               </div>
             </div>
             <MovieOfDay mediaType={mediaType} watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY} />
-            <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} mediaType={mediaType} />
+            <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} mediaType={mediaType} setshowPopup={setshowPopup} setselectedMovie={setselectedMovie} setpopupType={setpopupType}/>
             <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} mediaType={mediaType} moveToRight={moveToRight}/>
           </>
           :
-          <Collections addMovieFromSuggest={addMovieFromSuggest} watchedMoviesList={watchedMoviesList}/>
+          <Collections addMovieFromSuggest={addMovieFromSuggest} watchedMoviesList={watchedMoviesList} setshowPopup={setshowPopup} setselectedMovie={setselectedMovie} setpopupType={setpopupType}/>
         }
 
       </div>
 
       {showPopup && <Popup onClose={() => {
         setshowPopup(false)
-      }} selectedMovie={selectedMovie} addToHistory={addToHistory} spinWheel={spinWheel} movies={movies} mediaType={mediaType} />}
+      }} selectedMovie={selectedMovie} addToHistory={addToHistory} spinWheel={spinWheel} movies={movies} mediaType={mediaType} addMovieFromSuggest={addMovieFromSuggest} popupType={popupType}/>}
 
       <Footer />
     </>

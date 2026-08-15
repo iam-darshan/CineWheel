@@ -1,15 +1,20 @@
 .libraryContainer {
     width: 100%;
+    max-width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 60px;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .libraryContainerMain {
     height: fit-content;
     position: relative;
     width: 100%;
-    max-width: 1370px;  
+    max-width: 1370px;
+    min-width: 0;
+    box-sizing: border-box;
     margin: 0 auto;
     padding: 0 3px;
     box-sizing: border-box;
@@ -176,6 +181,7 @@
     position: relative;
 
     justify-content: center;
+    margin-bottom: 5px;
 }
 
 .inputAndSubmit input {

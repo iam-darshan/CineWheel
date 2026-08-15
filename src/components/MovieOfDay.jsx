@@ -12,36 +12,41 @@ function MovieOfDay({
 
     const [topTwomovies, settopTwomovies] = useState([]);
     const [becauseYouWatched, setbecauseYouWatched] = useState("");
+    const genreMap = {
+        "Action": 28,
+        "Adventure": 12,
+        "Animation": 16,
+        "Comedy": 35,
+        "Crime": 80,
+        "Documentary": 99,
+        "Drama": 18,
+        "Family": 10751,
+        "Fantasy": 14,
+        "History": 36,
+        "Horror": 27,
+        "Music": 10402,
+        "Mystery": 9648,
+        "Romance": 10749,
+        "Science Fiction": 878,
+        "TV Movie": 10770,
+        "Thriller": 53,
+        "War": 10752,
+        "Western": 37
+    };
+
+    const genreToIds = (genres) => {
+        return genres
+            .map(genre => genreMap[genre])
+            .filter(id => id !== undefined);
+    };
+    const IdtoGenre = (id)=>{
+        return Object.keys(genreMap).find(
+            key=>genreMap[key] === id
+        )
+    }
 
     useEffect(() => {
 
-        const genreMap = {
-            "Action": 28,
-            "Adventure": 12,
-            "Animation": 16,
-            "Comedy": 35,
-            "Crime": 80,
-            "Documentary": 99,
-            "Drama": 18,
-            "Family": 10751,
-            "Fantasy": 14,
-            "History": 36,
-            "Horror": 27,
-            "Music": 10402,
-            "Mystery": 9648,
-            "Romance": 10749,
-            "Science Fiction": 878,
-            "TV Movie": 10770,
-            "Thriller": 53,
-            "War": 10752,
-            "Western": 37
-        };
-
-        const genreToIds = (genres) => {
-            return genres
-                .map(genre => genreMap[genre])
-                .filter(id => id !== undefined);
-        };
 
         const loadTrending = async () => {
             setbecauseYouWatched("");
@@ -52,7 +57,9 @@ function MovieOfDay({
 
             const data = await res.json();
 
-            const shuffled = [...data.results].sort(() => Math.random() - 0.5);
+            const shuffled = [...data.results].filter(movie=>
+                !watchedMoviesList.some(cinema => cinema.id === movie.id)
+            ).sort(() => Math.random() - 0.5);
 
             settopTwomovies(shuffled.slice(0, 2));
         };
@@ -70,8 +77,6 @@ function MovieOfDay({
                 return;
             }
 
-            // 50% Trending
-            // 50% Because you watched
             if (Math.random() < 0.5) {
                 await loadTrending();
                 return;
@@ -169,12 +174,21 @@ function MovieOfDay({
                                         {movie.vote_average?.toFixed(2) || "N/A"}
                                     </h4>
                                 </div>
+            
+                            </div>
+                            <div className="genre genreContainer">
+
+                            <h6>Genre</h6>
+                            <div className="genreRow scrollableGenre">
+
+                                {movie.genre_ids.map((genre) => (
+                                    <div className='genreDiv'>
+                                        <h5>{IdtoGenre(genre)}</h5>
+                                    </div>
+                                ))}
                             </div>
 
-                            <div className='desc'>
-                                <h6>Overview</h6>
-                                <h5>{movie.overview}</h5>
-                            </div>
+                        </div>
                         </div>
                     </div>
                 ))}

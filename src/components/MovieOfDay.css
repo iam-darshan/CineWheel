@@ -123,6 +123,19 @@
     justify-content: space-between;
 
 }
+.genreContainer{
+  margin: 10px 0;
+}
+.scrollableGenre{
+  width: 100%;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  margin-top: 5px;
+}
+.scrollableGenre div{
+  flex-shrink: 0;
+  width: fit-content;
+}
 
 @media screen and (max-width: 767px) {
   .movieRow{

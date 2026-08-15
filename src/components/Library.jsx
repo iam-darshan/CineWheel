@@ -27,6 +27,7 @@ function Library({
   addMovieFromSuggest,
   showPopupDetails,
   mediaType,
+  setpopupType,
 
   API_KEY,
   genreName,
@@ -92,8 +93,6 @@ function Library({
             ></input>
 
 
-            <button ref={btnRef} onClick={addMovie} >Submit</button>
-
 
 
           </div>
@@ -106,6 +105,7 @@ function Library({
                 <div key={movie.id} style={{ position: "relative" }}>
                   <li className='moviesInSuggestion' key={movie.id} onClick={() => {
                     setshowPopup(true);
+                    setpopupType("spin");
                     setselectedMovie(movie.id)
                   }}>
                     <div className='Trash'>

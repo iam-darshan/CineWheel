@@ -4,7 +4,7 @@ import { CircleX, Trophy, RotateCcw } from 'lucide-react';
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
-function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaType }) {
+function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaType,popupType,addMovieFromSuggest }) {
 
     const [movieDetails, setmovieDetails] = useState(null);
     const [movieCreditDetails, setmovieCreditDetails] = useState();
@@ -112,7 +112,6 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
 
                             <h6>Genre</h6>
                             <div className="genreRow">
-
                                 {movieDetails.genres?.map((genre) => (
                                     <div className='genreDiv'>
                                         <h5>{genre.name}</h5>
@@ -144,12 +143,27 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
 
 
                         {movieProvidersDetails &&
+                        
                             <div className="watchProviders">
+                                {console.log(movieProvidersDetails)}
                                 <h3>Included with Subscription</h3>
                                 <div className="providersRow">
-                                    {movieProvidersDetails.map((provider) => (
+                                    {movieProvidersDetails.filter(provider => provider.provider_id !== 2100).map((provider) => (
                                         <div className="providerCard"
                                             key={provider.provider_id}
+                                            onClick={() => {
+                                                switch (provider.provider_id) {
+                                                    case 8:
+                                                        window.open(`https://www.netflix.com/search?q=${movieDetails.title}`, '_blank')
+                                                        break;
+                                                    case 119:
+                                                        window.open(`https://www.primevideo.com/search/ref=atv_nb_sr?phrase=${movieDetails.title}`, '_blank')
+                                                        break;
+                                                    case 2336:
+                                                        window.open(`https://www.jiohotstar.com/search?search_query=${movieDetails.title}`,'_blank')
+                                                        break;
+                                                }       
+                                            }}
                                         >
 
                                             <img src={`https://image.tmdb.org/t/p/w92${provider.logo_path}`}
@@ -170,7 +184,6 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
                                             <div className='castImg'>
 
                                                 <img src={`https://image.tmdb.org/t/p/w92${actor.profile_path}`}
-                                                    // alt={provider.provider_name}
                                                     title={actor.name}
                                                 />
                                             </div>
@@ -186,19 +199,43 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
                 </div>
 
                 <div className="footer">
-                    <div className="spinAgain" onClick={() => {
-                        spinWheel();
-                        onClose();
-                    }}>
+                    {popupType==="spin" ? 
+
+                        <div className="spinAgain" onClick={() => {
+                            spinWheel();
+                            onClose();
+                        }}>
                         <RotateCcw size={40} />
                         <h4 id='spinAgainh4'>Spin Again</h4>
-                    </div>
-                    <div className="addToHistory" onClick={() => {
-                        addToHistory(selectedMovie);
+                        </div>
+                        :
+                        <div className="spinAgain" onClick={() => {
+                            addMovieFromSuggest(movieDetails.id,mediaType)
+                            onClose();
+                        }}>
+                        <h4 id='spinAgainh4'>Add to Library</h4>
+                        </div>
+                        
+                    }
+                     {popupType==="spin" ? 
+
+                        <div className="addToHistory" onClick={() => {
+                        addToHistory(movieDetails.id);
                         onClose();
                     }}>
                         <h4 id='addToHistoryh4'>Watched <br />Add to History</h4>
                     </div>
+                        :
+                        <div className="addToHistory" onClick={() => {
+                        addToHistory(movieDetails.id,"suggestion");
+                        onClose();
+                    }}>
+                        <h4 id='addToHistoryh4'>Watched <br />Add to History</h4>
+                    </div>
+                        
+                    }
+                    
+                    
                 </div>
             </div>
         </div>
