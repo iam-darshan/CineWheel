@@ -149,8 +149,8 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
 
                             <h6>Genre</h6>
                             <div className="genreRow">
-                                {movieDetails.genres?.map((genre) => (
-                                    <div className='genreDiv'>
+                                {movieDetails.genres?.map((genre,index) => (
+                                    <div className='genreDiv' key={index}>
                                         <h5>{genre.name}</h5>
                                     </div>
                                 ))}
@@ -196,7 +196,7 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
                                         return order[a.type] - order[b.type];
                                     }).map((provider) => (
                                         <div className="providerCard"
-                                            key={provider.provider_id}
+                                            key={provider.service.id}
                                             onClick={() => {
                                                 window.open(`${provider.link}`, '_blank')
                                             }}

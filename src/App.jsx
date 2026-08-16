@@ -407,7 +407,7 @@ function App() {
 
               </div>
             </div>
-            <MovieOfDay mediaType={mediaType} watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY} />
+            <MovieOfDay mediaType={mediaType} watchedMoviesList={watchedMoviesList} movies={movies} addMovieFromSuggest={addMovieFromSuggest} API_KEY={API_KEY} setshowPopup={setshowPopup} setselectedMovie={setselectedMovie} setpopupType={setpopupType}/>
             <SuggestedMovies API_KEY={API_KEY} addMovieFromSuggest={addMovieFromSuggest} alertFn={alertFn} mediaType={mediaType} setshowPopup={setshowPopup} setselectedMovie={setselectedMovie} setpopupType={setpopupType} watchedMoviesList={watchedMoviesList}/>
             <WatchHistory watchedMoviesList={watchedMoviesList} removeFromHistory={removeFromHistory} mediaType={mediaType} moveToRight={moveToRight}/>
           </>
