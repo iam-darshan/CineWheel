@@ -12,27 +12,35 @@ function MovieOfDay({
 
     const [topTwomovies, settopTwomovies] = useState([]);
     const [becauseYouWatched, setbecauseYouWatched] = useState("");
-    const genreMap = {
-        "Action": 28,
-        "Adventure": 12,
-        "Animation": 16,
-        "Comedy": 35,
-        "Crime": 80,
-        "Documentary": 99,
-        "Drama": 18,
-        "Family": 10751,
-        "Fantasy": 14,
-        "History": 36,
-        "Horror": 27,
-        "Music": 10402,
-        "Mystery": 9648,
-        "Romance": 10749,
-        "Science Fiction": 878,
-        "TV Movie": 10770,
-        "Thriller": 53,
-        "War": 10752,
-        "Western": 37
-    };
+   const genreMap = {
+    "Action": 28,
+    "Adventure": 12,
+    "Animation": 16,
+    "Comedy": 35,
+    "Crime": 80,
+    "Documentary": 99,
+    "Drama": 18,
+    "Family": 10751,
+    "Fantasy": 14,
+    "History": 36,
+    "Horror": 27,
+    "Music": 10402,
+    "Mystery": 9648,
+    "Romance": 10749,
+    "Science Fiction": 878,
+    "TV Movie": 10770,
+    "Thriller": 53,
+    "War": 10752,
+    "Western": 37,
+    "Action & Adventure": 10759,
+    "Kids": 10762,
+    "News": 10763,
+    "Reality": 10764,
+    "Sci-Fi & Fantasy": 10765,
+    "Soap": 10766,
+    "Talk": 10767,
+    "War & Politics": 10768
+};
 
     const genreToIds = (genres) => {
         return genres
@@ -59,6 +67,8 @@ function MovieOfDay({
 
             const shuffled = [...data.results].filter(movie=>
                 !watchedMoviesList.some(cinema => cinema.id === movie.id)
+            ).filter(movie=>
+                new Date(movie.release_date || movie.first_air_date)<=new Date()
             ).sort(() => Math.random() - 0.5);
 
             settopTwomovies(shuffled.slice(0, 2));
@@ -66,12 +76,12 @@ function MovieOfDay({
 
         const TodaysPicker = async () => {
 
-            // Watched movies of current media type
+        
             const filteredWatched = watchedMoviesList.filter(
                 movie => movie.mediaType === mediaType
             );
 
-            // No watched movies -> Trending
+            
             if (filteredWatched.length === 0) {
                 await loadTrending();
                 return;
@@ -181,8 +191,8 @@ function MovieOfDay({
                             <h6>Genre</h6>
                             <div className="genreRow scrollableGenre">
 
-                                {movie.genre_ids.map((genre) => (
-                                    <div className='genreDiv'>
+                                {movie.genre_ids.map((genre,index) => (
+                                    <div className='genreDiv' key={index}>
                                         <h5>{IdtoGenre(genre)}</h5>
                                     </div>
                                 ))}

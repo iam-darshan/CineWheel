@@ -66,12 +66,12 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType, set
                                     setpopupType("suggested");
                                     setselectedMovie(movie.id)
                                 }}>
-                                    <div className='Plus' 
-                                    onClick={(e) => {
-                                                e.stopPropagation();
-                                                addMovieFromSuggest(movie.id, mediaType);
-                                            }
-                                            }
+                                    <div className='Plus'
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            addMovieFromSuggest(movie.id, mediaType);
+                                        }
+                                        }
                                     >
                                         <Plus
                                             style={{
@@ -111,7 +111,13 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType, set
                 <div className='movieULcontainer'>
 
                     <ul className='moviesUL'>
-                        {trendingMovies.map((movie) => {
+                        {trendingMovies.filter(movie => {
+                            const date = mediaType === "movie" ? movie.release_date : movie.first_air_date;
+
+                            return new Date(date) <= new Date()
+
+                        }
+                        ).map((movie) => {
                             const isWatched = watchedMoviesList.some((watchedMovie) => {
                                 return watchedMovie.id == movie.id;
                             })
@@ -121,12 +127,12 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType, set
                                     setshowPopup(true);
                                     setselectedMovie(movie.id)
                                 }}>
-                                    <div className='Plus' 
-                                    onClick={(e) => {
-                                                e.stopPropagation();
-                                                addMovieFromSuggest(movie.id, mediaType);
-                                            }
-                                            }
+                                    <div className='Plus'
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            addMovieFromSuggest(movie.id, mediaType);
+                                        }
+                                        }
                                     >
                                         <Plus
                                             style={{
@@ -135,7 +141,7 @@ function SuggestedMovies({ API_KEY, addMovieFromSuggest, alertFn, mediaType, set
                                                     "drop-shadow(0 2px 2px rgba(0,0,0,1)) drop-shadow(0 0 4px rgba(0,0,0,0.9)) drop-shadow(0 0 8px #000000) drop-shadow(0 0 16px #000000)"
                                             }}
 
-                                             />
+                                        />
                                     </div>
                                     <div className="suggestionPoster">
                                         {movie.poster_path ? (

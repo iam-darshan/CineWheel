@@ -56,6 +56,7 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
     }, [selectedMovie]);
     useEffect(() => {
         const getStreamingAvailability = async () => {
+
             try {
                 const client = new streamingAvailability.Client(
                     new streamingAvailability.Configuration({
@@ -64,11 +65,11 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
                 );
 
                 const data = await client.showsApi.getShow({
-                    id: movieDetails.imdb_id,
+                    id: `${mediaType === "movie" ? "movie" : "tv"}/${movieDetails.id}`,
                     country: "in"
                 });
 
-            
+
                 setmovieProvidersDetails(data.streamingOptions.in)
 
             } catch (error) {
@@ -76,7 +77,7 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
             }
         };
 
-        if (movieDetails?.imdb_id) {
+        if (movieDetails?.id) {
             getStreamingAvailability();
         }
     }, [movieDetails]);
@@ -121,7 +122,21 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
                         <div className="yearAndRating">
                             <div id='releaseYear'><h4 id='releaseYearh4'>{(movieDetails.release_date || movieDetails.first_air_date) ? (movieDetails.release_date || movieDetails.first_air_date).slice(0, 4) : "N/A"}</h4></div>
                             <div id='IMDBrating'><h4 id='IMDBratingh4'>{movieDetails.vote_average ? (movieDetails.vote_average).toFixed(2) : "N/A"}</h4></div>
-                            <div className='runTime'><span>{movieDetails.runtime}</span><span>min</span></div>
+                            <div className='runTime'>{mediaType === "movie" ? (
+                                <>
+                                    <span>{movieDetails.runtime}</span>
+                                    <span>min</span>
+                                </>
+                            ) :
+                                (
+                                    <>
+                                        <span>
+                                            {movieDetails.number_of_seasons} Seasons
+                                            {" • "}
+                                            {movieDetails.number_of_episodes} Episodes
+                                        </span>
+                                    </>)}
+                            </div>
                         </div>
                         <div>
                             <span>Directed by </span>
@@ -171,13 +186,14 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
                                 <div className="providersRow">
 
 
-                                    {movieProvidersDetails.sort((a,b)=> {
-                                        const order ={
-                                            subscription:1,
-                                            buy:2,
-                                            rent:3
+                                    {movieProvidersDetails.sort((a, b) => {
+                                        const order = {
+                                            subscription: 1,
+                                            buy: 2,
+                                            rent: 3
                                         }
-                                        return order[a.type]-order[b.type];
+
+                                        return order[a.type] - order[b.type];
                                     }).map((provider) => (
                                         <div className="providerCard"
                                             key={provider.provider_id}
@@ -189,15 +205,15 @@ function Popup({ onClose, selectedMovie, addToHistory, spinWheel, movies, mediaT
                                             <img src={provider.service?.imageSet.darkThemeImage}
                                                 alt={provider.provider_name}
                                                 title={provider.provider_name} />
-                                            {provider.type !== "subscription" && 
-                                            
-                                                <div className="providerPrice">
-                                            <span>{provider.type}</span>
-                                            <span>{provider.price?.formatted}</span>
+                                            {provider.type !== "subscription" &&
 
-                                            </div>
-                                            }    
-                                            
+                                                <div className="providerPrice">
+                                                    <span>{provider.type}</span>
+                                                    <span>{provider.price?.formatted}</span>
+
+                                                </div>
+                                            }
+
                                         </div>
                                     ))}
                                 </div>

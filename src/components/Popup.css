@@ -184,7 +184,7 @@
 }
 
 .yearAndRating div {
-    width: 60px;
+    width: fit-content;
     height: 30px;
     display: flex;
     align-items: center;
@@ -197,9 +197,15 @@
         0 0 20px rgba(74, 144, 255, 0.18),
         inset 0 0 8px rgba(255, 255, 255, .03);
     overflow: hidden;
-    padding: 0 3px;
+    padding: 0 10px;
     font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
+}
+.runTime{
+    width: fit-content;
+    font-weight: 300;
+    font-size: 14px;
+    text-wrap: nowrap;
 }
 
 .yearAndRating h4 {
