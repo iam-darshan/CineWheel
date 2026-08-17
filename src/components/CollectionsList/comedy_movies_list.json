@@ -1,0 +1,318 @@
+{
+  "id": "comedyMovies",
+  "title": "Comedy Movies",
+  "movies": [
+    {
+      "id": 76493,
+      "mediaType": "movie",
+      "title": "The Dictator",
+      "rating": 6.2,
+      "poster_path": "/n0W7kajF4GFMRk2c0wWwMQqTaDM.jpg",
+      "release_year": "2012"
+    },
+    {
+      "id": 8363,
+      "mediaType": "movie",
+      "title": "Superbad",
+      "rating": 7.269,
+      "poster_path": "/ek8e8txUyUwd2BNqj6lFEerJfbq.jpg",
+      "release_year": "2007"
+    },
+    {
+      "id": 18785,
+      "mediaType": "movie",
+      "title": "The Hangover",
+      "rating": 7.337,
+      "poster_path": "/A0uS9rHR56FeBtpjVki16M5xxSW.jpg",
+      "release_year": "2009"
+    },
+    {
+      "id": 64688,
+      "mediaType": "movie",
+      "title": "21 Jump Street",
+      "rating": 6.884,
+      "poster_path": "/8v3Sqv9UcIUC4ebmpKWROqPBINZ.jpg",
+      "release_year": "2012"
+    },
+    {
+      "id": 187017,
+      "mediaType": "movie",
+      "title": "22 Jump Street",
+      "rating": 6.827,
+      "poster_path": "/850chzYHYbT3IISl6Q7dbBuFP2B.jpg",
+      "release_year": "2014"
+    },
+    {
+      "id": 138832,
+      "mediaType": "movie",
+      "title": "We're the Millers",
+      "rating": 6.838,
+      "poster_path": "/qF2LJ0jwWrtXSuT4AFD5OS2IqaT.jpg",
+      "release_year": "2013"
+    },
+    {
+      "id": 12133,
+      "mediaType": "movie",
+      "title": "Step Brothers",
+      "rating": 6.561,
+      "poster_path": "/nvggBbEraUTAVR6ffP3AaBUWSHs.jpg",
+      "release_year": "2008"
+    },
+    {
+      "id": 8467,
+      "mediaType": "movie",
+      "title": "Dumb and Dumber",
+      "rating": 6.661,
+      "poster_path": "/4LdpBXiCyGKkR8FGHgjKlphrfUc.jpg",
+      "release_year": "1994"
+    },
+    {
+      "id": 7446,
+      "mediaType": "movie",
+      "title": "Tropic Thunder",
+      "rating": 6.721,
+      "poster_path": "/zAurB9mNxfYRoVrVjAJJwGV3sPg.jpg",
+      "release_year": "2008"
+    },
+    {
+      "id": 496,
+      "mediaType": "movie",
+      "title": "Borat: Cultural Learnings of America for Make Benefit Glorious Nation of Kazakhstan",
+      "rating": 6.789,
+      "poster_path": "/7g9kBHMN2KTr5KUf8aen187Mdn.jpg",
+      "release_year": "2006"
+    },
+    {
+      "id": 747,
+      "mediaType": "movie",
+      "title": "Shaun of the Dead",
+      "rating": 7.544,
+      "poster_path": "/dgXPhzNJH8HFTBjXPB177yNx6RI.jpg",
+      "release_year": "2004"
+    },
+    {
+      "id": 308266,
+      "mediaType": "movie",
+      "title": "War Dogs",
+      "rating": 6.946,
+      "poster_path": "/mDcPRjZC1bb6LavFU3gwsWdVfCM.jpg",
+      "release_year": "2016"
+    },
+    {
+      "id": 4638,
+      "mediaType": "movie",
+      "title": "Hot Fuzz",
+      "rating": 7.567,
+      "poster_path": "/zPib4ukTSdXvHP9pxGkFCe34f3y.jpg",
+      "release_year": "2007"
+    },
+    {
+      "id": 120467,
+      "mediaType": "movie",
+      "title": "The Grand Budapest Hotel",
+      "rating": 8.025,
+      "poster_path": "/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg",
+      "release_year": "2014"
+    },
+    {
+      "id": 290250,
+      "mediaType": "movie",
+      "title": "The Nice Guys",
+      "rating": 7.1,
+      "poster_path": "/clq4So9spa9cXk3MZy2iMdqkxP2.jpg",
+      "release_year": "2016"
+    },
+    {
+      "id": 445571,
+      "mediaType": "movie",
+      "title": "Game Night",
+      "rating": 6.845,
+      "poster_path": "/85R8LMyn9f2Lev2YPBF8Nughrkv.jpg",
+      "release_year": "2018"
+    },
+    {
+      "id": 51540,
+      "mediaType": "movie",
+      "title": "Horrible Bosses",
+      "rating": 6.574,
+      "poster_path": "/uQkUwgyFHAm0jGQERPG6Z9o9Zbj.jpg",
+      "release_year": "2011"
+    },
+    {
+      "id": 227159,
+      "mediaType": "movie",
+      "title": "Horrible Bosses 2",
+      "rating": 6.177,
+      "poster_path": "/boBOkwIqgrs8noxBUSDkkicKa4K.jpg",
+      "release_year": "2014"
+    },
+    {
+      "id": 41733,
+      "mediaType": "movie",
+      "title": "Due Date",
+      "rating": 6.392,
+      "poster_path": "/sBxWS09pOOyXZ0dcnqfqqCAQGan.jpg",
+      "release_year": "2010"
+    },
+    {
+      "id": 109414,
+      "mediaType": "movie",
+      "title": "This Is the End",
+      "rating": 6.231,
+      "poster_path": "/tNIW0NhX1hKvUsy6PQ80DOKUhkD.jpg",
+      "release_year": "2013"
+    },
+    {
+      "id": 195589,
+      "mediaType": "movie",
+      "title": "Neighbors",
+      "rating": 6.181,
+      "poster_path": "/sN1RU08CMi8xkRIibremh3AOdgw.jpg",
+      "release_year": "2014"
+    },
+    {
+      "id": 6957,
+      "mediaType": "movie",
+      "title": "The 40 Year Old Virgin",
+      "rating": 6.427,
+      "poster_path": "/mVeoqL37gzhMXQVpONi9DGOQ3tZ.jpg",
+      "release_year": "2005"
+    },
+    {
+      "id": 8699,
+      "mediaType": "movie",
+      "title": "Anchorman: The Legend of Ron Burgundy",
+      "rating": 6.701,
+      "poster_path": "/mhZIcRePT7U8viFQVjt1ZjYIsR4.jpg",
+      "release_year": "2004"
+    },
+    {
+      "id": 109439,
+      "mediaType": "movie",
+      "title": "The Hangover Part III",
+      "rating": 6.212,
+      "poster_path": "/vtxuPWkdllLNLVyGjKYa267ntuH.jpg",
+      "release_year": "2013"
+    },
+    {
+      "id": 10625,
+      "mediaType": "movie",
+      "title": "Mean Girls",
+      "rating": 7.227,
+      "poster_path": "/2ZkuQXvVhh45uSvkBej4S7Ix1NJ.jpg",
+      "release_year": "2004"
+    },
+    {
+      "id": 37735,
+      "mediaType": "movie",
+      "title": "Easy A",
+      "rating": 6.803,
+      "poster_path": "/v5f1qO6NJnxWgONgkYg21TW39DT.jpg",
+      "release_year": "2010"
+    },
+    {
+      "id": 27578,
+      "mediaType": "movie",
+      "title": "The Expendables",
+      "rating": 6.252,
+      "poster_path": "/j09ZkH6R4JWVylBcDai1laCmGw7.jpg",
+      "release_year": "2010"
+    },
+    {
+      "id": 257091,
+      "mediaType": "movie",
+      "title": "Get Hard",
+      "rating": 6.014,
+      "poster_path": "/rJPbS2cYOYhDCjT5NmW1Fm6gFl3.jpg",
+      "release_year": "2015"
+    },
+    {
+      "id": 302699,
+      "mediaType": "movie",
+      "title": "Central Intelligence",
+      "rating": 6.417,
+      "poster_path": "/hXQVMbRNpf7c93e8clMY4W5DRm6.jpg",
+      "release_year": "2016"
+    },
+    {
+      "id": 2109,
+      "mediaType": "movie",
+      "title": "Rush Hour",
+      "rating": 7.082,
+      "poster_path": "/nwPhAsfnb7f46bZkWLG7IRP5HXr.jpg",
+      "release_year": "1998"
+    },
+    {
+      "id": 5175,
+      "mediaType": "movie",
+      "title": "Rush Hour 2",
+      "rating": 6.774,
+      "poster_path": "/aBQf2vMiCINeVC9v6BGVYKXurTh.jpg",
+      "release_year": "2001"
+    },
+    {
+      "id": 5174,
+      "mediaType": "movie",
+      "title": "Rush Hour 3",
+      "rating": 6.5,
+      "poster_path": "/mp9CzKxLa2i7yblMXUrzVfGqsCo.jpg",
+      "release_year": "2007"
+    },
+    {
+      "id": 2105,
+      "mediaType": "movie",
+      "title": "American Pie",
+      "rating": 6.616,
+      "poster_path": "/5P68by2Thn8wHAziyWGEw2O7hco.jpg",
+      "release_year": "1999"
+    },
+    {
+      "id": 9358,
+      "mediaType": "movie",
+      "title": "Final Destination 2",
+      "rating": 6.316,
+      "poster_path": "/vnFgxRlLTA9fDNcGXLiHmgwmIEo.jpg",
+      "release_year": "2003"
+    },
+    {
+      "id": 10200,
+      "mediaType": "movie",
+      "title": "The Day the Earth Stood Still",
+      "rating": 5.665,
+      "poster_path": "/vBgFSYmG5tb7GsZ3tHR0WNaWaxA.jpg",
+      "release_year": "2008"
+    },
+    {
+      "id": 1624,
+      "mediaType": "movie",
+      "title": "Liar Liar",
+      "rating": 6.715,
+      "poster_path": "/p1habYSdC7oD3WygQ5lynU5G5rV.jpg",
+      "release_year": "1997"
+    },
+    {
+      "id": 310,
+      "mediaType": "movie",
+      "title": "Bruce Almighty",
+      "rating": 6.729,
+      "poster_path": "/wqkWrOFtYnZSvIMu8Lsmz7WIvKC.jpg",
+      "release_year": "2003"
+    },
+    {
+      "id": 1268,
+      "mediaType": "movie",
+      "title": "Mr. Bean's Holiday",
+      "rating": 6.396,
+      "poster_path": "/bSSx9Sq6irWwN9NTQmoT9KE8kXn.jpg",
+      "release_year": "2007"
+    },
+    {
+      "id": 854,
+      "mediaType": "movie",
+      "title": "The Mask",
+      "rating": 6.996,
+      "poster_path": "/jPC2eYub74zwf2tPGVtzSlBW6Oy.jpg",
+      "release_year": "1994"
+    }
+  ]
+}

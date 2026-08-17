@@ -50,8 +50,10 @@ function Collections({ addMovieFromSuggest, watchedMoviesList, setshowPopup, set
                                                     setpopupType("suggested");
                                                     setselectedMovie(movie.id)
                                                 }}>
+                                                {movie.mediaType==="tv" && <div className="tvTag">TV</div>}
                                                     {!isWatched ? 
-                                                    (<div className='Plus' onClick={(e) => {
+                                                    (                                                    
+                                                    <div className='Plus' onClick={(e) => {
                                                                 e.stopPropagation();
                                                                 addMovieFromSuggest(movie.id, movie.mediaType);
                                                             }

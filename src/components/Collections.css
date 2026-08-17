@@ -102,6 +102,16 @@
     background-color: #35d07f;
     transition: width 0.4s ease;
 }
+.tvTag{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 13px;
+    border-radius: 2px;
+    padding: 0 2px ;
+    background-color: #2a292996;
+    font-family: 'Poppins','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 
 @media screen and (max-width: 767px) {
     .progressBar{
